@@ -1,35 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.ClockActivity">
-    <TimePicker
-        android:id ="@+id/timepicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
-    </TimePicker>
+    android:background="@color/main_bg"
+    android:orientation="vertical"
+    tools:ignore="RtlSymmetry">
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/timetextview"
-        />
-    <Button
-        android:id="@+id/btn_set"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/timepicker"
-        android:layout_marginLeft="50dp"
-        android:text="set" />
+        android:layout_height="50dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:paddingStart="15dp"
+        android:text="@string/select_date"
+        android:textColor="@color/select_title_text"
+        android:textSize="15sp" />
 
-    <Button
-        android:id="@+id/btn_cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/timepicker"
-        android:layout_toRightOf="@id/btn_set"
-        android:layout_marginLeft="100dp"
-        android:text="Cancel" />
-</RelativeLayout>
+    <LinearLayout
+        android:id="@+id/ll_date"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/current_time_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:text="选择日期"
+            android:textColor="@color/current_time_text"
+            android:textSize="15sp" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_selected_date"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="15dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:textColor="@color/selected_time_text"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:paddingStart="15dp"
+        android:text=""
+        android:textColor="@color/select_title_text"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_time"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/current_time_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:text="选择时间"
+            android:textColor="@color/current_time_text"
+            android:textSize="15sp" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_selected_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="15dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:textColor="@color/selected_time_text"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:paddingStart="15dp"
+        android:text=""
+        android:textColor="@color/select_title_text"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/current_time_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/confirm"
+            android:id="@+id/btn_set"/>
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/cancel"
+            android:id="@+id/btn_cancel"/>
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</LinearLayout>
