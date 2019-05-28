@@ -3,14 +3,14 @@
     <item
         android:id="@+id/Notes"
         android:icon="@android:drawable/ic_menu_edit"
-        android:title="笔记" />
+        android:title="@string/tab_menu_notes"/>
     <item
         android:id="@+id/Alarms"
         android:icon="@android:drawable/ic_lock_idle_alarm"
-        android:title="闹钟" />
+        android:title="@string/tab_menu_alarm" />
     <item
         android:id="@+id/Mine"
         android:icon="@android:drawable/ic_menu_myplaces"
-        android:title="我的" />
+        android:title="@string/tab_menu_mine" />
 
 </menu>
