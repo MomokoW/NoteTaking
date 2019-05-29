@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.example.notes.notetaking.Activity.ClockActivity;
+import com.example.notes.notetaking.Activity.NewAlarmActivity;
 import com.example.notes.notetaking.R;
 import com.example.notes.notetaking.Adapter.AlarmAdapter;
 
@@ -41,7 +41,7 @@ public class AlarmsList extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.addNotes:
-                startActivity(new Intent(getActivity(), ClockActivity.class));
+                startActivity(new Intent(getActivity(), NewAlarmActivity.class));
                 break;
         }
     }
