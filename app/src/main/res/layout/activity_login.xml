@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="20dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp"
+    tools:context="com.example.notes.notetaking.Activity.LoginActivity" >
+
+
+    <EditText
+        android:id="@+id/idInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="请输入账号" />
+
+
+
+    <EditText
+        android:id="@+id/passwordInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="请输入密码"
+        android:inputType="textPassword" >
+    </EditText>
+
+      <Button
+          android:id="@+id/buttonLogin"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="#00bfff"
+          android:text="登录" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        />
+
+      <Button
+          android:id="@+id/buttonReg"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="#00bfff"
+          android:text="注册" />
+
+</LinearLayout>
