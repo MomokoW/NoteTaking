@@ -8,6 +8,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.0'
+        //glide是为了演示加载网络图片显示的圆形效果
         
 
         // NOTE: Do not place your application dependencies here; they belong
