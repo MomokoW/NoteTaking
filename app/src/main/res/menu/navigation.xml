@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
     <item
         android:id="@+id/Notes"
-        android:icon="@android:drawable/ic_menu_edit"
+        android:icon="@drawable/edit"
         android:title="@string/tab_menu_notes"/>
     <item
         android:id="@+id/Alarms"
-        android:icon="@android:drawable/ic_lock_idle_alarm"
+        android:icon="@drawable/alarm"
         android:title="@string/tab_menu_alarm" />
     <item
         android:id="@+id/Mine"
-        android:icon="@android:drawable/ic_menu_myplaces"
+        android:icon="@drawable/personal"
         android:title="@string/tab_menu_mine" />
 
 </menu>
