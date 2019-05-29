@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 public class UserManage {
     //the insert data to the database
 
-    public void insertData(SQLiteDatabase readableDatebase, String id, String password,String name)
+    public void insertUser(SQLiteDatabase readableDatebase, String id, String password,String name)
     {
         ContentValues values=new ContentValues();
         values.put("user_id",id);
@@ -21,7 +21,7 @@ public class UserManage {
      public  boolean queryuesr(SQLiteDatabase readableDatebase,String id)//the begin
     {
         //注意select语句中对于等于符号后面的字符串需要加上引号
-        Cursor cursor=readableDatebase.rawQuery("Select * from user where user = "+"'"+id+"'", null);
+        Cursor cursor=readableDatebase.rawQuery("Select * from user where user_id = "+"'"+id+"'", null);
         int amount=cursor.getCount();
         cursor.close();
         if(amount==0)
