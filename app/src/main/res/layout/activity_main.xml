@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Activity.MainActivity">
-
+    tools:context=".Activity.MainActivity"
+    >
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vpager"
@@ -20,8 +20,6 @@
         app:itemIconTint="@drawable/bottom_navigation_selector"
         app:itemTextColor="@drawable/bottom_navigation_selector"
         app:menu="@menu/navigation" />
-    <!--app:itemIconTint="@drawable/bottom_navigation_selector"-->
-    <!--app:itemTextColor="@drawable/bottom_navigation_selector"-->
     <View
         android:layout_width="match_parent"
         android:layout_height="5dp"
