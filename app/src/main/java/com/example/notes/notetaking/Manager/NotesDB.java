@@ -4,8 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import static android.drm.DrmStore.DrmObjectType.CONTENT;
-import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 
 public class NotesDB extends SQLiteOpenHelper {
     public static final String TABLE_NOTE = "notes";     //便笺表表名
