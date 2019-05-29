@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.notes.notetaking.Manager.datepicker.AlarmReceiver;
 import com.example.notes.notetaking.R;
 import com.example.notes.notetaking.Manager.*;
 import java.util.Calendar;
@@ -45,10 +47,11 @@ public class ClockActivity extends AppCompatActivity implements View.OnClickList
     }
     private Intent getMsgIntent() {
         //AlarmReceiver 为广播在下面代码中
-        Intent intent=new Intent(this,AlarmReceiver.class);
-        intent.setAction(AlarmReceiver.BC_ACTION);
-        intent.putExtra("msg","闹钟开启");
-        return intent;
+       //Intent intent=new Intent(this,AlarmReceiver.class);
+        //intent.setAction(AlarmReceiver.BC_ACTION);
+        //intent.putExtra("msg","闹钟开启");
+        //return intent;
+        return null;
     }
     @Override
     public void onClick(View v) {
