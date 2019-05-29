@@ -5,15 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/skin1"
     >
     <!--顶部导航栏-->
-    <!--<android.support.v7.widget.Toolbar-->
-        <!--android:id="@+id/toolbar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="?attr/actionBarSize"-->
-        <!--android:background="#75c233"-->
-
-        <!--/>-->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:background="?attr/colorPrimary"/>
 
     <!--搜索框-->
     <EditText
@@ -21,8 +20,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:drawableLeft="@android:drawable/ic_menu_search"
-        android:drawablePadding="5dp"
+        android:drawableLeft="@drawable/search"
+        android:drawablePadding="10dp"
         android:gravity="center_vertical"
         android:hint="请输入关键词查询！"
         android:imeOptions="actionSearch"
@@ -42,6 +41,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
-        android:src="@android:drawable/ic_input_add"/>
+        android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="@color/colorPrimary"
+        app:rippleColor="@color/LightSkyBlue"
+        app:pressedTranslationZ="10dp"/>
 
 </LinearLayout>
