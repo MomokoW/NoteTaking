@@ -24,7 +24,7 @@ public class AlarmsList extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.activity_noteslist,null);
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.activity_alram_list,null);
         //btnAdd =(FloatingActionButton)view.findViewById(R.id.addNotes);
         //btnAdd.setOnClickListener(this);
         return view;

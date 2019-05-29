@@ -44,11 +44,12 @@ public class ClockActivity extends AppCompatActivity implements View.OnClickList
         am= (AlarmManager) getSystemService(ALARM_SERVICE);
     }
     private Intent getMsgIntent() {
-        //AlarmReceiver 为广播在下面代码中
-        Intent intent=new Intent(this,AlarmReceiver.class);
-        intent.setAction(AlarmReceiver.BC_ACTION);
-        intent.putExtra("msg","闹钟开启");
-        return intent;
+//        //AlarmReceiver 为广播在下面代码中
+//        Intent intent=new Intent(this,AlarmReceiver.class);
+//        intent.setAction(AlarmReceiver.BC_ACTION);
+//        intent.putExtra("msg","闹钟开启");
+//        return intent;
+        return null;
     }
     @Override
     public void onClick(View v) {

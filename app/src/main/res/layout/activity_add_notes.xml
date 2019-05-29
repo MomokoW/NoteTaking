@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/skin4"
     android:orientation="vertical">
 
     <!--<android.support.v7.widget.Toolbar-->
@@ -16,17 +17,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <Button
-            android:layout_width="0dp"
+            android:id="@+id/tag"
+            android:layout_width="19dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="选择标签"
-            android:textSize="18dp"
-            android:gravity="center_vertical"
-            android:drawablePadding="10dp"
-            android:textColor="@color/bg_black"
             android:background="@null"
-            android:id="@+id/tag"/>
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:text="选择标签"
+            android:textColor="@color/bg_black"
+            android:textSize="18dp" />
+
+       
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -56,6 +60,7 @@
             android:layout_gravity="bottom"
             android:layout_weight="1"
             android:text="保存"
+            android:background="btn_shape"
             android:id="@+id/save"/>
         <Button
             android:layout_width="wrap_content"
@@ -63,6 +68,7 @@
             android:layout_gravity="bottom"
             android:layout_weight="1"
             android:text="语音"
+            android:background="btn_shape"
             android:id="@+id/voice"
             />
         <Button
@@ -70,6 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
+            android:background="btn_shape"
             android:text="返回"
             android:id="@+id/goback"/>
 

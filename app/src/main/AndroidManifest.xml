@@ -17,10 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        >
         <activity android:name=".Activity.ClockActivity" />
         <activity android:name=".Activity.AddNotesActivity" />
-        <activity android:name=".Activity.AlramListActivity" />
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.RegisterActivity" />
         <activity android:name=".Activity.UpdateInformationActivity"></activity>
