@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">NoteTaking</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="tab_menu_notes">笔记</string>
+    <string name="tab_menu_alarm">闹钟</string>
+    <string name="tab_menu_mine">我的</string>
+    <string name="tab_menu_setting">设置</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
