@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/main_bg"
     android:orientation="vertical"
-    tools:ignore="RtlSymmetry">
+    tools:context=".Activity.ClockActivity">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
