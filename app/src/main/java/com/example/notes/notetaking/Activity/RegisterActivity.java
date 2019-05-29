@@ -45,8 +45,8 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this,"注册失败，手机号格式错误",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    if(!password1.equals(password2)){
-                        Toast.makeText(RegisterActivity.this,"注册失败，两次密码不同",Toast.LENGTH_SHORT).show();
+                    if((!password1.equals(password2))||(password1.length()==0)){
+                        Toast.makeText(RegisterActivity.this,"注册失败，两次密码不同或者密码为空",Toast.LENGTH_SHORT).show();
                     }
                 }
             }

@@ -13,7 +13,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button buttonLogin;
     private Button buttonRegister;
-    private EditText nameInput;
+    private EditText idInput;
     private EditText passwordInput;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,13 +21,15 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         buttonLogin = (Button)findViewById(R.id.buttonLogin);
         buttonRegister = (Button)findViewById(R.id.buttonReg);
-        nameInput = (EditText)findViewById(R.id.idInput);
+        idInput = (EditText)findViewById(R.id.idInput);
         passwordInput = (EditText)findViewById(R.id.passwordInput);
         //登录按钮响应事件
         buttonLogin.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
+                String id = idInput.getText().toString();
+                String password = passwordInput.getText().toString();
 
             }
         });
