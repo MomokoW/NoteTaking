@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/skin1"
     >
     <!--顶部导航栏-->
     <!--<android.support.v7.widget.Toolbar-->
@@ -29,7 +30,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
-        android:src="@android:drawable/ic_input_add"/>
+        android:src="@mipmap/add"
+        app:elevation="5dp"
+        app:borderWidth="0dp"
+        app:backgroundTint="@color/colorPrimary"
+        app:rippleColor="@color/LightSkyBlue"
+        app:pressedTranslationZ="10dp"/>
 
 </LinearLayout>
 

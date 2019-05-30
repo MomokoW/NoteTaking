@@ -116,7 +116,7 @@
             android:layout_width="0dp"
             android:layout_weight="0.5"/>
         <Button
-            android:id="@+id/sureButton_register"
+            android:id="@+id/btn_set"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_weight="1"
@@ -128,7 +128,7 @@
             android:layout_width="0dp"
             android:layout_weight="0.5"/>
         <Button
-            android:id="@+id/backButton_register"
+            android:id="@+id/btn_cancel"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_weight="1"

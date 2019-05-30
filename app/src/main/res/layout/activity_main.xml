@@ -19,6 +19,7 @@
         android:layout_alignParentBottom="true"
         app:itemIconTint="@drawable/bottom_navigation_selector"
         app:itemTextColor="@drawable/bottom_navigation_selector"
+        android:background="@mipmap/skin3"
         app:menu="@menu/navigation" />
     <View
         android:layout_width="match_parent"
