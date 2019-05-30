@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
-        android:src="@android:drawable/ic_input_add"
+        android:src="@mipmap/add"
         app:backgroundTint="@color/colorPrimary"
         app:rippleColor="@color/LightSkyBlue"
         app:pressedTranslationZ="10dp"/>
