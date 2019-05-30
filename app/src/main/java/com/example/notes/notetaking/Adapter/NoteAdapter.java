@@ -73,7 +73,7 @@ public class NoteAdapter extends BaseAdapter {
                 imageView.setImageResource(R.mipmap.ic_lvyou);
                 break;
                 //待修改成为中文
-            case "life":
+            case "生活":
                 imageView.setImageResource(R.mipmap.ic_shenghuo);
                 break;
             case "未标签":
