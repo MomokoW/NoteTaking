@@ -21,6 +21,7 @@
         </ListView>
     </LinearLayout>
 
+    
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addalarm"
         android:layout_width="wrap_content"
