@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/skin1"
     >
-    <!--顶部导航栏-->
-    <!--<android.support.v7.widget.Toolbar-->
-    <!--android:id="@+id/toolbar"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="?attr/actionBarSize"-->
-    <!--android:background="#75c233"-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <!--/>-->
-
-    <ListView
-        android:id="@+id/alarmlist"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingLeft="25dp">
-    </ListView>
+        <ListView
+            android:id="@+id/alarmlist"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="25dp">
+        </ListView>
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/addNotes"
+        android:id="@+id/addalarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
-        android:src="@android:drawable/ic_input_add"/>
+        android:src="@mipmap/add"
+        app:backgroundTint="@color/colorPrimary"
+        app:rippleColor="@color/LightSkyBlue"
+        app:borderWidth="0dp"
+        app:elevation="5dp"
+        app:pressedTranslationZ="10dp"/>
 
-</LinearLayout>
-
+</FrameLayout>
