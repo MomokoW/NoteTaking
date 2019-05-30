@@ -10,7 +10,7 @@ import com.example.notes.notetaking.R;
 
 public class UpdateInformationActivity extends AppCompatActivity {
 
-    private Button headChangeBtn;
+    //private Button headChangeBtn;
     private Button inforChangeBtn;
     private EditText nameChange;
     private  EditText passwordOld;
@@ -21,11 +21,12 @@ public class UpdateInformationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_information);
-        headChangeBtn = (Button) findViewById(R.id.headChangeButton);
+        //headChangeBtn = (Button) findViewById(R.id.headChangeButton);
         nameChange = (EditText)findViewById(R.id.nameChangeEdit);
         passwordOld = (EditText)findViewById(R.id.passwordOldEdit);
         passwordChange1 = (EditText)findViewById(R.id.passwordNew1Edit);
         passwordChange2 = (EditText)findViewById(R.id.passwordNew2Edit);
+        /*
         //选择图片，修改头像
         headChangeBtn.setOnClickListener(new View.OnClickListener(){
 
@@ -34,6 +35,7 @@ public class UpdateInformationActivity extends AppCompatActivity {
 
             }
         });
+        */
         //确定修改个人信息
         inforChangeBtn = (Button)findViewById(R.id.updateInforBtn);
         inforChangeBtn.setOnClickListener(new View.OnClickListener() {

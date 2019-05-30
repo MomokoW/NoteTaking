@@ -55,16 +55,16 @@ public class Settings extends Fragment {
                 startActivity(intent);
             }
         });
+
         //点击头像，修改个人信息。
         photoHead.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-
-                //Intent intent = new Intent(getActivity(),UpdateInformationActivity.class);
-                //startActivity(intent);
+                
             }
         });
+
         //退出程序
         logoutButton = (Button)view.findViewById(R.id.logoutButton_mine);
         logoutButton.setOnClickListener(new View.OnClickListener(){
