@@ -3,6 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="floatingActionButtonStyle">@style/Widget.Design.FloatingActionButton</item>
+        <item name="bottomNavigationStyle">@style/Widget.Design.NavigationView</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
