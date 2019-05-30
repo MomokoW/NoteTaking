@@ -9,10 +9,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.notes.notetaking.R;
+import com.example.notes.notetaking.Util.AlarmItem;
+
+import java.util.LinkedList;
 
 public class ModifyAlarmActivity extends AppCompatActivity {
     TextView biaotiTextView,newtimeTextView,actiontimeTextView,textTextView;
     Button btn_set,btn_cancel;
+    LinkedList<AlarmItem> alarmItems= new LinkedList<AlarmItem>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
