@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/skin1"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -57,6 +58,7 @@
         android:layout_gravity="bottom"
         app:itemIconTint="@drawable/bottom_navigation_selector"
         app:itemTextColor="@drawable/bottom_navigation_selector"
+        android:background="@mipmap/skin3"
         app:menu="@menu/editnotes_navigation" />
 
     <View

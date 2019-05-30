@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.example.notes.notetaking.Manager.NotesDB;
 import com.example.notes.notetaking.Manager.User;
 import com.example.notes.notetaking.Manager.UserManage;
-import com.example.notes.notetaking.Model.MainUser;
+//import com.example.notes.notetaking.Model.MainUser;
 import com.example.notes.notetaking.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "登录失败，请检查帐号密码", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    MainUser.user=user;
+                   // MainUser.user=user;
                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                     startActivity(intent);

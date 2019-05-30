@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@mipmap/skin1">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/date_picker_bg"
+        android:background="@mipmap/skin3"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -54,19 +55,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/date_picker_bg"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingBottom="20dp"
         android:paddingEnd="20dp"
         android:paddingStart="20dp"
-        android:paddingTop="15dp">
+        android:paddingTop="15dp"
+        android:background="@mipmap/skin3">
 
         <com.liuwan.demo.datepicker.PickerView
             android:id="@+id/dpv_year"
             android:layout_width="0dp"
             android:layout_height="@dimen/picker_view_height"
-            android:layout_weight="3" />
+            android:layout_weight="3"
+            />
 
         <TextView
             android:layout_width="0dp"

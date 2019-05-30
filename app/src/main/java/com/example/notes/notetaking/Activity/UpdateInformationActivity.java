@@ -16,6 +16,7 @@ public class UpdateInformationActivity extends AppCompatActivity {
     private  EditText passwordOld;
     private EditText passwordChange1;
     private EditText passwordChange2;
+    private String headPhotoURL;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

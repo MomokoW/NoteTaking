@@ -6,19 +6,19 @@
         android:title="@string/tab_menu_picture"/>
     <item
         android:id="@+id/font"
-        android:icon="@android:drawable/ic_menu_edit"
+        android:icon="@mipmap/font"
         android:title="@string/tab_menu_font" />
     <item
         android:id="@+id/audio"
-        android:icon="@android:drawable/ic_btn_speak_now"
+        android:icon="@mipmap/audio"
         android:title="@string/tab_menu_audio" />
     <item
         android:id="@+id/video"
-        android:icon="@android:drawable/ic_menu_camera"
+        android:icon="@mipmap/video"
         android:title="@string/tab_menu_video" />
     <item
         android:id="@+id/graffiti"
-        android:icon="@android:drawable/star_off"
+        android:icon="@mipmap/graffiti"
         android:title="@string/tab_menu_graffiti"/>
 
 </menu>
