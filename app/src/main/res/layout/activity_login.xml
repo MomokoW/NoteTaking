@@ -8,7 +8,8 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingTop="20dp"
-    tools:context="com.example.notes.notetaking.Activity.LoginActivity" >
+    tools:context="com.example.notes.notetaking.Activity.LoginActivity"
+    android:background="@mipmap/skin1">
 
 
     <LinearLayout
@@ -52,7 +53,7 @@
           android:layout_width="match_parent"
           android:layout_height="0dp"
           android:layout_weight="1"
-          android:background="#00bfff"
+          android:background="@drawable/btn_shape"
           android:text="登录" />
     <LinearLayout
         android:layout_width="match_parent"
@@ -64,7 +65,7 @@
           android:layout_width="match_parent"
           android:layout_height="0dp"
           android:layout_weight="1"
-          android:background="#00bfff"
+          android:background="@drawable/btn_shape"
           android:text="注册" />
         <Space
             android:layout_height="0dp"
