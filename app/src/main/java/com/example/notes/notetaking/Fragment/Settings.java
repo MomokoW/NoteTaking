@@ -40,8 +40,9 @@ public class Settings extends Fragment {
 
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(this,RegisterActivity.class);
-//                startActivity(intent);
+                /*
+                Intent intent = new Intent(this,RegisterActivity.class);
+                startActivity(intent);*/
             }
         });
         //退出程序

@@ -6,6 +6,13 @@
     <string name="tab_menu_alarm">闹钟</string>
     <string name="tab_menu_mine">我的</string>
     <string name="tab_menu_setting">设置</string>
+
+    <string name="tab_menu_picture">图片</string>
+    <string name="tab_menu_font">字体</string>
+    <string name="tab_menu_audio">语音</string>
+    <string name="tab_menu_video">视频</string>
+    <string name="tab_menu_graffiti">涂鸦</string>
+
     <string name="title">请选择时间</string>
     <string name="confirm">确定</string>
     <string name="cancel">取消</string>
@@ -15,8 +22,8 @@
     <string name="hour">时</string>
     <string name="minute">分</string>
     <string name="select_date"> </string>
-    <string name="current_date">当前日期</string>
-    <string name="select_time">选择时间</string>
-    <string name="current_time">选择时间</string>
+    <string name="select_time">响应时间</string>
+    <string name="current_time">创建时间</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

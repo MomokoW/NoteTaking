@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import com.example.notes.notetaking.R;
-import com.example.notes.notetaking.Manager.*;
 import java.util.Calendar;
 
 public class ClockActivity extends AppCompatActivity implements View.OnClickListener{

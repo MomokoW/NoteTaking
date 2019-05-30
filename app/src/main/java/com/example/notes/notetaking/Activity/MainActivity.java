@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -32,12 +33,12 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
         //初始化界面控件
         bindViews();
     }
 
     private void bindViews() {
+        mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         vpager = (ViewPager) findViewById(R.id.vpager);

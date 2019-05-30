@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/picture"
+        android:icon="@android:drawable/ic_menu_gallery"
+        android:title="@string/tab_menu_picture"/>
+    <item
+        android:id="@+id/font"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="@string/tab_menu_font" />
+    <item
+        android:id="@+id/audio"
+        android:icon="@android:drawable/ic_btn_speak_now"
+        android:title="@string/tab_menu_audio" />
+    <item
+        android:id="@+id/video"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="@string/tab_menu_video" />
+    <item
+        android:id="@+id/graffiti"
+        android:icon="@android:drawable/star_off"
+        android:title="@string/tab_menu_graffiti"/>
+
+</menu>

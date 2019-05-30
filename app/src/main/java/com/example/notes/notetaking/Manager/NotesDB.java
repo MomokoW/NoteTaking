@@ -20,6 +20,7 @@ public class NotesDB extends SQLiteOpenHelper {
     public static final String NOTES_TIME = "notes_time"; //笔记的创建时间
     public static final String MEDIA_PATH = "media_path"; //笔记中图片，音频，视频的保存路径
     public static final String NOTES_CONTENT = "notes_content";//笔记内容
+    public static final String NOTES_STATUS = "notes_status";   //笔记的状态，0未锁定，1锁定
 
     public static final String ALRAM_ID = "alarm_id";      //待办事项id，自增
     public static final String ALARM_TITLE = "alarm_title";//待办事项标题
@@ -38,7 +39,8 @@ public class NotesDB extends SQLiteOpenHelper {
                 " UNIQUE(" + USER_ID + "))");
         db.execSQL("CREATE TABLE " + TABLE_NOTE + "(" + NOTES_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + USER_ID + " CHAR(11) NOT NULL," + NOTES_TAG + " CHAR(10) NOT NULL," + NOTES_TIME +
-                " TEXT NOT NULL," + NOTES_CONTENT + " TEXT NOT NULL," + MEDIA_PATH + " TEXT," +
+                " TEXT NOT NULL," + NOTES_CONTENT + " TEXT NOT NULL," + MEDIA_PATH + " TEXT," + NOTES_STATUS
+                + " CHAR(2) NOT NULL," +
                 "FOREIGN KEY(" + USER_ID + ") REFERENCES " + TABLE_USER + "(" + USER_ID + ") ON DELETE CASCADE)");
 
         db.execSQL("CREATE TABLE " + TABLE_AlARMS + "(" + ALRAM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
