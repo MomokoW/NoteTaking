@@ -9,6 +9,7 @@
     android:layout_marginRight="20dp"
     android:layout_marginTop="20dp"
     android:layout_marginBottom="20dp"
+    android:background="@mipmap/skin1"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="#00bfff"
+            android:background="@drawable/btn_shape"
             android:text="退出"
             />
         <Space
@@ -64,7 +65,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:text="注销帐号"
-            android:background="#00bfff"
+            android:background="@drawable/btn_shape"
             />
     </LinearLayout>
 </LinearLayout>

@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/skin1"
+    android:background="@color/main_bg"
     android:orientation="vertical"
-    tools:context=".Activity.NewAlarmActivity">
+    tools:context=".Activity.ModifyAlarmActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:background="@null"
         android:gravity="center"
         android:paddingStart="15dp"
-        android:text="@string/new_alarm"
+        android:text="@string/modify_alarm"
         android:textColor="@color/select_title_text"
         android:textSize="15sp" />
 
@@ -51,7 +51,6 @@
         android:background="@null"
         android:gravity="center_vertical"
         android:paddingStart="15dp"
-        android:textColor="@color/select_title_text"
         android:textSize="15sp" />
 
     <LinearLayout
@@ -131,6 +130,7 @@
         android:background="@null"
         android:gravity="center_vertical"
         android:paddingStart="15dp"
+        android:text=""
         android:textColor="@color/select_title_text"
         android:textSize="15sp" />
     <LinearLayout
@@ -171,38 +171,37 @@
         android:textSize="15sp" />
 
     <LinearLayout
-        android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:layout_weight="1"
+        android:layout_height="50dp"
+        android:background="@color/current_time_bg"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <Space
-            android:layout_height="match_parent"
             android:layout_width="0dp"
-            android:layout_weight="0.5"/>
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
         <Button
-            android:id="@+id/sureButton_register"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/btn_shape"
-            android:text="确定"
-            />
-        <Space
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/confirm"
+            android:id="@+id/btn_set"/>
+        <Space
             android:layout_width="0dp"
-            android:layout_weight="0.5"/>
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
         <Button
-            android:id="@+id/backButton_register"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:text="取消"
-            android:background="@drawable/btn_shape"
-            />
-        <Space
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/cancel"
+            android:id="@+id/btn_cancel"/>
+        <Space
             android:layout_width="0dp"
-            android:layout_weight="0.5"/>
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
     </LinearLayout>
 
 </LinearLayout>
