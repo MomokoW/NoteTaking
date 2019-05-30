@@ -65,4 +65,15 @@ public class UserManage {
         return result;
     }
 
+    //删除用户
+    public boolean deleteUser(SQLiteDatabase readableDatebase,String id){
+        boolean result=false;
+        String sql="delete from user where user_id="+id;
+        if(queryuesr(readableDatebase,id)){
+            readableDatebase.execSQL(sql);
+            result = true;
+        }
+        return result;
+    }
+
 }
