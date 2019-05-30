@@ -30,7 +30,7 @@
             android:textColor="@color/bg_black"
             android:textSize="18dp" />
 
-       
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
