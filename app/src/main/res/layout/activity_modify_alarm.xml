@@ -171,37 +171,38 @@
         android:textSize="15sp" />
 
     <LinearLayout
+        android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/current_time_bg"
-        android:gravity="center_vertical"
+        android:layout_weight="1"
         android:orientation="horizontal">
-
         <Space
-            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_width="0dp"
+            android:layout_weight="0.5"/>
         <Button
+            android:id="@+id/btn_set"
+            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/confirm"
-            android:id="@+id/btn_set"/>
+            android:background="@drawable/btn_shape"
+            android:text="确定"
+            />
         <Space
-            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_width="0dp"
+            android:layout_weight="0.5"/>
         <Button
+            android:id="@+id/btn_cancel"
+            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/cancel"
-            android:id="@+id/btn_cancel"/>
+            android:text="取消"
+            android:background="@drawable/btn_shape"
+            />
         <Space
-            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
-
+            android:layout_width="0dp"
+            android:layout_weight="0.5"/>
     </LinearLayout>
 
 </LinearLayout>
