@@ -57,7 +57,7 @@ public class NotesList extends Fragment implements View.OnClickListener{
         btnAdd =(FloatingActionButton)view.findViewById(R.id.addNotes);
         lv = (ListView) view.findViewById(R.id.notes_list);
 
-        //创建数据库
+        //打开数据库
         notesDB = new NotesDB(getContext(),"notes.db",null,1);
         dbReader = notesDB.getWritableDatabase();
         cursor = dbReader.query(NotesDB.TABLE_NOTE,null,null,
