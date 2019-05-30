@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +32,10 @@ public class NotesList extends Fragment implements View.OnClickListener{
     public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container,
                              Bundle savedInstanceState) {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.activity_noteslist,null);
+        //获取兼容低版本的ActionBar
+        Toolbar toolbar = (Toolbar)view.findViewById(R.id.toolbar);
+        toolbar.setTitle("随手记");
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         btnAdd =(FloatingActionButton)view.findViewById(R.id.addNotes);
         btnAdd.setOnClickListener(this);
         return view;
