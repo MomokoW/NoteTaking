@@ -33,6 +33,7 @@
             android:textSize="18dp"
             android:gravity="center_vertical"
             android:drawablePadding="10dp"
+            android:drawableLeft="@mipmap/ic_geren"
             android:textColor="@color/bg_black"
             android:background="@null"
             android:id="@+id/tag"/>
