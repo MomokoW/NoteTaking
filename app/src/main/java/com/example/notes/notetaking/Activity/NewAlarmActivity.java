@@ -30,7 +30,7 @@ public class NewAlarmActivity extends AppCompatActivity implements View.OnClickL
         //给布局添加一个点击事件的响应
         //获取日期的文本框，并复制
         findViewById(R.id.ll_date).setOnClickListener(this);
-        mTvSelectedDate = findViewById(R.id.tv_selected_date);
+        mTvSelectedDate = findViewById(R.id.tv_new_time);
         //initDatePicker();
 
         findViewById(R.id.ll_time).setOnClickListener(this);

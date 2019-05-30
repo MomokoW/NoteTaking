@@ -77,7 +77,7 @@
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/tv_selected_date"
+            android:id="@+id/tv_new_time"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="15dp"
