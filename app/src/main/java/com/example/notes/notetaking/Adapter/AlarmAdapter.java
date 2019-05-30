@@ -22,15 +22,24 @@ public class AlarmAdapter extends BaseAdapter {
     {
         this.mContext = context;
         mLayoutInflater = LayoutInflater.from(context);
+        for(int i = 0; i < 10; i++)
+            alarmItems.add(new AlarmItem("这是标题","2099-09-09   10:11:11",
+                "2099-09-09   10:11:11","这是内容"));
     }
+
+    public void deleteAlarm(AlarmItem alarmItem)
+    {
+        alarmItems.remove(alarmItem);
+    }
+
     @Override
     public int getCount() {
-        return 10;
+        return alarmItems.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return alarmItems.get(position);
     }
 
     @Override
@@ -63,9 +72,9 @@ public class AlarmAdapter extends BaseAdapter {
         }else{
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.textViewbiaoti.setText("这是标题");
-        holder.textViewCurenttime.setText("2099-09-09   10:11:11");
-        holder.textViewSelecttime.setText("2099-09-09   10:11:11");
+        holder.textViewbiaoti.setText(alarmItems.get(position).biaoti);
+        holder.textViewCurenttime.setText(alarmItems.get(position).chuangjianshijian);
+        holder.textViewSelecttime.setText(alarmItems.get(position).xiangyingshijian);
         return convertView;
     }
 }

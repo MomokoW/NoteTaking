@@ -21,9 +21,12 @@
     <string name="day">日</string>
     <string name="hour">时</string>
     <string name="minute">分</string>
-    <string name="select_date"> </string>
+    <string name="new_alarm">新建闹钟</string>
+    <string name="modify_alarm">修改闹钟</string>
     <string name="select_time">响应时间</string>
     <string name="current_time">创建时间</string>
+    <string name="alarmbiaoti">标题</string>
+    <string name="alarmtext">正文</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
