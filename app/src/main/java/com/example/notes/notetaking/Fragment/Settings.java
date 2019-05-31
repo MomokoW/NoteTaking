@@ -19,6 +19,7 @@ import com.example.notes.notetaking.Manager.NotesDB;
 import com.example.notes.notetaking.Manager.UserManage;
 import com.example.notes.notetaking.Model.MainUser;
 import com.example.notes.notetaking.R;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,7 +27,7 @@ import com.example.notes.notetaking.R;
 public class Settings extends Fragment {
 
 
-    private ImageView photoHead;
+    private RoundedImageView photoHead;
     private Button logoutButton;
     private Button cancelButton;
     private Button changeBtn;
@@ -44,7 +45,7 @@ public class Settings extends Fragment {
         View view = inflater.inflate(R.layout.activity_mine,null);
         userManage = new UserManage();
         dbManage = new NotesDB(getActivity(),"data.db",null,1);
-        photoHead = (ImageView)view.findViewById(R.id.headphotoView_mine);
+        photoHead = (RoundedImageView) view.findViewById(R.id.headphotoView_mine);
         changeBtn = (Button)view.findViewById(R.id.changeBtn);
         //修改个人资料
         changeBtn.setOnClickListener(new View.OnClickListener(){
@@ -61,7 +62,7 @@ public class Settings extends Fragment {
 
             @Override
             public void onClick(View v) {
-                
+
             }
         });
 
