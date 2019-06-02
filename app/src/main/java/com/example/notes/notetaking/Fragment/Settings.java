@@ -57,7 +57,7 @@ public class Settings extends Fragment {
             }
         });
 
-        //点击头像，修改个人信息。
+        //点击头像，修改头像。
         photoHead.setOnClickListener(new View.OnClickListener(){
 
             @Override
