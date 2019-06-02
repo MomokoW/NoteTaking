@@ -11,16 +11,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activity.MainActivity">
+
+        </activity>
+        <activity android:name=".Activity.NewAlarmActivity" />
+        <activity android:name=".Activity.AddNotesActivity" />
+        <activity android:name=".Activity.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.NewAlarmActivity" />
-        <activity android:name=".Activity.AddNotesActivity" />
-        <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".Activity.UpdateInformationActivity" />
+        <activity android:name=".Activity.UpdateInformationActivity" >
+
+        </activity>
         <activity android:name=".Activity.ModifyAlarmActivity"></activity>
     </application>
 

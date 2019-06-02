@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String id = idInput.getText().toString();
                 String password = passwordInput.getText().toString();
-                User user;
+                User user=null;
                 user=userManage.getuser(dbHelper.getReadableDatabase(),id,password);
                 if(user==null){
                     Toast.makeText(LoginActivity.this, "登录失败，请检查帐号密码", Toast.LENGTH_SHORT).show();
