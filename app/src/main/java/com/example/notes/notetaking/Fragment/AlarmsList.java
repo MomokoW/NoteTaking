@@ -68,7 +68,7 @@ public class AlarmsList extends Fragment implements View.OnClickListener{
 
 
 
-        btnAdd =(FloatingActionButton)view.findViewById(R.id.addNotes);
+        btnAdd =(FloatingActionButton)view.findViewById(R.id.addalarm);
         btnAdd.setOnClickListener(this);
         return view;
 

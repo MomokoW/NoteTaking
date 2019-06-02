@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@mipmap/skin1"
     >
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,7 +20,7 @@
         </ListView>
     </LinearLayout>
 
-    
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addalarm"
         android:layout_width="wrap_content"

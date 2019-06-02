@@ -26,7 +26,7 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
 
     public void initView(){
         //获取兼容低版本的ActionBar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.note_toolbar);
         toolbar.setTitle("编辑笔记");
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
