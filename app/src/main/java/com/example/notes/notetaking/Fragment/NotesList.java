@@ -86,6 +86,7 @@ public class NotesList extends Fragment implements View.OnClickListener{
         }
     }
 
+    /*
     @Override
     public void onResume() {
         super.onResume();
@@ -94,7 +95,7 @@ public class NotesList extends Fragment implements View.OnClickListener{
         queryNotes();
         adapter = new NoteAdapter(getContext(),noteLists);
         lv.setAdapter(adapter);
-    }
+    }*/
 
     public void initListener()
     {

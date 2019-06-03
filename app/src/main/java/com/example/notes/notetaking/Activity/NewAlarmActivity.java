@@ -57,20 +57,13 @@ public class NewAlarmActivity extends AppCompatActivity implements View.OnClickL
                 mTimerPicker.show(mTvSelectedTime.getText().toString());
                 break;
             case R.id.btn_set:
-                //创建数据库对象
-                dbWriter = getDataBase();
-
                 //保存入数据库
-                addAlarm();
-
-                //跳转到Fragment界面
-
-
+                //addAlarm();
                 //提示保存成功
                 Toast.makeText(NewAlarmActivity.this,"保存成功",Toast.LENGTH_SHORT).show();
-
-
-
+                //跳转到Fragment界面
+               dbWriter.close();
+               finish();
                 break;
             case R.id.btn_cancel:
                 finish();
@@ -85,6 +78,7 @@ public class NewAlarmActivity extends AppCompatActivity implements View.OnClickL
         finish();
     }
 
+    /*
     //获取数据库对象
     public SQLiteDatabase getDataBase() {
         alarmsDB = new NotesDB(this,"notes.db",null,1);
@@ -92,8 +86,9 @@ public class NewAlarmActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void addAlarm(){
-
         //获取编辑框里面的数据
+        //创建数据库对象
+        dbWriter = getDataBase();
         biaoti = malarmbiaoti.getText().toString();
         text = malarmtext.getText().toString();
         newTime = mTvSelectedDate.getText().toString();
@@ -101,13 +96,14 @@ public class NewAlarmActivity extends AppCompatActivity implements View.OnClickL
 
         //将数据放入ContentValues之中
         ContentValues cv = new ContentValues();
+        cv.put(NotesDB.ALRAM_ID,"11111111111");
         cv.put(NotesDB.ALARM_TITLE,biaoti);
         cv.put(NotesDB.CON_REMARK,text);
         cv.put(NotesDB.CUR_TIME,newTime);
         cv.put(NotesDB.FUT_TIME,selecttime);
         //写入数据库
         dbWriter.insert(NotesDB.TABLE_AlARMS,null,cv);
-    }
+    }*/
 
     private void initTimerPicker() {
         String beginTime = "2018-10-17 18:00";

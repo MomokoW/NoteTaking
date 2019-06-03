@@ -14,7 +14,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.notes.notetaking.Activity.AddNotesActivity;
 import com.example.notes.notetaking.Activity.ModifyAlarmActivity;
 import com.example.notes.notetaking.Activity.NewAlarmActivity;
 import com.example.notes.notetaking.Manager.NotesDB;
@@ -48,8 +47,7 @@ public class AlarmsList extends Fragment implements View.OnClickListener{
        View view = LayoutInflater.from(getActivity()).inflate(R.layout.activity_alarm_list,null);
         lv = (ListView)view.findViewById(R.id.alarmlist);
 
-        //获取数据库
-        dbReader = getDataBase();
+
         //获取数据库中的信息，并赋值给一个linklist列表
         getData(dbReader);
 
@@ -99,6 +97,7 @@ public class AlarmsList extends Fragment implements View.OnClickListener{
     //获取数据库的列表
     public void getData(SQLiteDatabase readableDatabase)
     {
+        getDataBase();
         Cursor cursor = readableDatabase.rawQuery("Select * from alarm",null);
         AlarmItem temp;
         while(cursor.moveToNext())
@@ -110,6 +109,7 @@ public class AlarmsList extends Fragment implements View.OnClickListener{
             temp = new AlarmItem(biaoti,newTime,selecttime,text);
             alarmItems.add(temp);
         }
+        readableDatabase.close();
     }
 
     //获取数据库对象
@@ -117,5 +117,19 @@ public class AlarmsList extends Fragment implements View.OnClickListener{
         alarmsDB = new NotesDB(getContext(),"notes.db",null,1);
         return alarmsDB.getWritableDatabase();
     }
+    /*
+    @Override
+    public void onResume() {
+        super.onResume();
+        //刷新数据库信息
+        alarmItems.clear();
+
+        //获取数据库
+        dbReader = getDataBase();
+        //获取数据库中的信息，并赋值给一个linklist列表
+        getData(dbReader);
+        AlarmAdapter adapter = new AlarmAdapter(getContext(),alarmItems);
+        lv.setAdapter(adapter);
+    }*/
 
 }
