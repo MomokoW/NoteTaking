@@ -20,7 +20,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/current_time_bg"
+        android:background="@color/btn_unselect"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -34,7 +34,7 @@
             android:textColor="@color/current_time_text"
             android:textSize="15sp"
             android:layout_weight="0.1"/>
-        <TextView
+        <EditText
             android:id="@+id/alarmbiaoti"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -58,7 +58,7 @@
         android:id="@+id/ll_date"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/current_time_bg"
+        android:background="@color/btn_unselect"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -95,7 +95,7 @@
         android:id="@+id/ll_time"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/current_time_bg"
+        android:background="@color/btn_unselect"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -136,7 +136,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/current_time_bg"
+        android:background="@color/btn_unselect"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -150,7 +150,7 @@
             android:textColor="@color/current_time_text"
             android:textSize="15sp"
             android:layout_weight="0.1"/>
-        <TextView
+        <EditText
             android:id="@+id/alarmtext"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
