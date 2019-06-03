@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/picture"
-        android:icon="@android:drawable/ic_menu_gallery"
-        android:title="@string/tab_menu_picture"/>
-    <item
         android:id="@+id/font"
         android:icon="@mipmap/font"
         android:title="@string/tab_menu_font" />
+    <item
+        android:id="@+id/picture"
+        android:icon="@android:drawable/ic_menu_gallery"
+        android:title="@string/tab_menu_picture"/>
     <item
         android:id="@+id/audio"
         android:icon="@mipmap/audio"

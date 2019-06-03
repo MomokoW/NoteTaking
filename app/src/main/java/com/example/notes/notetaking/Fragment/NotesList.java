@@ -66,6 +66,16 @@ public class NotesList extends Fragment implements View.OnClickListener{
         lv.setAdapter(adapter);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        //刷新数据库信息
+        cursor = dbReader.query(NotesDB.TABLE_NOTE,null,null,
+                null,null,null,null);
+        adapter = new NoteAdapter(getContext(),cursor);
+        lv.setAdapter(adapter);
+    }
+
     public void initListener()
     {
         btnAdd.setOnClickListener(this);
