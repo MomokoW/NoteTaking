@@ -26,11 +26,14 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
-                <ImageView
+                <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/headphotoView_mine"
                     android:layout_height="80dp"
                     android:layout_width="80dp"
+                    app:riv_oval="true"
                     android:src="@mipmap/qqphoto"
+                    app:riv_border_color="#333333"
+                    app:riv_border_width="2dp"
                     android:layout_centerInParent="true"/>
                 <RelativeLayout
                     android:layout_height="match_parent"

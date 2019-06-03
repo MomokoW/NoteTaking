@@ -56,7 +56,7 @@ public class UserManage {
     //更新用户信息
     public boolean updateUser(SQLiteDatabase readableDatebase,String id,String password,String name,String photo) {
         boolean result=false;
-        String sql = "update user set user_password=" + password + ",set user_name=" + name + ", set user_avator=" + photo + " where user_id=" + id;
+        String sql = "update user set user_password=" + password + ", user_name=" + name + ",  user_avator=" + photo + " where user_id=" + id;
 
         if (queryuesr(readableDatebase, id)) {
             readableDatebase.execSQL(sql);

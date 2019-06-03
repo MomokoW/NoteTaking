@@ -12,6 +12,7 @@ import com.example.notes.notetaking.Manager.NotesDB;
 import com.example.notes.notetaking.Manager.User;
 import com.example.notes.notetaking.Manager.UserManage;
 //import com.example.notes.notetaking.Model.MainUser;
+import com.example.notes.notetaking.Model.MainUser;
 import com.example.notes.notetaking.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -39,13 +40,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String id = idInput.getText().toString();
                 String password = passwordInput.getText().toString();
-                User user;
+                User user=null;
                 user=userManage.getuser(dbHelper.getReadableDatabase(),id,password);
                 if(user==null){
                     Toast.makeText(LoginActivity.this, "登录失败，请检查帐号密码", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                   // MainUser.user=user;
+                   MainUser.user=user;
                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                     startActivity(intent);
