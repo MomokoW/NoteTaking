@@ -20,6 +20,10 @@ import com.example.notes.notetaking.Activity.AddNotesActivity;
 import com.example.notes.notetaking.Adapter.NoteAdapter;
 import com.example.notes.notetaking.Manager.NotesDB;
 import com.example.notes.notetaking.R;
+import com.example.notes.notetaking.Util.MapUtils;
+import com.example.notes.notetaking.Util.NoteItem;
+
+import java.util.LinkedList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,7 +37,7 @@ public class NotesList extends Fragment implements View.OnClickListener{
     private NotesDB notesDB;
     private NoteAdapter adapter;
     private SQLiteDatabase dbReader;
-
+    private LinkedList<NoteItem> noteLists= new LinkedList<NoteItem>();
     public NotesList() {
         // Required empty public constructor
     }
@@ -62,17 +66,33 @@ public class NotesList extends Fragment implements View.OnClickListener{
         dbReader = notesDB.getWritableDatabase();
         cursor = dbReader.query(NotesDB.TABLE_NOTE,null,null,
                 null,null,null,null);
-        adapter = new NoteAdapter(getContext(),cursor);
+        //初始化列表项
+        queryNotes();
+        //设置适配器
+        adapter = new NoteAdapter(getContext(),noteLists);
         lv.setAdapter(adapter);
+    }
+
+    public void queryNotes() {
+        cursor = dbReader.query(NotesDB.TABLE_NOTE, null, null,
+                null, null, null, null);
+        while (cursor.moveToNext()) {
+            String content = cursor.getString(cursor.getColumnIndex(NotesDB.NOTES_CONTENT));
+            String time = cursor.getString(cursor.getColumnIndex(NotesDB.NOTES_TIME));
+            String image = cursor.getString(cursor.getColumnIndex(NotesDB.NOTES_TAG));
+            int imageId = MapUtils.imageMap.get(image);
+            NoteItem note = new NoteItem(content, time, imageId);
+            noteLists.add(note);
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
         //刷新数据库信息
-        cursor = dbReader.query(NotesDB.TABLE_NOTE,null,null,
-                null,null,null,null);
-        adapter = new NoteAdapter(getContext(),cursor);
+        noteLists.clear();
+        queryNotes();
+        adapter = new NoteAdapter(getContext(),noteLists);
         lv.setAdapter(adapter);
     }
 

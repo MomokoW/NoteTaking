@@ -1,7 +1,6 @@
 package com.example.notes.notetaking.Adapter;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,29 +9,30 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.notes.notetaking.Manager.NotesDB;
 import com.example.notes.notetaking.R;
 import com.example.notes.notetaking.Util.NoteItem;
+
+import java.util.LinkedList;
 
 
 public class NoteAdapter extends BaseAdapter {
     private Context context;
-    private Cursor cursor;
+    private LinkedList<NoteItem> notesList;
 
-    public NoteAdapter(Context context, Cursor cursor) {
+    public NoteAdapter(Context context, LinkedList<NoteItem> notesList) {
         this.context = context;
-        this.cursor = cursor;
+        this.notesList = notesList;
     }
 
     @Override
     public int getCount() {
-        return cursor.getCount();
+        return notesList.size();
 
     }
 
     @Override
     public Object getItem(int position) {
-        return cursor.getPosition();
+        return notesList.get(position);
     }
 
     @Override
@@ -42,6 +42,7 @@ public class NoteAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        NoteItem note =(NoteItem)getItem(position);
         LayoutInflater inflater = LayoutInflater.from(context);
         View view;
         //当convertView不为空，复用convertView
@@ -57,31 +58,9 @@ public class NoteAdapter extends BaseAdapter {
         TextView contenttv = (TextView) view.findViewById(R.id.note_content);
         TextView timetv =(TextView) view.findViewById(R.id.note_time);
         ImageView imageView = (ImageView) view.findViewById(R.id.iv_flag);
-        cursor.moveToPosition(position);
-        String content = cursor.getString(cursor.getColumnIndex(NotesDB.NOTES_CONTENT));
-        String time = cursor.getString(cursor.getColumnIndex(NotesDB.NOTES_TIME));
-        String image = cursor.getString(cursor.getColumnIndex(NotesDB.NOTES_TAG));
-        //根据不同的标签来设置ImageView
-        switch(image) {
-            case "个人":
-                imageView.setImageResource(R.mipmap.ic_geren);
-                break;
-            case "工作":
-                imageView.setImageResource(R.mipmap.ic_gongzuo);
-                break;
-            case "旅游":
-                imageView.setImageResource(R.mipmap.ic_lvyou);
-                break;
-                //待修改成为中文
-            case "生活":
-                imageView.setImageResource(R.mipmap.ic_shenghuo);
-                break;
-            case "未标签":
-                imageView.setImageResource(R.mipmap.ic_none);
-                break;
-        }
-        contenttv.setText(content);
-        timetv.setText(time);
+        imageView.setImageResource(note.getImageId());
+        contenttv.setText(note.getContent());
+        timetv.setText(note.getTime());
         return view;
     }
 }

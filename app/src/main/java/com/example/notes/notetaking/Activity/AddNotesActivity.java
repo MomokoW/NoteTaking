@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,9 @@ import com.example.notes.notetaking.R;
 import com.example.notes.notetaking.Util.DateTime;
 
 public class AddNotesActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+
+
+    private static final int IMAGE_PICKER = 1001;
 
     private BottomNavigationView bottomNavigationView;
     //标签内容
@@ -35,7 +39,9 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
     private NotesDB notesDB;
     private String dateNow;
     private String timeNow;
+    private ImageView ivContent;
     private SQLiteDatabase dbWriter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,7 +161,6 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
                 break;
 
         }
-
 
     }
 
