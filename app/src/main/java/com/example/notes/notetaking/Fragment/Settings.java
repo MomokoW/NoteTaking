@@ -24,6 +24,7 @@ import com.example.notes.notetaking.Activity.LoginActivity;
 import com.example.notes.notetaking.Activity.MainActivity;
 import com.example.notes.notetaking.Activity.RegisterActivity;
 import com.example.notes.notetaking.Activity.UpdateInformationActivity;
+import com.example.notes.notetaking.Manager.AppManager;
 import com.example.notes.notetaking.Manager.NotesDB;
 import com.example.notes.notetaking.Manager.UserManage;
 import com.example.notes.notetaking.Model.MainUser;
@@ -61,6 +62,8 @@ public class Settings extends Fragment {
         userManage = new UserManage();
         dbManage = new NotesDB(getActivity(),"data.db",null,1);
         photoHead = (RoundedImageView) view.findViewById(R.id.headphotoView_mine);
+        usernameText=(TextView)view.findViewById(R.id.usernameText_mine);
+        usernameText.setText(MainUser.user.getName());
         changeBtn = (Button)view.findViewById(R.id.changeBtn);
         //修改个人资料
         changeBtn.setOnClickListener(new View.OnClickListener(){
@@ -110,6 +113,10 @@ public class Settings extends Fragment {
 
             @Override
             public void onClick(View v) {
+                //AppManager.getAppManager.AppExit(this);
+                AppManager.finishAllActivity();
+                Intent intent = new Intent(getActivity(),LoginActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -119,13 +126,13 @@ public class Settings extends Fragment {
 
             @Override
             public void onClick(View v) {
-                userManage.deleteUser(dbManage.getReadableDatabase(),MainUser.user.getId());
+                userManage.deleteUser(dbManage.getWritableDatabase(),MainUser.user.getId());
                 /*
                 帐号注销成功后，返回登录界面
                  */
                 Intent intent = new Intent(getActivity(),LoginActivity.class);
                 startActivity(intent);
-                //getActivity().finish();
+                getActivity().finish();
             }
         });
         return view;
@@ -156,7 +163,7 @@ public class Settings extends Fragment {
                 if (photoChoice==0){
                     bitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));
                 }else {
-                    bitmap = data.getParcelableExtra("data");
+                    bitmap = (Bitmap) data.getExtras().get("data");
                 }
                 if (uri ==null){
                     uri = Uri.parse(MediaStore.Images.Media.insertImage(getActivity().getContentResolver(), bitmap, null,null));

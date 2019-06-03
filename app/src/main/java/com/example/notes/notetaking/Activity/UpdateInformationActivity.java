@@ -77,8 +77,11 @@ public class UpdateInformationActivity extends AppCompatActivity {
                         /*
                         此处SQL语句有问题，需要修改
                          */
-                       //userManage.updateUser(notesDB.getReadableDatabase(),MainUser.user.getId(),passNew1,nameNew,MainUser.user.getHeadPhoto());
+                        //String urlPhoto=MainUser.user.getId();
+                       userManage.updateUser(notesDB.getWritableDatabase(),MainUser.user.getId(),passNew1,nameNew);
+                       MainUser.user=userManage.getuser(notesDB.getReadableDatabase(),MainUser.user.getId(),passNew1);
                         Toast.makeText(UpdateInformationActivity.this, "修改个人资料成功", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 }
                 else{

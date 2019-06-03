@@ -54,21 +54,24 @@ public class UserManage {
     }//then  end
 
     //更新用户信息
-    public boolean updateUser(SQLiteDatabase readableDatebase,String id,String password,String name,String photo) {
+    public boolean updateUser(SQLiteDatabase readableDatebase,String id,String password,String name) {
         boolean result=false;
-        String sql = "update user set user_password=" + password + ", user_name=" + name + ",  user_avator=" + photo + " where user_id=" + id;
 
+        String sql = "update user set user_password=" + "'"+password +"'"+ ", user_name=" + "'"+name +"'"+  " where user_id=" +"'"+ id+"'";
+        readableDatebase.execSQL(sql);
+        /*
         if (queryuesr(readableDatebase, id)) {
             readableDatebase.execSQL(sql);
             result = true;
         }
+        */
         return result;
     }
 
     //删除用户
     public boolean deleteUser(SQLiteDatabase readableDatebase,String id){
         boolean result=false;
-        String sql="delete from user where user_id="+id;
+        String sql="delete from user where user_id="+"'"+id+"'";
         if(queryuesr(readableDatebase,id)){
             readableDatebase.execSQL(sql);
             result = true;
