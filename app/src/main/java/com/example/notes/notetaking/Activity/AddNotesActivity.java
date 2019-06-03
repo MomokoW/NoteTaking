@@ -1,8 +1,15 @@
 package com.example.notes.notetaking.Activity;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AlertDialog;
@@ -18,27 +25,38 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.notes.notetaking.Manager.NotesDB;
+import com.example.notes.notetaking.Model.MainUser;
 import com.example.notes.notetaking.R;
 import com.example.notes.notetaking.Util.DateTime;
+import com.example.notes.notetaking.Util.MapUtils;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 public class AddNotesActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
 
     private static final int IMAGE_PICKER = 1001;
-
+    private final String IMAGE_TYPE = "image/*";
+    private final int IMAGE_CODE = 0;
+    private Bitmap bmp;
+    private int bmpflag=0;
     private BottomNavigationView bottomNavigationView;
     //标签内容
     final String items[] = {"未标签","生活","个人","旅游","工作"};
+    final String picItems[] = {"拍照","从相册选择"};
     private String tag = "未标签";
-    //笔记内容
+    private String mediaPath = "";
+    //笔记内容,时间
     private String content = "";
+    private String dateNow;
+    private String timeNow;
+
     //初始化控件
     private Button btnSave,addTag;
     private EditText editText;
     private TextView timeTv;
     private NotesDB notesDB;
-    private String dateNow;
-    private String timeNow;
     private ImageView ivContent;
     private SQLiteDatabase dbWriter;
 
@@ -66,6 +84,7 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
         addTag = (Button)findViewById(R.id.tag);
         editText = (EditText)findViewById(R.id.edit_note);
         timeTv = (TextView)findViewById(R.id.showtime);
+        ivContent = (ImageView)findViewById(R.id.imageContent1);
         timeTv.setText(timeNow);
 
 
@@ -100,10 +119,59 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
     //添加底部导航栏点击事件的响应
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.picture:
+                choosePic();
+                break;
+        }
         return false;
     }
 
+    public void choosePic() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //设置标题
+        builder.setTitle("选择图片");
+        //设置图标
+        builder.setIcon(R.mipmap.icon_launcher);
+        //设置单选按钮
+        builder.setSingleChoiceItems(picItems,0, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //取出选择的条目
+                String item = picItems[which];
+                //根据不同的选择来获取图片
+                switch(item)
+                {
+                    case "拍照":
+                        takePhoto();
+                        break;
+                    case "从相册选择":
+                        callGallery();
+                        break;
+                }
+                //关闭对话框
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
 
+    }
+
+    public void callGallery() {
+        ivContent.setVisibility(View.VISIBLE);	//设置图片可见
+        setImage();
+    }
+
+    private void setImage() {
+        Intent getAlbum = new Intent(Intent.ACTION_GET_CONTENT);
+        getAlbum.setType(IMAGE_TYPE);
+        startActivityForResult(getAlbum, IMAGE_CODE);
+    }
+
+    public void takePhoto() {
+        Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, 1);
+    }
     //得到便笺的分类
     public void setTag() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -120,24 +188,7 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
                 tag = item;
                 addTag.setText(tag);
                 //根据不同的标签来设置ImageView
-                switch(tag) {
-                    case "个人":
-                        addTag.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_geren,0,0, 0);
-                        break;
-                    case "工作":
-                        addTag.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_gongzuo,0,0, 0);
-                        break;
-                    case "旅游":
-                        addTag.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_lvyou,0,0, 0);
-                        break;
-                    //待修改成为中文
-                    case "生活":
-                        addTag.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_shenghuo,0,0, 0);
-                        break;
-                    case "未标签":
-                        addTag.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_none,0,0, 0);
-                        break;
-                }
+                addTag.setCompoundDrawablesWithIntrinsicBounds(MapUtils.imageMap.get(tag),0,0,0);
                 //关闭对话框
                 dialog.dismiss();
             }
@@ -153,9 +204,6 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
                 addNotes();
                 finish();
                 break;
-//            case R.id.voice:
-//                initSpeech(v.getContext());
-//                break;
             case R.id.tag:
                 setTag();
                 break;
@@ -167,12 +215,60 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
     private void addNotes() {
         ContentValues cv = new ContentValues();
         content = editText.getText().toString();
-        cv.put(NotesDB.USER_ID,"11111111111");
+        cv.put(NotesDB.USER_ID,MainUser.user.getId());
         cv.put(NotesDB.NOTES_TAG,tag);
         cv.put(NotesDB.NOTES_TIME,dateNow);
         cv.put(NotesDB.NOTES_CONTENT,content);
+        cv.put(NotesDB.MEDIA_PATH,mediaPath);
         cv.put(NotesDB.NOTES_STATUS,"0");
         dbWriter.insert(NotesDB.TABLE_NOTE,null,cv);
         Toast.makeText(getApplicationContext(),"添加便笺成功!",Toast.LENGTH_LONG).show();
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){// the onActivityResult() begin
+        super.onActivityResult(requestCode,resultCode,data);
+        if(resultCode==RESULT_OK) {//获取相机照片
+            if(requestCode==1) {
+                Bundle bundle = data.getExtras();//获取封装好传递过来的数据，整个图片的二进制流
+                Bitmap tempbmp = (Bitmap)bundle.get("data"); //bitmap 从bundle取出数据
+                ivContent.setVisibility(View.VISIBLE);	//添加日记时图片设置初始不可见
+                ivContent.setImageBitmap(tempbmp);
+                bmpflag=1;
+            }
+        }
+        if (requestCode == IMAGE_CODE) {//获取相册照片
+            ContentResolver resolver = getContentResolver();
+            try {
+                Uri originalUri = data.getData();
+                bmp = MediaStore.Images.Media.getBitmap(resolver, originalUri);
+                ivContent.setImageBitmap(bmp);
+                bmpflag=1;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }//the onActivityResult() end
+    // get the image    将图片转化为二进制流
+    public byte[] getimage()
+    {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        Resources res=getResources();
+        //bmp=BitmapFactory.decodeResource(res, R.drawable.fruit_bg);
+        bmp.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        return baos.toByteArray();
+    }//the end
+
+    //将二进制码转化为bitmap图片
+    public Bitmap getBitmapFromByte(byte[] temp)
+    {   //将二进制转化为bitmap
+        if(temp != null){
+            Bitmap bitmap = BitmapFactory.decodeByteArray(temp, 0, temp.length);
+            return bitmap;
+        }else{
+            return null;
+        }
+    }
+
 }

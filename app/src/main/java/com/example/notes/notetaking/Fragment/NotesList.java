@@ -33,7 +33,6 @@ public class NotesList extends Fragment implements View.OnClickListener{
     private FloatingActionButton btnAdd;
     private ListView lv;
     private Intent intent;
-    private Cursor cursor;
     private NotesDB notesDB;
     private NoteAdapter adapter;
     private SQLiteDatabase dbReader;
@@ -64,8 +63,6 @@ public class NotesList extends Fragment implements View.OnClickListener{
         //打开数据库
         notesDB = new NotesDB(getContext(),"notes.db",null,1);
         dbReader = notesDB.getWritableDatabase();
-        cursor = dbReader.query(NotesDB.TABLE_NOTE,null,null,
-                null,null,null,null);
         //初始化列表项
         queryNotes();
         //设置适配器
@@ -74,7 +71,7 @@ public class NotesList extends Fragment implements View.OnClickListener{
     }
 
     public void queryNotes() {
-        cursor = dbReader.query(NotesDB.TABLE_NOTE, null, null,
+        Cursor cursor = dbReader.query(NotesDB.TABLE_NOTE, null, null,
                 null, null, null, null);
         while (cursor.moveToNext()) {
             String content = cursor.getString(cursor.getColumnIndex(NotesDB.NOTES_CONTENT));
@@ -84,6 +81,7 @@ public class NotesList extends Fragment implements View.OnClickListener{
             NoteItem note = new NoteItem(content, time, imageId);
             noteLists.add(note);
         }
+        cursor.close();
     }
 
     /*
