@@ -1,12 +1,14 @@
 package com.example.notes.notetaking.Fragment;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 import com.example.notes.notetaking.Activity.ModifyAlarmActivity;
 import com.example.notes.notetaking.Activity.NewAlarmActivity;
 import com.example.notes.notetaking.Manager.NotesDB;
+import com.example.notes.notetaking.Model.MainUser;
 import com.example.notes.notetaking.R;
 import com.example.notes.notetaking.Adapter.AlarmAdapter;
 import com.example.notes.notetaking.Util.AlarmItem;
@@ -34,6 +37,10 @@ public class AlarmsList extends Fragment implements View.OnClickListener{
     NotesDB alarmsDB;//数据库辅助对象
     private SQLiteDatabase dbReader;//数据库对象
     String biaoti,text,newTime,selecttime;//用于存储标题，创建时间，响应时间，响应事件的字符串
+    private AlertDialog alert = null;
+    private AlertDialog.Builder builder = null;
+    AlarmAdapter alarmAdapter;
+
     public AlarmsList() {
         // Required empty public constructor
     }
@@ -48,18 +55,19 @@ public class AlarmsList extends Fragment implements View.OnClickListener{
         lv = (ListView)view.findViewById(R.id.alarmlist);
 
 
+        //创建数据库
+        dbReader = getDataBase();
         //获取数据库中的信息，并赋值给一个linklist列表
         getData(dbReader);
 
         //将信息传递给适配器，并加以输出
-        lv.setAdapter(new AlarmAdapter(getActivity(),alarmItems));
+        alarmAdapter = new AlarmAdapter(getActivity(),alarmItems);
+        lv.setAdapter(alarmAdapter);
 
         //listview的点击事件
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(),"点击事件"+position,Toast.LENGTH_SHORT).show();
-
                 AlarmItem alarmitem = (AlarmItem)parent.getItemAtPosition(position);
                 Intent intent = new Intent(getActivity(), ModifyAlarmActivity.class);
                 Bundle bundle = new Bundle();
@@ -72,11 +80,43 @@ public class AlarmsList extends Fragment implements View.OnClickListener{
             }
         });//the end of setOnItemClickListener
 
+
+
+        //长按列表响应函数
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(),"长按事件"+position,Toast.LENGTH_SHORT).show();
-                return false;
+            public boolean onItemLongClick(final AdapterView<?> parent, View view, final int position, long id) {
+
+                alert = null;
+                builder = new AlertDialog.Builder(getContext());
+                alert = builder.setTitle("温馨提示：")
+                        .setMessage("确定删除吗？")
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getContext(), "你点击了取消按钮~", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                /*
+                                 *
+                                 */
+                                AlarmItem alarmitem = (AlarmItem)parent.getItemAtPosition(position);
+                                dbReader=getDataBase();
+                                String sql = "delete from "+ NotesDB.TABLE_AlARMS
+                                        +" where user_id='"+MainUser.user.getId()+"' and fut_time = '"
+                                        +alarmitem.xiangyingshijian+"';";
+                                deleteData(dbReader,sql);
+                                alarmAdapter.deleteAlarm(position);
+                                alarmAdapter.notifyDataSetChanged();
+                                alarmAdapter.notifyDataSetChanged();
+                            }
+                        }).create();
+                alert.show();
+
+                return true;
             }
         });//the end of setOnItemLongClickListener
         //新建闹钟按钮
@@ -94,11 +134,14 @@ public class AlarmsList extends Fragment implements View.OnClickListener{
                 break;
         }
     }
+
+
     //获取数据库的列表
     public void getData(SQLiteDatabase readableDatabase)
     {
-        getDataBase();
-        Cursor cursor = readableDatabase.rawQuery("Select * from alarm",null);
+
+        Cursor cursor = readableDatabase.rawQuery("Select * from "+ NotesDB .TABLE_AlARMS +" where " +
+                NotesDB.USER_ID +" = " +"'"+ MainUser.user.getId()+"'",null);
         AlarmItem temp;
         while(cursor.moveToNext())
         {
@@ -109,7 +152,11 @@ public class AlarmsList extends Fragment implements View.OnClickListener{
             temp = new AlarmItem(biaoti,newTime,selecttime,text);
             alarmItems.add(temp);
         }
-        readableDatabase.close();
+    }
+    //从数据库中删除数据
+    public void deleteData(SQLiteDatabase writeableDatabase,String sql)
+    {
+        writeableDatabase.execSQL(sql);
     }
 
     //获取数据库对象
@@ -117,19 +164,18 @@ public class AlarmsList extends Fragment implements View.OnClickListener{
         alarmsDB = new NotesDB(getContext(),"notes.db",null,1);
         return alarmsDB.getWritableDatabase();
     }
-    /*
+
     @Override
     public void onResume() {
         super.onResume();
         //刷新数据库信息
         alarmItems.clear();
-
         //获取数据库
         dbReader = getDataBase();
         //获取数据库中的信息，并赋值给一个linklist列表
         getData(dbReader);
         AlarmAdapter adapter = new AlarmAdapter(getContext(),alarmItems);
         lv.setAdapter(adapter);
-    }*/
+    }
 
 }

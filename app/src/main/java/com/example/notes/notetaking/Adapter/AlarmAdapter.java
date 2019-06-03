@@ -26,9 +26,9 @@ public class AlarmAdapter extends BaseAdapter {
 
     }
 
-    public void deleteAlarm(AlarmItem alarmItem)
+    public void deleteAlarm(int position)
     {
-        alarmItems.remove(alarmItem);
+        alarmItems.remove(position);
     }
 
     @Override

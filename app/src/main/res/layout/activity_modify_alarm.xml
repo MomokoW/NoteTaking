@@ -34,7 +34,7 @@
             android:textColor="@color/current_time_text"
             android:textSize="15sp"
             android:layout_weight="0.1"/>
-        <TextView
+        <EditText
             android:id="@+id/alarmbiaoti"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -150,7 +150,7 @@
             android:textColor="@color/current_time_text"
             android:textSize="15sp"
             android:layout_weight="0.1"/>
-        <TextView
+        <EditText
             android:id="@+id/alarmtext"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
