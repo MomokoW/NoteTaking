@@ -41,8 +41,8 @@ public class UpdateInformationActivity extends AppCompatActivity {
         MainUser.user.setName("1");
         MainUser.user.setPassword("1");
         */
-        User user=new User("11111111111","1","1","");
-        MainUser.user=user;
+        //User user=new User("11111111111","1","1","");
+        //MainUser.user=user;
         userManage = new UserManage();
         notesDB = new NotesDB(this,"data.db",null,1);
         /*
@@ -77,7 +77,7 @@ public class UpdateInformationActivity extends AppCompatActivity {
                         /*
                         此处SQL语句有问题，需要修改
                          */
-                        //userManage.updateUser(notesDB.getReadableDatabase(),MainUser.user.getId(),passNew1,nameNew,MainUser.user.getHeadPhoto());
+                       //userManage.updateUser(notesDB.getReadableDatabase(),MainUser.user.getId(),passNew1,nameNew,MainUser.user.getHeadPhoto());
                         Toast.makeText(UpdateInformationActivity.this, "修改个人资料成功", Toast.LENGTH_SHORT).show();
                     }
                 }
