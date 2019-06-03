@@ -7,6 +7,15 @@
     <uses-feature android:name="android.hardware.Camera" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <provider
+        android:authorities="com.example.camerralbumtest.fileprovider"
+        android:name="android.support.v4.content.FileProvider"
+        android:exported="false"
+        android:grantUriPermissions="true">
+        <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/file_paths"/>
+    </provider>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/icon_launcher"
@@ -14,21 +23,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activity.MainActivity">
-
-        </activity>
-        <activity android:name=".Activity.NewAlarmActivity" />
-        <activity android:name=".Activity.AddNotesActivity" />
-        <activity android:name=".Activity.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Activity.NewAlarmActivity" />
+        <activity android:name=".Activity.AddNotesActivity" />
+        <activity android:name=".Activity.LoginActivity" >
+
         </activity>
         <activity android:name=".Activity.RegisterActivity" />
         <activity android:name=".Activity.UpdateInformationActivity" >
 
         </activity>
         <activity android:name=".Activity.ModifyAlarmActivity"></activity>
+
+        <!--<activity android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity"-->
+            <!--android:configChanges="orientation|screenSize"-->
+            <!--/>-->
     </application>
 
 </manifest>
