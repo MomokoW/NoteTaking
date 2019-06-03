@@ -3,4 +3,5 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="picker_view_height">160dp</dimen>
     <dimen name="date_unit_text_size">18sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>
