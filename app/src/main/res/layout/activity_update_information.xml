@@ -17,14 +17,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:orientation="vertical">
-            <Button
+            <TextView
                 android:id="@+id/headChangeButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="选择头像"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="修改个人信息"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -86,6 +87,7 @@
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="3"
+                    android:inputType="textPassword"
                     />
             </LinearLayout>
             <LinearLayout
@@ -106,28 +108,29 @@
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="3"
+                    android:inputType="textPassword"
                     />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.8"
                 android:orientation="horizontal"
                 >
                 <Button
                     android:id="@+id/updateInforBtn"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:width="0dp"
-                    android:layout_weight="1"
+                    android:layout_weight="0.5"
                     android:text="确定"
                     android:background="@drawable/btn_shape"
-                    android:layout_width="match_parent" />
+                    />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:orientation="vertical">
         </LinearLayout>
     </LinearLayout>
