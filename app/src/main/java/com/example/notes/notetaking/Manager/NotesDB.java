@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class NotesDB extends SQLiteOpenHelper {
     public static final String TABLE_NOTE = "notes";     //便笺表表名
-    public static final String TABLE_AlARMS = "alarm";   //涂鸦存储表名
+    public static final String TABLE_AlARMS = "alarm";   //闹钟存储表名
     public static final String TABLE_USER = "user";      //待办事项表名
 
     public static final String USER_ID = "user_id";       //user表id,对应另两个表的外键

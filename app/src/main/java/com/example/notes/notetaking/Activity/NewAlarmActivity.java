@@ -2,7 +2,9 @@ package com.example.notes.notetaking.Activity;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.notes.notetaking.Manager.NotesDB;
 import com.example.notes.notetaking.Manager.datepicker.CustomDatePicker;
 import com.example.notes.notetaking.Manager.datepicker.DateFormatUtils;
 import com.example.notes.notetaking.R;
@@ -25,6 +28,8 @@ public class NewAlarmActivity extends AppCompatActivity implements View.OnClickL
     private EditText malarmbiaoti,malarmtext;
     private CustomDatePicker mDatePicker, mTimerPicker;
     Button sureButton,cancelButton;
+    NotesDB alarmsDB;
+    private SQLiteDatabase dbWriter;
     String biaoti,text,newTime,selecttime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,14 +56,23 @@ public class NewAlarmActivity extends AppCompatActivity implements View.OnClickL
                 // 日期格式为yyyy-MM-dd HH:mm
                 mTimerPicker.show(mTvSelectedTime.getText().toString());
                 break;
-            case R.id.sureButton_register:
-                biaoti = malarmbiaoti.getText().toString();
-                text = malarmtext.getText().toString();
-                newTime = mTvSelectedDate.getText().toString();
-                selecttime = mTvSelectedTime.getText().toString();
-                Toast.makeText(NewAlarmActivity.this,"保存如数据库",Toast.LENGTH_SHORT).show();
+            case R.id.btn_set:
+                //创建数据库对象
+                dbWriter = getDataBase();
+
+                //保存入数据库
+                addAlarm();
+
+                //跳转到Fragment界面
+
+
+                //提示保存成功
+                Toast.makeText(NewAlarmActivity.this,"保存成功",Toast.LENGTH_SHORT).show();
+
+
+
                 break;
-            case R.id.backButton_register:
+            case R.id.btn_cancel:
                 finish();
                 break;
 
@@ -71,14 +85,35 @@ public class NewAlarmActivity extends AppCompatActivity implements View.OnClickL
         finish();
     }
 
+    //获取数据库对象
+    public SQLiteDatabase getDataBase() {
+        alarmsDB = new NotesDB(this,"notes.db",null,1);
+        return alarmsDB.getWritableDatabase();
+    }
+
+    public void addAlarm(){
+
+        //获取编辑框里面的数据
+        biaoti = malarmbiaoti.getText().toString();
+        text = malarmtext.getText().toString();
+        newTime = mTvSelectedDate.getText().toString();
+        selecttime = mTvSelectedTime.getText().toString();
+
+        //将数据放入ContentValues之中
+        ContentValues cv = new ContentValues();
+        cv.put(NotesDB.ALARM_TITLE,biaoti);
+        cv.put(NotesDB.CON_REMARK,text);
+        cv.put(NotesDB.CUR_TIME,newTime);
+        cv.put(NotesDB.FUT_TIME,selecttime);
+        //写入数据库
+        dbWriter.insert(NotesDB.TABLE_AlARMS,null,cv);
+    }
 
     private void initTimerPicker() {
         String beginTime = "2018-10-17 18:00";
         String endTime = DateFormatUtils.long2Str(System.currentTimeMillis(), true);
-
         mTvSelectedTime.setText(endTime);
         mTvSelectedDate.setText(endTime);
-
         // 通过日期字符串初始化日期，格式请用：yyyy-MM-dd HH:mm
         mTimerPicker = new CustomDatePicker(this, new CustomDatePicker.Callback() {
             @Override
