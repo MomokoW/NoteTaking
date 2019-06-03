@@ -79,8 +79,8 @@ public class AlarmsList extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch(v.getId()) {
-            case R.id.addNotes:
-                startActivity(new Intent(getActivity(), NewAlarmActivity.class));
+            case R.id.addalarm:
+                startActivity(new Intent(getContext(), NewAlarmActivity.class));
                 break;
         }
     }
