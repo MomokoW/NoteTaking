@@ -37,7 +37,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingLeft="25dp"></ListView>
+            android:paddingLeft="15dp">
+        </ListView>
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton

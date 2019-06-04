@@ -13,12 +13,14 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@mipmap/skin3">
 
-        <Button
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:id="@+id/btn_ok"
-            android:text="确定"
+            android:src="@mipmap/yes"
+            android:paddingRight="15dp"
+            android:background="@mipmap/skin6"
             />
     </android.support.v7.widget.Toolbar>
 
@@ -98,6 +100,7 @@
                 android:visibility="gone" />
 
         </LinearLayout>
+
     </FrameLayout>
 
     <View
