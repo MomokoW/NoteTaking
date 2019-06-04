@@ -15,9 +15,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:id="@+id/btn_back"
-            android:src="@mipmap/back"
-            android:background="@mipmap/skin6"
+            android:src="@mipmap/back_icon"
+
+            android:background="#null"
             />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="涂鸦"
+            android:gravity="center"
+            android:layout_gravity="center"/>
+
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,7 +51,7 @@
         android:layout_gravity="bottom"
         app:itemIconTint="@drawable/bottom_navigation_selector"
         app:itemTextColor="@drawable/bottom_navigation_selector"
-        android:background="@mipmap/skin3"
+        android:background="@mipmap/bottom_skin"
         app:menu="@menu/graffiti_navigation" />
 
 </LinearLayout>
