@@ -24,6 +24,7 @@ import com.example.notes.notetaking.Activity.AddNotesActivity;
 import com.example.notes.notetaking.Activity.CheckNoteActivity;
 import com.example.notes.notetaking.Adapter.NoteAdapter;
 import com.example.notes.notetaking.Manager.NotesDB;
+import com.example.notes.notetaking.Model.MainUser;
 import com.example.notes.notetaking.R;
 import com.example.notes.notetaking.Util.MapUtils;
 import com.example.notes.notetaking.Util.NoteItem;
@@ -86,8 +87,7 @@ public class NotesList extends Fragment implements View.OnClickListener, Adapter
     }
     //查询表中的所有信息
     public void queryNotesAll() {
-        cursor = dbReader.query(NotesDB.TABLE_NOTE, null, null,
-                null, null, null, null);
+        cursor = dbReader.rawQuery("select * from notes where user_id='"+MainUser.user.getId()+"'",null);
     }
     //查询表中的部分信息
     private void queryData(String searchData)

@@ -57,10 +57,10 @@ public class CheckNoteActivity extends AppCompatActivity implements BottomNaviga
 
     //调用系统相机和相册回调参数
     private final String IMAGE_TYPE = "image/*";
-    private final int IMAGE_CODE = 0;
-    private final int TAKE_PHOTO = 1;
-    private final int CROP_PHOTO = 2;
-    private final int REQUST_VIDEO = 3;
+    private final int IMAGE_CODE = 10;
+    private final int TAKE_PHOTO = 11;
+    private final int CROP_PHOTO = 12;
+    private final int REQUST_VIDEO = 13;
     private Bitmap bmp;
     private int bmpflag=0;
 
@@ -124,7 +124,7 @@ public class CheckNoteActivity extends AppCompatActivity implements BottomNaviga
 
         //初始化视频播放控件
         video = ((CustomVideoView) findViewById(R.id.cv_video));
-        iv = ((ImageView) findViewById(R.id.iv));
+        iv = ((ImageView) findViewById(R.id.iv_video));
         videoPath = System.currentTimeMillis()+".jpg";
 
         //创建数据库对象
@@ -177,13 +177,43 @@ public class CheckNoteActivity extends AppCompatActivity implements BottomNaviga
         graffiti = intent.getStringExtra(NotesDB.NOTES_GRAFIITI);
 
         //设置界面上控件的图片
-        Bitmap bitmap1 = BitmapFactory.decodeFile(graffiti);
-        ivGraffiti.setVisibility(View.VISIBLE);
-        ivGraffiti.setImageBitmap(bitmap1);
+        if(!graffiti.equals("")) {
+            Bitmap bitmap1 = BitmapFactory.decodeFile(graffiti);
+            ivGraffiti.setVisibility(View.VISIBLE);
+            ivGraffiti.setImageBitmap(bitmap1);
+        }
+        if(!picPath.equals("")) {
+            Bitmap bitmap2 = BitmapFactory.decodeFile(picPath);
+            ivContent.setVisibility(View.VISIBLE);
+            ivContent.setImageBitmap(bitmap2);
+        }
 
-        Bitmap bitmap2 = BitmapFactory.decodeFile(picPath);
-        ivContent.setVisibility(View.VISIBLE);
-        ivContent.setImageBitmap(bitmap2);
+//        //设置界面上控件的视频图片等显示
+//        if(!videoPath.equals("")) {
+//            iv.setVisibility(View.VISIBLE);
+//            video.setVisibility(View.VISIBLE);
+//            File outputImage = new File(videoPath);
+//            Uri videoUri = null;
+//            if (Build.VERSION.SDK_INT >= 24) {
+//                //兼容android7.0 使用共享文件的形式
+//                ContentValues contentValues = new ContentValues(1);
+//                contentValues.put(MediaStore.Images.Media.DATA, outputImage.getAbsolutePath());
+//                //检查是否有存储权限，以免崩溃
+//                if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//                        != PackageManager.PERMISSION_GRANTED) {
+//                    //申请WRITE_EXTERNAL_STORAGE权限
+//                    Toast.makeText(this, "请开启存储权限", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                videoUri = this.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+//            } else {
+//                videoUri = Uri.fromFile(outputImage);
+//            }
+//            video.setVideoURI(videoUri);
+////                Bitmap bitmap = getVideoBitmap(videoPath);
+//            Bitmap bitmap = getVideoBitmap2(videoUri);
+//            iv.setImageBitmap(bitmap);
+//        }
 
 
         //设置初始界面,时间和显示内容
@@ -534,10 +564,11 @@ public class CheckNoteActivity extends AppCompatActivity implements BottomNaviga
 
     //更新该便笺的信息
     private void ModifyNotes() {
+        String ID = String.valueOf(id);
+
         ContentValues cv = new ContentValues();
         content = editText.getText().toString();
 //        cv.put(NotesDB.USER_ID,MainUser.user.getId());
-        cv.put(NotesDB.USER_ID,"11111");
         cv.put(NotesDB.NOTES_TAG,tag);
         cv.put(NotesDB.NOTES_TIME,dateNow);
         cv.put(NotesDB.NOTES_CONTENT,content);
@@ -546,8 +577,9 @@ public class CheckNoteActivity extends AppCompatActivity implements BottomNaviga
         cv.put(NotesDB.NOTES_VIDEO,videoPath);
         cv.put(NotesDB.NOTES_GRAFIITI,graffiti);
         cv.put(NotesDB.NOTES_STATUS,"0");
-        dbWriter.insert(NotesDB.TABLE_NOTE,null,cv);
-        Toast.makeText(getApplicationContext(),"添加便笺成功!",Toast.LENGTH_LONG).show();
+        dbWriter.update(NotesDB.TABLE_NOTE,cv,"notes_id=?",new String[]{ID});
+        Toast.makeText(getApplicationContext(),"更新便笺信息成功!",Toast.LENGTH_LONG).show();
+        finish();
     }
 
 

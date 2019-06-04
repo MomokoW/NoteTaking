@@ -120,7 +120,7 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
 
         //初始化视频播放控件
         video = ((CustomVideoView) findViewById(R.id.cv_video));
-        iv = ((ImageView) findViewById(R.id.iv));
+        iv = ((ImageView) findViewById(R.id.iv_video));
         videoPath = System.currentTimeMillis()+".jpg";
 
         //初始化Button及图片控件
@@ -353,7 +353,7 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
             intent.putExtra(MediaStore.EXTRA_OUTPUT, ImageUri);
         }
         // 开启一个带有返回值的Activity，请求码为TAKE_PHOTO
-       startActivityForResult(intent, TAKE_PHOTO);
+        startActivityForResult(intent, TAKE_PHOTO);
     }
 
     //获取图片后回调函数
@@ -373,8 +373,8 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
             ContentResolver resolver = getContentResolver();
             try {
                 if (data == null){  //未选中图片
-                   ivContent.setVisibility(View.INVISIBLE);
-                   return;
+                    ivContent.setVisibility(View.INVISIBLE);
+                    return;
                 }
                 else {
                     //获取图片存储的路径
@@ -400,7 +400,7 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
             }
         }
         if (requestCode == REQUST_VIDEO){
-           if (resultCode == RESULT_OK){
+            if (resultCode == RESULT_OK){
                 iv.setVisibility(View.VISIBLE);
                 video.setVisibility(View.VISIBLE);
                 Uri uri = data.getData();
@@ -509,8 +509,8 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
     private void addNotes() {
         ContentValues cv = new ContentValues();
         content = editText.getText().toString();
-//        cv.put(NotesDB.USER_ID,MainUser.user.getId());
-        cv.put(NotesDB.USER_ID,"11111");
+        cv.put(NotesDB.USER_ID,MainUser.user.getId());
+//        cv.put(NotesDB.USER_ID,"11111");
         cv.put(NotesDB.NOTES_TAG,tag);
         cv.put(NotesDB.NOTES_TIME,dateNow);
         cv.put(NotesDB.NOTES_CONTENT,content);

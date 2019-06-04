@@ -28,14 +28,12 @@
             android:text="闹钟列表"
             android:gravity="center"
             />
-
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+
         android:orientation="vertical">
 
         <ListView
