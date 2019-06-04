@@ -93,14 +93,14 @@ public class UpdateInformationActivity extends AppCompatActivity {
             }
         });
 
-        //取消修改个人信息
-        inforChangeBtn_back = (Button)findViewById(R.id.updateInforBtn_back);
-        inforChangeBtn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+//        //取消修改个人信息
+//        inforChangeBtn_back = (Button)findViewById(R.id.updateInforBtn_back);
+//        inforChangeBtn_back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
 
     }
 }

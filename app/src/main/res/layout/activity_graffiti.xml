@@ -4,30 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/note_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@mipmap/skin3">
+        android:background="@mipmap/head_skin">
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:id="@+id/btn_back"
-            android:src="@mipmap/back"
-            android:onClick="back"
-            android:background="@mipmap/skin6"
+            android:src="@mipmap/back_icon"
+
+            android:background="#null"
             />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="涂鸦"
+            android:gravity="center"
+            android:layout_gravity="center"/>
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:src="@mipmap/yes"
             android:paddingRight="15dp"
-            android:onClick="save"
+
             android:id="@+id/save"
-            android:background="@mipmap/skin6"
+            android:background="#null"
             />
     </android.support.v7.widget.Toolbar>
     <ImageView
@@ -45,7 +53,7 @@
         android:layout_gravity="bottom"
         app:itemIconTint="@drawable/bottom_navigation_selector"
         app:itemTextColor="@drawable/bottom_navigation_selector"
-        android:background="@mipmap/skin3"
+        android:background="@mipmap/bottom_skin"
         app:menu="@menu/graffiti_navigation" />
 
 </LinearLayout>

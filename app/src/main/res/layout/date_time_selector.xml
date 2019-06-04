@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@mipmap/skin1">
+    android:background="@mipmap/bg_skin2">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@mipmap/skin3"
+        android:background="@mipmap/head_skin"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -19,7 +19,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="@string/cancel"
-            android:textColor="@color/date_picker_text_light"
+
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -30,7 +30,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/title"
-            android:textColor="@color/date_picker_text_light"
+
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -41,7 +41,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="@string/confirm"
-            android:textColor="@color/date_picker_text_light"
+
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -61,7 +61,7 @@
         android:paddingEnd="20dp"
         android:paddingStart="20dp"
         android:paddingTop="15dp"
-        android:background="@mipmap/skin3">
+        android:background="#00000000">
 
         <com.example.notes.notetaking.Manager.datepicker.PickerView
             android:id="@+id/dpv_year"

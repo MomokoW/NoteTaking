@@ -1,21 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/skin1"
-    >
+    android:background="@mipmap/bg_skin2"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@mipmap/head_skin">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:id="@+id/gra_list_back"
+            android:src="@mipmap/back_icon"
+            android:background="#00000000"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="闹钟列表"
+            android:gravity="center"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:orientation="vertical">
 
         <ListView
             android:id="@+id/alarmlist"
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:paddingLeft="15dp" />
     </LinearLayout>
@@ -27,9 +53,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
-        android:src="@mipmap/add"
-        app:backgroundTint="@color/colorPrimary"
+        android:src="@mipmap/icon_add"
+        app:backgroundTint="@color/clearorange"
         app:rippleColor="@color/LightSkyBlue"
         app:pressedTranslationZ="10dp"/>
 
-</FrameLayout>
+</LinearLayout>

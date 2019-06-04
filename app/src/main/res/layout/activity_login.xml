@@ -9,7 +9,7 @@
     android:paddingRight="20dp"
     android:paddingTop="20dp"
     tools:context="com.example.notes.notetaking.Activity.LoginActivity"
-    android:background="@mipmap/skin1">
+    android:background="@mipmap/bg_skin1">
 
 
     <LinearLayout
@@ -60,35 +60,44 @@
             android:id="@+id/idInput"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_centerHorizontal="true"
-            android:ems="10"
-            android:inputType="number"
-            android:maxLength="11"
+            android:layout_weight="1"
             android:background="@drawable/edit_shape"
+            android:ems="10"
             android:hint="请输入账号"
-           />
+            android:inputType="number"
+            android:maxLength="11" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.3" />
+
         <EditText
             android:id="@+id/passwordInput"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:background="@drawable/edit_shape"
             android:ems="10"
             android:hint="请输入密码"
             android:inputType="textPassword"
-            android:background="@drawable/edit_shape"
-            android:maxLength="16">
-        </EditText>
+            android:maxLength="16"
+            ></EditText>
         <Space
             android:layout_height="0dp"
             android:layout_width="match_parent"
             android:layout_weight="2"
             />
+
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/btn_shape"
+            android:text="登录" />
 
         <Space
             android:layout_width="match_parent"
@@ -100,29 +109,19 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/buttonLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/btn_shape"
-                android:text="登录" />
+
 
             <Button
                 android:id="@+id/buttonReg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/btn_shape"
+                android:textColor="@color/white"
+                android:background="#00000000"
                 android:text="注册" />
 
         </LinearLayout>
 
 
-        <Space
-            android:layout_height="0dp"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            />
     </LinearLayout>
 </LinearLayout>

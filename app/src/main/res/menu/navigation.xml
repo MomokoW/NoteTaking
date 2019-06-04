@@ -3,7 +3,7 @@
     >
     <item
         android:id="@+id/Notes"
-        android:icon="@drawable/edit"
+        android:icon="@drawable/navigation_edit_icon"
         android:title="@string/tab_menu_notes"/>
     <item
         android:id="@+id/Alarms"

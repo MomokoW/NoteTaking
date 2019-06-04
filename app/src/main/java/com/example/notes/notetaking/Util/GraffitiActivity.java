@@ -124,7 +124,7 @@ public class GraffitiActivity extends AppCompatActivity implements BottomNavigat
         //设置标题
         builder.setTitle("选择颜色");
         //设置图标
-        builder.setIcon(R.mipmap.icon_launcher);
+        builder.setIcon(R.mipmap.login6);
         //设置单选按钮
         builder.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
             @Override
@@ -167,7 +167,7 @@ public class GraffitiActivity extends AppCompatActivity implements BottomNavigat
         //设置标题
         builder.setTitle("选择粗细");
         //设置图标
-        builder.setIcon(R.mipmap.icon_launcher);
+        builder.setIcon(R.mipmap.login6);
         //设置单选按钮
         builder.setSingleChoiceItems(gitems, 0, new DialogInterface.OnClickListener() {
             @Override

@@ -5,12 +5,12 @@
     <color name="LawnGreen">#7CFC00</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="bg_black">#000000</color>
+    <color name="black">#000000</color>
     <color name="bg_white">#FFFFFF</color>
     <color name="bg_topbar">#FCFCFC</color>
     <color name="bg_gray">#00F1F1F1</color>
     <color name="transparent">#00FFFFFF</color>
-    <color name="text_gray">#8D7A71</color>
+    <color name="text_gray">#8D7D79</color>
     <color name="text_white">#FFFFFF</color>
     <color name="text_yellow">#FFC800</color>
     <color name="text_topbar">#694E42</color>
@@ -30,4 +30,20 @@
     <color name="btn_select">#E7E7E7</color>
     <color name="edit">#D1D1D1</color>
     <color name="DeepSkyBlue"></color>
+    <color name="white">#FFFFFF</color>
+    <color name="grey">#444444</color>
+    <color name="darkgrey">#333333</color>
+
+    <color name="clearpink">#50e8c0c0</color>
+    <color name="pink">#e8c0c0</color>
+
+    <color name="clearpurple">#809d45bb</color>
+    <color name="purple">#9d45bb</color>
+
+    <color name="clearorange">#90e67026</color>
+    <color name="orange">#e67026</color>
+    <color name="brown">#732914</color>
+    <color name="yellow">#e8b056</color>
+
+
 </resources>

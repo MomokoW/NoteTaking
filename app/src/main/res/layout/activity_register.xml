@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@mipmap/skin1"
+    android:background="@mipmap/bg_skin1"
     tools:context=".Activity.RegisterActivity">
 
 
@@ -53,14 +53,6 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         >
-        <TextView
-            android:id="@+id/headChangeButton"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="注册个人信息"
-            />
 
         <EditText
             android:id="@+id/idInput_register"
@@ -97,14 +89,14 @@
 
         <EditText
             android:id="@+id/nameInput_register"
-            android:layout_height="0dp"
             android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/edit_shape"
             android:hint="请输入昵称"
             android:inputType="text"
-            android:theme="@style/MyEditText"
-            />
+            android:textColor="@color/orange"
+            android:theme="@style/MyEditText" />
         <Space
             android:layout_height="0dp"
             android:layout_width="match_parent"

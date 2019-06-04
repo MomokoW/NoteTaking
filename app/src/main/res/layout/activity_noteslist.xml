@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/skin1"
+    android:background="@mipmap/bg_skin3"
     >
 
     <LinearLayout
@@ -17,7 +17,7 @@
             android:id="@+id/notelist_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@mipmap/skin3" />
+            android:background="@mipmap/head_skin" />
 
         <!--搜索框-->
         <EditText
@@ -47,8 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
-        android:src="@mipmap/add"
-        app:backgroundTint="@color/colorPrimary"
+        android:src="@mipmap/icon_add"
+        app:backgroundTint="@color/clearorange"
         app:rippleColor="@color/LightSkyBlue"
         app:pressedTranslationZ="10dp"
         />

@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/bg_skin3"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Activity.MainActivity"
     >
@@ -11,7 +12,9 @@
         android:id="@+id/vpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottom_navigation"/>
+        android:layout_above="@id/bottom_navigation"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="0dp" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -20,7 +23,7 @@
         android:layout_alignParentBottom="true"
         app:itemIconTint="@drawable/bottom_navigation_selector"
         app:itemTextColor="@drawable/bottom_navigation_selector"
-        android:background="@mipmap/skin3"
+        android:background="@mipmap/bottom_skin"
         app:menu="@menu/navigation" />
     <View
         android:layout_width="match_parent"

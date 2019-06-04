@@ -176,7 +176,7 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
         //设置标题
         builder.setTitle("选择标签");
         //设置图标
-        builder.setIcon(R.mipmap.icon_launcher);
+        builder.setIcon(R.mipmap.login6);
         //设置单选按钮
         builder.setSingleChoiceItems(items,0, new DialogInterface.OnClickListener() {
             @Override
@@ -271,7 +271,7 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
         //设置标题
         builder.setTitle("选择图片");
         //设置图标
-        builder.setIcon(R.mipmap.icon_launcher);
+        builder.setIcon(R.mipmap.login6);
         //设置单选按钮
         builder.setSingleChoiceItems(picItems,0, new DialogInterface.OnClickListener() {
             @Override

@@ -3,24 +3,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_bg"
+    android:background="@mipmap/bg_skin2"
     android:orientation="vertical"
     tools:context=".Activity.ModifyAlarmActivity">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@null"
-        android:gravity="center"
-        android:paddingStart="15dp"
-        android:text="@string/modify_alarm"
-        android:textColor="@color/select_title_text"
-        android:textSize="15sp" />
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|center_vertical"
+            android:id="@+id/btn_cancel_modify"
+            android:src="@mipmap/back_icon"
+            android:background="#null"
+            />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:paddingStart="15dp"
+            android:text="@string/modify_alarm"
+            android:textColor="@color/select_title_text"
+            android:textSize="15sp" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5" />
+
+        <ImageButton
+            android:id="@+id/btn_set_modify"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center_vertical"
+            android:background="#null"
+            android:paddingRight="15dp"
+            android:src="@mipmap/yes" />
+
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/btn_unselect"
+        android:background="@null"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -39,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="15dp"
-            android:background="@null"
+            android:background="@drawable/edit_shape"
             android:gravity="center_vertical"
             android:textColor="@color/selected_time_text"
             android:textSize="15sp"
@@ -57,7 +94,7 @@
         android:id="@+id/ll_date_modify"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/btn_unselect"
+        android:background="@null"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -94,7 +131,7 @@
         android:id="@+id/ll_time_modify"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/btn_unselect"
+        android:background="@null"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -136,7 +173,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/btn_unselect"
+        android:background="@null"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -155,7 +192,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="15dp"
-            android:background="@null"
+            android:background="@drawable/edit_shape"
             android:gravity="center_vertical"
             android:textColor="@color/selected_time_text"
             android:textSize="15sp"
@@ -179,26 +216,12 @@
             android:layout_height="match_parent"
             android:layout_width="0dp"
             android:layout_weight="0.5"/>
-        <Button
-            android:id="@+id/btn_set_modify"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/btn_shape"
-            android:text="确定"
-            />
+
         <Space
             android:layout_height="match_parent"
             android:layout_width="0dp"
             android:layout_weight="0.5"/>
-        <Button
-            android:id="@+id/btn_cancel_modify"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:text="取消"
-            android:background="@drawable/btn_shape"
-            />
+
         <Space
             android:layout_height="match_parent"
             android:layout_width="0dp"
