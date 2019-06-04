@@ -28,4 +28,12 @@
     <color name="selected_time_text">#57C5E8</color>
     <color name="btn_unselect">#DDDDDD</color>
     <color name="btn_select">#E7E7E7</color>
+
+    <color name="DeepSkyBlue">#00BFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="grey">#666666</color>
+    <color name="black">#000000</color>
+
+
+
 </resources>

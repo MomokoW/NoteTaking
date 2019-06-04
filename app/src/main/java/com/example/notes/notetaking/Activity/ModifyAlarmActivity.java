@@ -46,27 +46,27 @@ public class ModifyAlarmActivity extends AppCompatActivity implements View.OnCli
         actiontime = bundle.getString("actiontime");
         text = bundle.getString("text");
 
-        biaotiTextView = findViewById(R.id.alarmbiaoti);
+        biaotiTextView = findViewById(R.id.alarmbiaoti_modify);
         biaotiTextView.setText(biaoti);
 
-        newtimeTextView = findViewById(R.id.tv_new_time);
+        newtimeTextView = findViewById(R.id.tv_new_time_modify);
         newtimeTextView.setText(newtime);
 
-        actiontimeTextView = findViewById(R.id.tv_selected_time);
+        actiontimeTextView = findViewById(R.id.tv_selected_time_modify);
         actiontimeTextView.setText(actiontime);
 
-        textTextView = findViewById(R.id.alarmtext);
+        textTextView = findViewById(R.id.alarmtext_modify);
         textTextView.setText(text);
 
         //时间框设置响应函数
-        findViewById(R.id.ll_time).setOnClickListener(this);
+        findViewById(R.id.ll_time_modify).setOnClickListener(this);
 
         //按钮设置响应函数
 
-        btn_set = findViewById(R.id.btn_set);
+        btn_set = findViewById(R.id.btn_set_modify);
        btn_set.setOnClickListener(this);
 
-        btn_cancel = findViewById(R.id.btn_cancel);
+        btn_cancel = findViewById(R.id.btn_cancel_modify);
         btn_cancel.setOnClickListener(this);
 
         initTimerPicker();
@@ -108,12 +108,12 @@ public class ModifyAlarmActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.ll_time:
+            case R.id.ll_time_modify:
                 // 日期格式为yyyy-MM-dd HH:mm
                 mTimerPicker.show(actiontimeTextView.getText().toString());
                 break;
                 //保存按钮响应函数具体实现
-            case R.id.btn_set:
+            case R.id.btn_set_modify:
 
                 //获取数据库
                 dbWriter=getDataBase();
@@ -164,7 +164,7 @@ public class ModifyAlarmActivity extends AppCompatActivity implements View.OnCli
                 dbWriter.close();
                finish();
                 break;
-            case R.id.btn_cancel:
+            case R.id.btn_cancel_modify:
                 finish();
                 break;
 

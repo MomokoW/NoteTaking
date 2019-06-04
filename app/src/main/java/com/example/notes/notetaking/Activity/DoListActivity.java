@@ -1,11 +1,16 @@
 package com.example.notes.notetaking.Activity;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,17 +18,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.notes.notetaking.Manager.NotesDB;
+
 import com.example.notes.notetaking.Manager.datepicker.CustomDatePicker;
 import com.example.notes.notetaking.Manager.datepicker.DateFormatUtils;
-import com.example.notes.notetaking.Model.MainUser;
 import com.example.notes.notetaking.R;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Timer;
 
-public class NewAlarmActivity extends AppCompatActivity implements View.OnClickListener{
+public class DoListActivity extends AppCompatActivity implements View.OnClickListener{
+
+
     private TextView mTvSelectedDate, mTvSelectedTime;
     private CustomDatePicker mDatePicker, mTimerPicker;
 
@@ -35,43 +43,48 @@ public class NewAlarmActivity extends AppCompatActivity implements View.OnClickL
     private String con_title = "";
     private String con_remark = "";
     private SQLiteDatabase dbWriter;
-    NotesDB alarmsDB;
-    String biaoti,newtime,selecttime,text;
+    //NotesDB notesDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_alarm);
+        setContentView(R.layout.activity_dolist);
         initView();
     }
 
     //初始化按钮响应
     public void initView() {
+        //初始化导航栏和时间
+        //获取兼容低版本的ActionBar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("编辑待办事项");
+        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
+        setSupportActionBar(toolbar);
 
         //初始化时间显示,默认提示时间为创建时间点
         fut_time=getTime();
 
         //初始化按钮
-        btn_save = (Button)findViewById(R.id.btn_set_new);
-        btn_back = (Button)findViewById(R.id.btn_cancel_new);
-        text_title = (EditText)findViewById(R.id.alarmbiaoti_new);
-        text_remark = (EditText) findViewById(R.id.alarmtext_new);
+        btn_save = (Button)findViewById(R.id.save);
+        btn_back = (Button)findViewById(R.id.goback);
+        text_title = (EditText)findViewById(R.id.text_title);
+        text_remark = (EditText) findViewById(R.id.text_remark);
 
         //监听按钮事件
         btn_save.setOnClickListener(this);
         btn_back.setOnClickListener(this);
 
         //创建数据库对象
-        dbWriter = getDataBase();
+        ///dbWriter = getDataBase();
 
         //日期选择器
-        findViewById(R.id.ll_date_new).setOnClickListener(this);
-        mTvSelectedDate = findViewById(R.id.tv_new_time_new);
+        findViewById(R.id.ll_date).setOnClickListener(this);
+        mTvSelectedDate = findViewById(R.id.tv_selected_date);
         initDatePicker();
 
         //时间选择器
-        findViewById(R.id.ll_time_new).setOnClickListener(this);
-        mTvSelectedTime = findViewById(R.id.tv_selected_time_new);
+        findViewById(R.id.ll_time).setOnClickListener(this);
+        mTvSelectedTime = findViewById(R.id.tv_selected_time);
         initTimerPicker();
     }
     //响应按钮事件
@@ -80,53 +93,47 @@ public class NewAlarmActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
 
-            case R.id.ll_date_new:
+            case R.id.ll_date:
                 // 日期格式为yyyy-MM-dd
                 mDatePicker.show(mTvSelectedDate.getText().toString());
                 break;
 
-            case R.id.ll_time_new:
+            case R.id.ll_time:
                 // 日期格式为yyyy-MM-dd HH:mm
                 mTimerPicker.show(mTvSelectedTime.getText().toString());
                 break;
 
-            case R.id.btn_set_new:
-
-                addAlarm();
+            case R.id.save:
+                //addDolist();
                 finish();
                 break;
 
-            case R.id.btn_cancel_new:
-                //dbWriter.close();
+            case R.id.goback:
+                dbWriter.close();
                 finish();
                 break;
         }
     }
-
-
+/*
     //获取数据库对象
     public SQLiteDatabase getDataBase() {
-        alarmsDB = new NotesDB(this,"notes.db",null,1);
-        return alarmsDB.getWritableDatabase();
+        notesDB = new NotesDB(this,"notes.db",null,1);
+        return notesDB.getWritableDatabase();
     }
 
-    public void addAlarm(){
-        //获取编辑框里面的数据
-        biaoti = text_title.getText().toString();
-        text = text_remark.getText().toString();
-        newtime = mTvSelectedDate.getText().toString();
-        selecttime = mTvSelectedTime.getText().toString();
-        //将数据放入ContentValues之中
+    public void addDolist(){
         ContentValues cv = new ContentValues();
-        cv.put(NotesDB.USER_ID,MainUser.user.getId());
-        cv.put(NotesDB.ALARM_TITLE,biaoti);
-        cv.put(NotesDB.CON_REMARK,text);
-        cv.put(NotesDB.CUR_TIME,newtime);
-        cv.put(NotesDB.FUT_TIME,selecttime);
-        //写入数据库
-        dbWriter.insert(NotesDB.TABLE_AlARMS,null,cv);
-    }
+        con_title = text_title.getText().toString();
+        con_remark = text_remark.getText().toString();
+        cv.put(NotesDB.DO_TITLE,con_title);
+        cv.put(NotesDB.DO_REMARK,con_remark);
+        cv.put(NotesDB.CUR_TIME,cur_date);
+        cv.put(NotesDB.FUT_TIME,fut_time);
+        dbWriter.insert(NotesDB.TABLE_DO,null,cv);
+        Toast.makeText(getApplicationContext(),"新建待办事项成功!",Toast.LENGTH_LONG).show();
 
+    }
+*/
     //获取创建时间
     private String getTime() {
         java.text.SimpleDateFormat format1 = new java.text.SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
@@ -185,6 +192,7 @@ public class NewAlarmActivity extends AppCompatActivity implements View.OnClickL
                 calendar.setTimeInMillis(timestamp);
                 AlarmManager alarm=(AlarmManager)getSystemService(ALARM_SERVICE);
                 alarm.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
+
             }
         }, beginTime, endTime);
         // 允许点击屏幕或物理返回键关闭

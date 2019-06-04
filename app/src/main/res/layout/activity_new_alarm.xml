@@ -35,7 +35,7 @@
             android:textSize="15sp"
             android:layout_weight="0.1"/>
         <EditText
-            android:id="@+id/alarmbiaoti"
+            android:id="@+id/alarmbiaoti_new"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="15dp"
@@ -55,7 +55,7 @@
         android:textSize="15sp" />
 
     <LinearLayout
-        android:id="@+id/ll_date"
+        android:id="@+id/ll_date_new"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/btn_unselect"
@@ -78,7 +78,7 @@
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/tv_new_time"
+            android:id="@+id/tv_new_time_new"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="15dp"
@@ -92,7 +92,7 @@
 
 
     <LinearLayout
-        android:id="@+id/ll_time"
+        android:id="@+id/ll_time_new"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/btn_unselect"
@@ -114,7 +114,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1" />
         <TextView
-            android:id="@+id/tv_selected_time"
+            android:id="@+id/tv_selected_time_new"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="15dp"
@@ -151,7 +151,7 @@
             android:textSize="15sp"
             android:layout_weight="0.1"/>
         <EditText
-            android:id="@+id/alarmtext"
+            android:id="@+id/alarmtext_new"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="15dp"
@@ -180,7 +180,7 @@
             android:layout_width="0dp"
             android:layout_weight="0.5"/>
         <Button
-            android:id="@+id/btn_set"
+            android:id="@+id/btn_set_new"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_weight="1"
@@ -192,7 +192,7 @@
             android:layout_width="0dp"
             android:layout_weight="0.5"/>
         <Button
-            android:id="@+id/btn_cancel"
+            android:id="@+id/btn_cancel_new"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_weight="1"
