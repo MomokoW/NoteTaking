@@ -15,21 +15,23 @@
                 <action android:name="MYALARMRECEIVER" />
             </intent-filter>
         </receiver>
-
-
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".Activity.MainActivity"></activity>
+        <activity android:name=".Activity.NewAlarmActivity" ></activity>
+        <activity android:name=".Activity.AddNotesActivity" ></activity>
+        <activity android:name=".Activity.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.NewAlarmActivity" ></activity>
-        <activity android:name=".Activity.AddNotesActivity" ></activity>
-        <activity android:name=".Activity.LoginActivity" ></activity>
         <activity android:name=".Activity.RegisterActivity" ></activity>
         <activity android:name=".Activity.UpdateInformationActivity" ></activity>
         <activity android:name=".Activity.ModifyAlarmActivity"></activity>
         <activity android:name=".Activity.AlarmAlertActivity"></activity>
+        <activity android:name=".Util.GraffitiActivity"/>
+        <!--<activity android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity"-->
+        <!--android:configChanges="orientation|screenSize"-->
+        <!--/>-->
 
 
     </application>

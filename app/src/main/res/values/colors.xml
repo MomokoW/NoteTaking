@@ -29,4 +29,5 @@
     <color name="btn_unselect">#DDDDDD</color>
     <color name="btn_select">#E7E7E7</color>
     <color name="edit">#D1D1D1</color>
+    <color name="DeepSkyBlue"></color>
 </resources>

@@ -16,11 +16,12 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Toast.makeText(context, "今天有待办事项哦！", Toast.LENGTH_LONG).show();
-        Intent i = new Intent(context, AlarmAlertActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("Str_caller","");
-        i.putExtras(bundle);
-        context.startActivity(i);
+        //Intent i = new Intent(context, AlarmAlertActivity.class);
+        //Bundle bundle = new Bundle();
+        //bundle.putString("Str_caller","");
+        //i.putExtras(bundle);
+        //context.startActivity(i);
+        Play(context);
 
     }
     public void Play(Context context)
