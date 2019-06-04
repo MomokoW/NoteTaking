@@ -1,17 +1,24 @@
 package com.example.notes.notetaking.Activity;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+
+import android.os.Build;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,26 +38,33 @@ import com.example.notes.notetaking.Util.DateTime;
 import com.example.notes.notetaking.Util.MapUtils;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class AddNotesActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
+public class AddNotesActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private static final int IMAGE_PICKER = 1001;
     private final String IMAGE_TYPE = "image/*";
     private final int IMAGE_CODE = 0;
+    private final int TAKE_PHOTO = 1;
+    private final int CROP_PHOTO = 2;
     private Bitmap bmp;
     private int bmpflag=0;
     private BottomNavigationView bottomNavigationView;
+
     //标签内容
     final String items[] = {"未标签","生活","个人","旅游","工作"};
     final String picItems[] = {"拍照","从相册选择"};
     private String tag = "未标签";
     private String mediaPath = "";
+
     //笔记内容,时间
     private String content = "";
     private String dateNow;
     private String timeNow;
+    private Uri ImageUri;
 
     //初始化控件
     private Button btnSave,addTag;
@@ -58,7 +72,9 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
     private TextView timeTv;
     private NotesDB notesDB;
     private ImageView ivContent;
+    private ImageView ivCamera;
     private SQLiteDatabase dbWriter;
+
 
 
     @Override
@@ -66,6 +82,7 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_notes);
         initView();
+
     }
 
     public void initView(){
@@ -85,6 +102,7 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
         editText = (EditText)findViewById(R.id.edit_note);
         timeTv = (TextView)findViewById(R.id.showtime);
         ivContent = (ImageView)findViewById(R.id.imageContent1);
+        ivCamera = (ImageView)findViewById(R.id.imageContent2);
         timeTv.setText(timeNow);
 
 
@@ -102,6 +120,21 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
 
     }
 
+    ///点击事件
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_ok:
+                addNotes();
+                finish();
+                break;
+            case R.id.tag:
+                setTag();
+                break;
+
+        }
+
+    }
     //获取数据库对象
     public SQLiteDatabase getDataBase() {
         notesDB = new NotesDB(this,"notes.db",null,1);
@@ -169,9 +202,43 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
     }
 
     public void takePhoto() {
-        Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, 1);
+        ivCamera.setVisibility(View.VISIBLE);
+        String f = System.currentTimeMillis()+".jpg";
+        File outputImage = new File(Environment.getExternalStorageDirectory(),
+                "tempImage" + ".jpg");
+
+        // 激活相机
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        try {
+            if (outputImage.exists()){
+                outputImage.delete();
+            }
+            outputImage.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (Build.VERSION.SDK_INT>=24){
+            //兼容android7.0 使用共享文件的形式
+            ContentValues contentValues = new ContentValues(1);
+            contentValues.put(MediaStore.Images.Media.DATA, outputImage.getAbsolutePath());
+            //检查是否有存储权限，以免崩溃
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                //申请WRITE_EXTERNAL_STORAGE权限
+                Toast.makeText(this,"请开启存储权限",Toast.LENGTH_SHORT).show();
+                return;
+            }
+            ImageUri = this.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, ImageUri);
+        }else {
+            ImageUri=Uri.fromFile(outputImage);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, ImageUri);
+        }
+        // 开启一个带有返回值的Activity，请求码为TAKE_PHOTO
+       startActivityForResult(intent, TAKE_PHOTO);
     }
+
+
     //得到便笺的分类
     public void setTag() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -198,44 +265,15 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btn_ok:
-                addNotes();
-                finish();
-                break;
-            case R.id.tag:
-                setTag();
-                break;
-
-        }
-
-    }
-
-    private void addNotes() {
-        ContentValues cv = new ContentValues();
-        content = editText.getText().toString();
-        cv.put(NotesDB.USER_ID,MainUser.user.getId());
-        cv.put(NotesDB.NOTES_TAG,tag);
-        cv.put(NotesDB.NOTES_TIME,dateNow);
-        cv.put(NotesDB.NOTES_CONTENT,content);
-        cv.put(NotesDB.MEDIA_PATH,mediaPath);
-        cv.put(NotesDB.NOTES_STATUS,"0");
-        dbWriter.insert(NotesDB.TABLE_NOTE,null,cv);
-        Toast.makeText(getApplicationContext(),"添加便笺成功!",Toast.LENGTH_LONG).show();
-    }
-
-
-    @Override
     protected void onActivityResult(int requestCode,int resultCode,Intent data){// the onActivityResult() begin
         super.onActivityResult(requestCode,resultCode,data);
-        if(resultCode==RESULT_OK) {//获取相机照片
-            if(requestCode==1) {
-                Bundle bundle = data.getExtras();//获取封装好传递过来的数据，整个图片的二进制流
-                Bitmap tempbmp = (Bitmap)bundle.get("data"); //bitmap 从bundle取出数据
-                ivContent.setVisibility(View.VISIBLE);	//添加日记时图片设置初始不可见
-                ivContent.setImageBitmap(tempbmp);
-                bmpflag=1;
+        if(requestCode==TAKE_PHOTO) {//获取相机照片
+            if(resultCode==RESULT_OK) {
+                Intent intent = new Intent("com.android.camera.action.CROP");
+                intent.setDataAndType(ImageUri, "image/*");
+                intent.putExtra("scale", true);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, ImageUri);
+                startActivityForResult(intent, CROP_PHOTO); // 启动裁剪程序
             }
         }
         if (requestCode == IMAGE_CODE) {//获取相册照片
@@ -249,13 +287,24 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
                 e.printStackTrace();
             }
         }
+        if(requestCode == CROP_PHOTO)
+        {
+            if (resultCode == RESULT_OK) {
+                try {
+                    Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver()
+                            .openInputStream(ImageUri));
+                    ivCamera.setImageBitmap(bitmap);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }//the onActivityResult() end
     // get the image    将图片转化为二进制流
     public byte[] getimage()
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         Resources res=getResources();
-        //bmp=BitmapFactory.decodeResource(res, R.drawable.fruit_bg);
         bmp.compress(Bitmap.CompressFormat.PNG, 100, baos);
         return baos.toByteArray();
     }//the end
@@ -270,5 +319,20 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
             return null;
         }
     }
+    //添加便笺到程序中
+    private void addNotes() {
+        ContentValues cv = new ContentValues();
+        content = editText.getText().toString();
+//        cv.put(NotesDB.USER_ID,MainUser.user.getId());
+        cv.put(NotesDB.USER_ID,"11111");
+        cv.put(NotesDB.NOTES_TAG,tag);
+        cv.put(NotesDB.NOTES_TIME,dateNow);
+        cv.put(NotesDB.NOTES_CONTENT,content);
+        cv.put(NotesDB.MEDIA_PATH,mediaPath);
+        cv.put(NotesDB.NOTES_STATUS,"0");
+        dbWriter.insert(NotesDB.TABLE_NOTE,null,cv);
+        Toast.makeText(getApplicationContext(),"添加便笺成功!",Toast.LENGTH_LONG).show();
+    }
+
 
 }
