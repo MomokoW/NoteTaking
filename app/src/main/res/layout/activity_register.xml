@@ -12,6 +12,39 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <Space
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="0.5"
+            />
+        <com.example.notes.notetaking.Util.CircleImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/login1" />
+        <Space
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="0.5"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/name"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
         android:orientation="vertical"
@@ -24,17 +57,12 @@
 
         <EditText
             android:id="@+id/idInput_register"
-            android:layout_height="0dp"
             android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:hint="请输入手机号"
             android:inputType="text"
-            />
-        <Space
-            android:layout_height="0dp"
-            android:layout_width="match_parent"
-            android:layout_weight="0.5"
-            />
+            android:theme="@style/MyEditText" />
 
         <EditText
             android:id="@+id/passwordInput1_register"
@@ -43,13 +71,8 @@
             android:layout_weight="1"
             android:inputType="textPassword"
             android:hint="请输入密码"
+            android:theme="@style/MyEditText"
             />
-        <Space
-            android:layout_height="0dp"
-            android:layout_width="match_parent"
-            android:layout_weight="0.5"
-            />
-
 
 
         <EditText
@@ -58,12 +81,9 @@
             android:layout_width="match_parent"
             android:inputType="textPassword"
             android:ems="10"
-            android:hint="请再次输入密码" />
-        <Space
-            android:layout_height="0dp"
-            android:layout_width="match_parent"
-            android:layout_weight="0.5"
-            />
+            android:hint="请再次输入密码"
+            android:theme="@style/MyEditText"/>
+
         <EditText
             android:id="@+id/nameInput_register"
             android:layout_height="0dp"
@@ -71,6 +91,7 @@
             android:layout_weight="1"
             android:hint="请输入昵称"
             android:inputType="text"
+            android:theme="@style/MyEditText"
             />
         <Space
             android:layout_height="0dp"
@@ -115,5 +136,5 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="0.7"/>
 </LinearLayout>

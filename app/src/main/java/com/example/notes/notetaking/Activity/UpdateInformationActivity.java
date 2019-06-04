@@ -17,6 +17,7 @@ public class UpdateInformationActivity extends AppCompatActivity {
 
     //private Button headChangeBtn;
     private Button inforChangeBtn;
+    private Button inforChangeBtn_back;
     private EditText nameChange;
     private  EditText passwordOld;
     private EditText passwordChange1;
@@ -32,7 +33,7 @@ public class UpdateInformationActivity extends AppCompatActivity {
 
         nameChange = (EditText)findViewById(R.id.nameChangeEdit);
         passwordOld = (EditText)findViewById(R.id.passwordOldEdit);
-        passwordChange1 = (EditText)findViewById(R.id.passwordNew1Edit);
+        passwordChange1 = findViewById(R.id.passwordNew1Edit);
         passwordChange2 = (EditText)findViewById(R.id.passwordNew2Edit);
 
         /*
@@ -89,6 +90,15 @@ public class UpdateInformationActivity extends AppCompatActivity {
 
                 }
                 //Toast.makeText(UpdateInformationActivity.this, "修改个人资料成功", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //取消修改个人信息
+        inforChangeBtn_back = (Button)findViewById(R.id.updateInforBtn_back);
+        inforChangeBtn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

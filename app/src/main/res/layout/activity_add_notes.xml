@@ -19,6 +19,7 @@
             android:layout_gravity="right"
             android:id="@+id/btn_ok"
             android:text="确定"
+            android:background="#00000000"
             />
     </android.support.v7.widget.Toolbar>
 

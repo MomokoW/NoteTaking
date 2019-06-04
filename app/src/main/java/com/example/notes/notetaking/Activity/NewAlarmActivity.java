@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,12 +25,20 @@ public class NewAlarmActivity extends AppCompatActivity implements View.OnClickL
     private TextView mTvSelectedDate, mTvSelectedTime;
     private EditText malarmbiaoti,malarmtext;
     private CustomDatePicker mDatePicker, mTimerPicker;
-    Button sureButton,cancelButton;
+    Button btn_ok;
     String biaoti,text,newTime,selecttime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_alarm);
+
+        //获取兼容低版本的ActionBar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.alarm_toolbar);
+        toolbar.setTitle("新建闹钟");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //给布局添加一个点击事件的响应
         //获取日期的文本框，并复制
          mTvSelectedDate = findViewById(R.id.tv_new_time);
@@ -37,13 +46,16 @@ public class NewAlarmActivity extends AppCompatActivity implements View.OnClickL
         mTvSelectedTime = findViewById(R.id.tv_selected_time);
         malarmbiaoti = findViewById(R.id.alarmbiaoti);
         malarmtext = findViewById(R.id.alarmtext);
-        sureButton = findViewById(R.id.btn_set);
-        sureButton.setOnClickListener(this);
-        cancelButton = findViewById(R.id.btn_cancel);
-        cancelButton.setOnClickListener(this);
         initTimerPicker();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -51,15 +63,12 @@ public class NewAlarmActivity extends AppCompatActivity implements View.OnClickL
                 // 日期格式为yyyy-MM-dd HH:mm
                 mTimerPicker.show(mTvSelectedTime.getText().toString());
                 break;
-            case R.id.sureButton_register:
+            case R.id.btn_alarm_ok:
                 biaoti = malarmbiaoti.getText().toString();
                 text = malarmtext.getText().toString();
                 newTime = mTvSelectedDate.getText().toString();
                 selecttime = mTvSelectedTime.getText().toString();
                 Toast.makeText(NewAlarmActivity.this,"保存如数据库",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.backButton_register:
-                finish();
                 break;
 
         }
