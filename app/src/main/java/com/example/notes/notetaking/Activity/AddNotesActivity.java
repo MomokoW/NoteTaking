@@ -10,6 +10,7 @@ import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 
 import android.os.Build;
@@ -22,40 +23,44 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.notes.notetaking.Manager.NotesDB;
+//整合User里面的UserID
 import com.example.notes.notetaking.Model.MainUser;
 import com.example.notes.notetaking.R;
+import com.example.notes.notetaking.Util.CustomVideoView;
 import com.example.notes.notetaking.Util.DateTime;
+import com.example.notes.notetaking.Util.FilePathUtils;
 import com.example.notes.notetaking.Util.MapUtils;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 
 
 public class AddNotesActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
-    private static final int IMAGE_PICKER = 1001;
+    //调用系统相机和相册回调参数
     private final String IMAGE_TYPE = "image/*";
     private final int IMAGE_CODE = 0;
     private final int TAKE_PHOTO = 1;
     private final int CROP_PHOTO = 2;
+    private final int REQUST_VIDEO = 3;
     private Bitmap bmp;
     private int bmpflag=0;
-    private BottomNavigationView bottomNavigationView;
 
-    //标签内容
+
+    //标签内容，媒体路径
     final String items[] = {"未标签","生活","个人","旅游","工作"};
     final String picItems[] = {"拍照","从相册选择"};
     private String tag = "未标签";
@@ -64,7 +69,7 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
     private String videoPath = "";
     private String graffiti = "";
 
-    //笔记内容,时间
+    //笔记内容,时间，图片路径
     private String content = "";
     private String dateNow;
     private String timeNow;
@@ -75,9 +80,10 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
     private EditText editText;
     private TextView timeTv;
     private NotesDB notesDB;
-    private ImageView ivContent;
+    private ImageView ivContent,iv;
     private SQLiteDatabase dbWriter;
-
+    private CustomVideoView video;
+    private BottomNavigationView bottomNavigationView;
 
 
     @Override
@@ -85,21 +91,25 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_notes);
         initView();
-
     }
-
     public void initView(){
-        //获取兼容低版本的ActionBar
+
+        //初始化导航栏Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.note_toolbar);
         toolbar.setTitle("编辑笔记");
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        //初始化按钮及变量
+        //获取系统时间
         dateNow = DateTime.getTime();
         timeNow = dateNow.substring(12);
 
+        //初始化视频播放控件
+        video = ((CustomVideoView) findViewById(R.id.cv_video));
+        iv = ((ImageView) findViewById(R.id.iv));
+        videoPath = System.currentTimeMillis()+".jpg";
+
+        //初始化Button及图片控件
         btnSave = (Button)findViewById(R.id.btn_ok);
         addTag = (Button)findViewById(R.id.tag);
         editText = (EditText)findViewById(R.id.edit_note);
@@ -119,8 +129,27 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.addnotes_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-    }
+        //播放视频控件
+        MediaController controller = new MediaController(this);
+        video.setMediaController(controller);
+        if (video.isPlaying()){
+            iv.setVisibility(View.INVISIBLE);
+        }
+        video.setPlayPauseListener(new CustomVideoView.PlayPauseListener() {
+            @Override
+            public void onPlay() {
+                Toast.makeText(getApplicationContext(),"播放",Toast.LENGTH_SHORT).show();
+                iv.setVisibility(View.INVISIBLE);
+            }
 
+            @Override
+            public void onPause() {
+                Toast.makeText(getApplicationContext(),"暂停",Toast.LENGTH_SHORT).show();
+                iv.setVisibility(View.VISIBLE);
+            }
+        });
+
+    }
     ///点击事件
     @Override
     public void onClick(View v) {
@@ -135,11 +164,75 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
         }
     }
 
+    //得到便笺的分类
+    public void setTag() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //设置标题
+        builder.setTitle("选择标签");
+        //设置图标
+        builder.setIcon(R.mipmap.icon_launcher);
+        //设置单选按钮
+        builder.setSingleChoiceItems(items,0, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //取出选择的条目
+                String item = items[which];
+                tag = item;
+                addTag.setText(tag);
+                //根据不同的标签来设置ImageView
+                addTag.setCompoundDrawablesWithIntrinsicBounds(MapUtils.imageMap.get(tag),0,0,0);
+                //关闭对话框
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
+
+    }
+
+    //播放视频
+    private void playVideo() {
+        Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT,videoPath);
+        intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY,1);
+        startActivityForResult(intent,REQUST_VIDEO);
+    }
+    //获取视频的二进制文件
+    private Bitmap getVideoBitmap(String videoPath){
+        MediaMetadataRetriever retriever = null;
+        try {
+            retriever = new MediaMetadataRetriever();
+            retriever.setDataSource(videoPath);
+            Bitmap bitmap = retriever.getFrameAtTime();
+            return bitmap;
+        }finally {
+            retriever.release();
+        }
+    }
+    //获取视频的位图
+    private Bitmap getVideoBitmap2(Uri uri){
+        MediaMetadataRetriever retriever = null;
+        try {
+            retriever = new MediaMetadataRetriever();
+            retriever.setDataSource(this,uri);
+            Bitmap bitmap = retriever.getFrameAtTime();
+            return bitmap;
+        }finally {
+            retriever.release();
+        }
+    }
+
+    public void start(View view){
+        iv.setVisibility(View.INVISIBLE);
+        video.start();
+    }
+
     //获取数据库对象
     public SQLiteDatabase getDataBase() {
         notesDB = new NotesDB(this,"notes.db",null,1);
         return notesDB.getWritableDatabase();
     }
+
+    //设置Toolbar上面的返回按钮
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == android.R.id.home){
@@ -155,6 +248,9 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
         switch (menuItem.getItemId()) {
             case R.id.picture:
                 choosePic();
+                break;
+            case R.id.video:
+                playVideo();
                 break;
         }
         return false;
@@ -199,10 +295,12 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
         startActivityForResult(getAlbum, IMAGE_CODE);
     }
 
+    //调用相机获取图片
     public void takePhoto() {
         ivContent.setVisibility(View.VISIBLE);    //设置图片可见
-        String f = System.currentTimeMillis()+".jpg";
-        File outputImage = new File(Environment.getExternalStorageDirectory(),f);
+        //设置图片的路径
+        picPath = System.currentTimeMillis()+".jpg";
+        File outputImage = new File(Environment.getExternalStorageDirectory(),picPath);
         // 激活相机
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         try {
@@ -234,78 +332,60 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
        startActivityForResult(intent, TAKE_PHOTO);
     }
 
-
-    //得到便笺的分类
-    public void setTag() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        //设置标题
-        builder.setTitle("选择标签");
-        //设置图标
-        builder.setIcon(R.mipmap.icon_launcher);
-        //设置单选按钮
-        builder.setSingleChoiceItems(items,0, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //取出选择的条目
-                String item = items[which];
-                tag = item;
-                addTag.setText(tag);
-                //根据不同的标签来设置ImageView
-                addTag.setCompoundDrawablesWithIntrinsicBounds(MapUtils.imageMap.get(tag),0,0,0);
-                //关闭对话框
-                dialog.dismiss();
-            }
-        });
-        builder.create().show();
-
-    }
-
     //获取图片后回调函数
     @Override
     protected void onActivityResult(int requestCode,int resultCode,Intent data){// the onActivityResult() begin
         super.onActivityResult(requestCode,resultCode,data);
         if(requestCode==TAKE_PHOTO) {//获取相机照片
             if(resultCode==RESULT_OK) {
-
-                Bitmap bm = null;
-                try {
-                    bm = getBitmapFormUri(ImageUri);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                ivContent.setImageBitmap(bm);
-//                Intent intent = new Intent("com.android.camera.action.CROP");
-//                intent.setDataAndType(ImageUri, "image/*");
-//                intent.putExtra("scale", true);
-//                intent.putExtra(MediaStore.EXTRA_OUTPUT, ImageUri);
-//                startActivityForResult(intent, CROP_PHOTO); // 启动裁剪程序
+                Intent intent = new Intent("com.android.camera.action.CROP");
+                intent.setDataAndType(ImageUri, "image/*");
+                intent.putExtra("scale", true);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, ImageUri);
+                startActivityForResult(intent, CROP_PHOTO); // 启动裁剪程序
             }
         }
         if (requestCode == IMAGE_CODE) {//获取相册照片
             ContentResolver resolver = getContentResolver();
             try {
-                Uri originalUri = data.getData();
-                bmp = MediaStore.Images.Media.getBitmap(resolver, originalUri);
-                ivContent.setImageBitmap(bmp);
-                bmpflag=1;
+                if (data == null){  //未选中图片
+                   ivContent.setVisibility(View.INVISIBLE);
+                   return;
+                }
+                else {
+                    //获取图片存储的路径
+                    Uri originalUri = data.getData();
+                    picPath = FilePathUtils.getRealPathFromUri(this, data.getData());
+                    bmp = MediaStore.Images.Media.getBitmap(resolver, originalUri);
+                    ivContent.setImageBitmap(bmp);
+                    bmpflag = 1;
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-//        if(requestCode == CROP_PHOTO)
-//        {
-//            if (resultCode == RESULT_OK) {
-//                try {
-//                    Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(ImageUri));
-//                    ivContent.setImageBitmap(bitmap);
-//                } catch (FileNotFoundException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
+        if(requestCode == CROP_PHOTO)
+        {
+            if (resultCode == RESULT_OK) {
+                try {
+                    Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(ImageUri));
+                    ivContent.setImageBitmap(bitmap);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        if (resultCode == RESULT_OK){
+            if (requestCode == REQUST_VIDEO){
+                iv.setVisibility(View.VISIBLE);
+                video.setVisibility(View.VISIBLE);
+                Uri uri = data.getData();
+                video.setVideoURI(uri);
+//                Bitmap bitmap = getVideoBitmap(videoPath);
+                Bitmap bitmap = getVideoBitmap2(uri);
+                iv.setImageBitmap(bitmap);
+            }
+        }
     }//the onActivityResult() end
 
     // get the image    将图片转化为二进制流
@@ -345,63 +425,5 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
         Toast.makeText(getApplicationContext(),"添加便笺成功!",Toast.LENGTH_LONG).show();
     }
 
-
-    //压缩图片，避免发生OOM
-    public Bitmap getBitmapFormUri(Uri uri) throws FileNotFoundException, IOException {
-        InputStream input = getContentResolver().openInputStream(uri);
-
-        //这一段代码是不加载文件到内存中也得到bitmap的真是宽高，主要是设置inJustDecodeBounds为true
-        BitmapFactory.Options onlyBoundsOptions = new BitmapFactory.Options();
-        onlyBoundsOptions.inJustDecodeBounds = true;//不加载到内存
-        onlyBoundsOptions.inDither = true;//optional
-        onlyBoundsOptions.inPreferredConfig = Bitmap.Config.RGB_565;//optional
-        BitmapFactory.decodeStream(input, null, onlyBoundsOptions);
-        input.close();
-        int originalWidth = onlyBoundsOptions.outWidth;
-        int originalHeight = onlyBoundsOptions.outHeight;
-        if ((originalWidth == -1) || (originalHeight == -1))
-            return null;
-
-        //图片分辨率以480x800为标准
-        float hh = 800f;//这里设置高度为800f
-        float ww = 480f;//这里设置宽度为480f
-        //缩放比，由于是固定比例缩放，只用高或者宽其中一个数据进行计算即可
-        int be = 1;//be=1表示不缩放
-        if (originalWidth > originalHeight && originalWidth > ww) {//如果宽度大的话根据宽度固定大小缩放
-            be = (int) (originalWidth / ww);
-        } else if (originalWidth < originalHeight && originalHeight > hh) {//如果高度高的话根据宽度固定大小缩放
-            be = (int) (originalHeight / hh);
-        }
-        if (be <= 0)
-            be = 1;
-        //比例压缩
-        BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
-        bitmapOptions.inSampleSize = be;//设置缩放比例
-        bitmapOptions.inDither = true;
-        bitmapOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-        input = getContentResolver().openInputStream(uri);
-        Bitmap bitmap = BitmapFactory.decodeStream(input, null, bitmapOptions);
-        input.close();
-
-        return compressImage(bitmap);//再进行质量压缩
-    }
-
-    //压缩图片
-    public Bitmap compressImage(Bitmap image) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.JPEG, 100, baos);//质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
-        int options = 100;
-        while (baos.toByteArray().length / 1024 > 100) {  //循环判断如果压缩后图片是否大于100kb,大于继续压缩
-            baos.reset();//重置baos即清空baos
-            //第一个参数 ：图片格式 ，第二个参数： 图片质量，100为最高，0为最差  ，第三个参数：保存压缩后的数据的流
-            image.compress(Bitmap.CompressFormat.JPEG, options, baos);//这里压缩options，把压缩后的数据存放到baos中
-            options -= 10;//每次都减少10
-            if (options<=0)
-                break;
-        }
-        ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());//把压缩后的数据baos存放到ByteArrayInputStream中
-        Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);//把ByteArrayInputStream数据生成图片
-        return bitmap;
-    }
 
 }

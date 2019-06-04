@@ -52,53 +52,58 @@
     </LinearLayout>
     <EditText
         android:id="@+id/edit_note"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/addnotes_layout"
-        android:layout_above="@id/addnotes_navigation"
         android:layout_alignParentStart="true"
         android:layout_weight="1"
         android:background="@null"
         android:gravity="top"
         android:hint="记录点滴。。。" />
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/addnotes_navigation"
-        android:layout_below="@+id/addnotes_layout"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="50dp">
-
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_note"
+        android:layout_above="@id/addnotes_navigation">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_audio"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
             <ImageView
                 android:id="@+id/imageContent1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_weight="2"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="10dp"
-                android:visibility="gone" />
-            <VideoView
-                android:id="@+id/videoContent"
-                android:layout_weight="3"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
                 android:visibility="gone" />
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center">
+            <com.example.notes.notetaking.Util.CustomVideoView
+                android:id="@+id/cv_video"
+                android:layout_width="500dp"
+                android:layout_height="300dp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/iv"
+                android:layout_width="500dp"
+                android:layout_height="300dp"
+                android:visibility="gone" />
+            </FrameLayout>
         </LinearLayout>
-    </FrameLayout>
+    </ScrollView>
 
     <View
         android:layout_width="match_parent"
