@@ -68,30 +68,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/addnotes_navigation"
-        android:layout_marginTop="150dp"
-        android:layout_alignParentStart="true">
+        android:layout_below="@+id/addnotes_layout"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="50dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/tv_audio"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
             <ImageView
                 android:id="@+id/imageContent1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
                 android:layout_marginTop="10dp"
                 android:visibility="gone" />
-
-            <ImageView
-                android:id="@+id/imageContent2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:visibility="gone" />
-
             <VideoView
                 android:id="@+id/videoContent"
+                android:layout_weight="3"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:layout_gravity="center_horizontal"

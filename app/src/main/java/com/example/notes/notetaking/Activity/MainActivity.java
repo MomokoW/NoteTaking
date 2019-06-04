@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements
             }
             //如果有权限没有被允许
             if (hasPermissionDismiss) {
-                showPermissionDialog();//跳转到系统设置权限页面，或者直接关闭页面，不让他继续访问
+//                showPermissionDialog();//跳转到系统设置权限页面，或者直接关闭页面，不让他继续访问
             }else{
                 //任何其它操作
             }
