@@ -20,7 +20,7 @@
             android:layout_gravity="start|center_vertical"
             android:id="@+id/btn_cancel_new"
             android:src="@mipmap/back_icon"
-            android:background="#null"
+            android:background="@null"
             />
         <Space
             android:layout_width="0dp"
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
-            android:background="#00000000"
+            android:background="@null"
             android:paddingRight="15dp"
             android:src="@mipmap/yes"
             android:text="确定"

@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.notes.notetaking.Manager.NotesDB;
@@ -27,7 +28,7 @@ public class NewAlarmActivity extends AppCompatActivity implements View.OnClickL
     private TextView mTvSelectedDate, mTvSelectedTime;
     private CustomDatePicker mDatePicker, mTimerPicker;
 
-    private Button btn_save, btn_back;
+    private ImageButton btn_save, btn_back;
     private EditText text_title, text_remark;
     String cur_date, cur_time;
     String fut_time;
@@ -52,8 +53,8 @@ public class NewAlarmActivity extends AppCompatActivity implements View.OnClickL
         fut_time=getTime();
 
         //初始化按钮
-        btn_save = (Button)findViewById(R.id.btn_set_new);
-        btn_back = (Button)findViewById(R.id.btn_cancel_new);
+        btn_save = (ImageButton)findViewById(R.id.btn_set_new);
+        btn_back = (ImageButton)findViewById(R.id.btn_cancel_new);
         text_title = (EditText)findViewById(R.id.alarmbiaoti_new);
         text_remark = (EditText) findViewById(R.id.alarmtext_new);
 
