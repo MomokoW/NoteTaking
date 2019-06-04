@@ -20,7 +20,14 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         >
-
+        <TextView
+            android:id="@+id/headChangeButton"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="注册个人信息"
+            />
 
         <EditText
             android:id="@+id/idInput_register"
@@ -28,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:hint="请输入手机号"
+            android:background="@drawable/edit_shape"
             android:inputType="text"
             />
         <Space
@@ -42,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:inputType="textPassword"
+            android:background="@drawable/edit_shape"
             android:hint="请输入密码"
             />
         <Space
@@ -54,9 +63,11 @@
 
         <EditText
             android:id="@+id/passwordInput2_register"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_width="match_parent"
             android:inputType="textPassword"
+            android:background="@drawable/edit_shape"
+            android:layout_weight="1"
             android:ems="10"
             android:hint="请再次输入密码" />
         <Space
@@ -69,6 +80,7 @@
             android:layout_height="0dp"
             android:layout_width="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/edit_shape"
             android:hint="请输入昵称"
             android:inputType="text"
             />

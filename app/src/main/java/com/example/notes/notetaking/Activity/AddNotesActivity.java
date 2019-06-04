@@ -28,6 +28,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
@@ -40,6 +41,7 @@ import com.example.notes.notetaking.R;
 import com.example.notes.notetaking.Util.CustomVideoView;
 import com.example.notes.notetaking.Util.DateTime;
 import com.example.notes.notetaking.Util.FilePathUtils;
+import com.example.notes.notetaking.Util.GraffitiActivity;
 import com.example.notes.notetaking.Util.MapUtils;
 
 import java.io.ByteArrayOutputStream;
@@ -76,7 +78,8 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
     private Uri ImageUri;
 
     //初始化控件
-    private Button btnSave,addTag;
+    private ImageButton btnSave;
+    private Button addTag;
     private EditText editText;
     private TextView timeTv;
     private NotesDB notesDB;
@@ -110,7 +113,7 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
         videoPath = System.currentTimeMillis()+".jpg";
 
         //初始化Button及图片控件
-        btnSave = (Button)findViewById(R.id.btn_ok);
+        btnSave = (ImageButton)findViewById(R.id.btn_ok);
         addTag = (Button)findViewById(R.id.tag);
         editText = (EditText)findViewById(R.id.edit_note);
         timeTv = (TextView)findViewById(R.id.showtime);
@@ -163,7 +166,10 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
                 break;
         }
     }
-
+    private void graffiti() {
+        Intent intent = new Intent(getApplicationContext(),GraffitiActivity.class);
+        startActivity(intent);
+    }
     //得到便笺的分类
     public void setTag() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -251,6 +257,9 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
                 break;
             case R.id.video:
                 playVideo();
+                break;
+            case R.id.graffiti:
+                graffiti();
                 break;
         }
         return false;

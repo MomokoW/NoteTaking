@@ -24,16 +24,6 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="15dp"
-            android:background="@null"
-            android:gravity="center_vertical"
-            android:text="@string/alarmbiaoti"
-            android:textColor="@color/current_time_text"
-            android:textSize="15sp"
-            android:layout_weight="0.1"/>
         <EditText
             android:id="@+id/alarmbiaoti"
             android:layout_width="wrap_content"
@@ -43,6 +33,7 @@
             android:gravity="center_vertical"
             android:textColor="@color/selected_time_text"
             android:textSize="15sp"
+            android:hint="请输入标题"
             android:layout_weight="1"/>
     </LinearLayout>>
     <TextView
@@ -133,33 +124,26 @@
         android:paddingStart="15dp"
         android:textColor="@color/select_title_text"
         android:textSize="15sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:background="@color/btn_unselect"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="15dp"
-            android:background="@null"
-            android:gravity="center_vertical"
-            android:text="@string/alarmtext"
-            android:textColor="@color/current_time_text"
-            android:textSize="15sp"
-            android:layout_weight="0.1"/>
         <EditText
             android:id="@+id/alarmtext"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
+            android:layout_weight="1"
             android:background="@null"
             android:gravity="center_vertical"
+            android:hint="请输入备注"
+            android:minLines="2"
             android:textColor="@color/selected_time_text"
-            android:textSize="15sp"
-            android:layout_weight="1"/>
+            android:textSize="15sp" />
     </LinearLayout>>
     <TextView
         android:layout_width="match_parent"

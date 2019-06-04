@@ -13,12 +13,14 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@mipmap/skin3">
 
-        <Button
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:id="@+id/btn_ok"
-            android:text="确定"
+            android:src="@mipmap/yes"
+            android:paddingRight="15dp"
+            android:background="@mipmap/skin6"
             />
     </android.support.v7.widget.Toolbar>
 
@@ -90,17 +92,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center">
-            <com.example.notes.notetaking.Util.CustomVideoView
-                android:id="@+id/cv_video"
-                android:layout_width="500dp"
-                android:layout_height="300dp"
-                android:visibility="gone" />
+                <com.example.notes.notetaking.Util.CustomVideoView
+                    android:id="@+id/cv_video"
+                    android:layout_width="500dp"
+                    android:layout_height="300dp"
+                    android:visibility="gone" />
 
-            <ImageView
-                android:id="@+id/iv"
-                android:layout_width="500dp"
-                android:layout_height="300dp"
-                android:visibility="gone" />
+                <ImageView
+                    android:id="@+id/iv"
+                    android:layout_width="500dp"
+                    android:layout_height="300dp"
+                    android:visibility="gone" />
             </FrameLayout>
         </LinearLayout>
     </ScrollView>

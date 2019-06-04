@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/skin1"
+    android:orientation="vertical"
     tools:context=".Activity.UpdateInformationActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -28,89 +34,100 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 >
-                <TextView
-                    android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="昵称"
-                    />
                 <EditText
                     android:id="@+id/nameChangeEdit"
                     android:layout_height="match_parent"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:inputType="text"
+                    android:background="@drawable/edit_shape"
+                    android:hint="请输入昵称"
                     android:layout_weight="3"
                     />
             </LinearLayout>
+            <Space
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="0.3"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal"
                 >
-                <TextView
-                    android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="原密码"
-                    />
                 <EditText
                     android:id="@+id/passwordOldEdit"
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
+                    android:hint="请输入原密码"
                     android:inputType="textPassword"
+                    android:background="@drawable/edit_shape"
                     android:layout_weight="3"
                     />
             </LinearLayout>
+            <Space
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="0.3"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal"
                 >
-                <TextView
-                    android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="新密码"
-                    />
+
                 <EditText
                     android:id="@+id/passwordNew1Edit"
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="3"
+                    android:hint="请输入新密码"
+                    android:background="@drawable/edit_shape"
                     android:inputType="textPassword"
                     />
             </LinearLayout>
+            <Space
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="0.3"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal"
                 >
-                <TextView
-                    android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="再次输入"
-                    />
                 <EditText
                     android:id="@+id/passwordNew2Edit"
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="3"
+                    android:hint="再次输入新密码"
+                    android:background="@drawable/edit_shape"
                     android:inputType="textPassword"
                     />
             </LinearLayout>
+            <Space
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="0.3"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.8"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal"
                 >
                 <Button
