@@ -5,11 +5,13 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -210,6 +212,11 @@ public class Settings extends Fragment {
                 if (photoChoice==0){
                     //从相册获得图片
                     bitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));
+                    //获得路径
+                    /*
+                    String [] proj={MediaStore.Images.Media.DATA};
+                    Cursor cursor =getContext().getContentResolver();
+                    */
                 }else {
                     //从相机获得图片
                     //Bundle bundle = data.getExtras();//获取封装好传递过来的数据，整个图片的二进制流
@@ -225,5 +232,16 @@ public class Settings extends Fragment {
             }
         }
     }
+
+    //解析intent
+    /*
+    private void handleImageOnKitKat(Intent data){
+        String imagePath=null;
+        Uri uri=data.getData();
+        if(DocumentsContract.isDocumentUri(getActivity(),uri)){
+
+        }
+    }
+    */
 
 }
