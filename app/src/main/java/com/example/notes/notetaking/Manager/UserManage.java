@@ -79,4 +79,15 @@ public class UserManage {
         return result;
     }
 
+    //更新用户头像
+    public boolean changePhoto(SQLiteDatabase readableDatebase,String id,String photo){
+        boolean result=false;
+        String sql="update user set user_avator ="+"'"+photo+"'"+"where user_id ="+"'"+id+"'";
+        if(queryuesr(readableDatebase,id)){
+            readableDatebase.execSQL(sql);
+            result = true;
+        }
+        return result;
+    }
+
 }

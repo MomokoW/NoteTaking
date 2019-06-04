@@ -44,6 +44,7 @@ import com.example.notes.notetaking.Manager.NotesDB;
 import com.example.notes.notetaking.Manager.UserManage;
 import com.example.notes.notetaking.Model.MainUser;
 import com.example.notes.notetaking.R;
+import com.example.notes.notetaking.Util.FilePathUtils;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.io.ByteArrayInputStream;
@@ -85,7 +86,17 @@ public class Settings extends Fragment {
         //bitmap=BitmapFactory.decodeResource(getActivity().getResources(),R.mipmap.qqphoto);
         dbManage = new NotesDB(getActivity(),"data.db",null,1);
         photoHead = (RoundedImageView) view.findViewById(R.id.headphotoView_mine);
-        photoHead.setImageBitmap(BitmapFactory.decodeResource(getActivity().getResources(),R.mipmap.qqphoto));
+        if(MainUser.user.getHeadPhoto()=="") {
+            photoHead.setImageBitmap(BitmapFactory.decodeResource(getActivity().getResources(), R.mipmap.qqphoto));
+        }
+        else{
+            File file = new File(MainUser.user.getHeadPhoto());
+            if (file.exists()) {
+                bitmap = BitmapFactory.decodeFile(MainUser.user.getHeadPhoto());
+                bitmap=getCroppedRoundBitmap(bitmap,800);
+                photoHead.setImageBitmap(bitmap);
+            }
+        }
         usernameText=(TextView)view.findViewById(R.id.usernameText_mine);
         usernameText.setText(MainUser.user.getName());
         changeBtn = (Button)view.findViewById(R.id.changeBtn);
@@ -268,6 +279,8 @@ public class Settings extends Fragment {
                 if (imageUri ==null){
                     imageUri = Uri.parse(MediaStore.Images.Media.insertImage(getActivity().getContentResolver(), bitmap, null,null));
                 }
+                MainUser.user.setHeadPhoto(FilePathUtils.getRealPathFromUri(getActivity(), imageUri));
+                userManage.changePhoto(dbManage.getWritableDatabase(),MainUser.user.getId(),MainUser.user.getHeadPhoto());
                 //photoHead.setImageBitmap(changePhoto(bitmap,80));
                 bitmap=getCroppedRoundBitmap(bitmap,800);
                 photoHead.setImageBitmap(bitmap);
@@ -383,8 +396,18 @@ public class Settings extends Fragment {
     @Override
     public void onResume(){
         super.onResume();
+        /*
         if(bitmap!=null) {
             photoHead.setImageBitmap(bitmap);
+        }
+        */
+        if(bitmap!=null) {
+            File file = new File(MainUser.user.getHeadPhoto());
+            if (file.exists()) {
+                bitmap = BitmapFactory.decodeFile(MainUser.user.getHeadPhoto());
+                bitmap=getCroppedRoundBitmap(bitmap,800);
+                photoHead.setImageBitmap(bitmap);
+            }
         }
     }
 
