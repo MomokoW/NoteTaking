@@ -43,7 +43,7 @@ public class GraffitiActivity extends AppCompatActivity implements BottomNavigat
     private SQLiteDatabase dbWriter;
     final String items[] = {"红色", "蓝色", "绿色", "灰色", "黄色", "黑色"};
     private String tag = "红色";
-    final String gitems[] = {"1磅", "2磅", "3磅", "4磅", "5磅", "6磅","7磅"};
+    final String gitems[] = {"1磅", "3磅", "5磅", "7磅", "9磅", "11磅","13磅"};
     private String gtag = "1磅";
     private String PNmae;
     private BottomNavigationView bottomNavigationView;
@@ -179,23 +179,23 @@ public class GraffitiActivity extends AppCompatActivity implements BottomNavigat
                     case "1磅":
                         paint.setStrokeWidth(1);
                         break;
-                    case "2磅":
-                        paint.setStrokeWidth(2);
-                        break;
                     case "3磅":
                         paint.setStrokeWidth(3);
-                        break;
-                    case "4磅":
-                        paint.setStrokeWidth(4);
                         break;
                     case "5磅":
                         paint.setStrokeWidth(5);
                         break;
-                    case "6磅":
-                        paint.setStrokeWidth(6);
-                        break;
                     case "7磅":
                         paint.setStrokeWidth(7);
+                        break;
+                    case "9磅":
+                        paint.setStrokeWidth(9);
+                        break;
+                    case "11磅":
+                        paint.setStrokeWidth(11);
+                        break;
+                    case "13磅":
+                        paint.setStrokeWidth(13);
                         break;
                     default:
                         break;
