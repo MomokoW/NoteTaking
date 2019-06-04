@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,87 +10,124 @@
     tools:context=".Activity.UpdateInformationActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        >
-    <TextView
-        android:id="@+id/headChangeButton"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="注册个人信息"
-        />
-
-    <EditText
-        android:id="@+id/nameChangeEdit"
-        android:layout_height="0dp"
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:hint="请输入昵称"
-        android:background="@drawable/edit_shape"
-        android:inputType="text"
-        />
-    <Space
-        android:layout_height="0dp"
-        android:layout_width="match_parent"
-        android:layout_weight="0.5"
-        />
-
-    <EditText
-        android:id="@+id/passwordOldEdit"
-        android:layout_height="0dp"
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:inputType="textPassword"
-        android:background="@drawable/edit_shape"
-        android:hint="请输入原密码"
-        />
-    <Space
-        android:layout_height="0dp"
-        android:layout_width="match_parent"
-        android:layout_weight="0.5"
-        />
-
-
-
-    <EditText
-        android:id="@+id/passwordNew1Edit"
-        android:layout_height="0dp"
-        android:layout_width="match_parent"
-        android:inputType="textPassword"
-        android:background="@drawable/edit_shape"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="请输入新密码" />
-    <Space
-        android:layout_height="0dp"
-        android:layout_width="match_parent"
-        android:layout_weight="0.5"
-        />
-    <EditText
-        android:id="@+id/passwordNew2Edit"
-        android:layout_height="0dp"
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/edit_shape"
-        android:hint="请再次输入新密码"
-        android:inputType="text"
-        />
-    <Space
-        android:layout_height="0dp"
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        />
-                <LinearLayout
+        android:layout_marginBottom="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/headChangeButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="修改个人信息"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                >
+                <EditText
+                    android:id="@+id/nameChangeEdit"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:inputType="text"
+                    android:background="@drawable/edit_shape"
+                    android:hint="请输入昵称"
+                    android:layout_weight="3"
+                    />
+            </LinearLayout>
+            <Space
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="0.3"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                >
+                <EditText
+                    android:id="@+id/passwordOldEdit"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:hint="请输入原密码"
+                    android:inputType="textPassword"
+                    android:background="@drawable/edit_shape"
+                    android:layout_weight="3"
+                    />
+            </LinearLayout>
+            <Space
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="0.3"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                >
+
+                <EditText
+                    android:id="@+id/passwordNew1Edit"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:hint="请输入新密码"
+                    android:background="@drawable/edit_shape"
+                    android:inputType="textPassword"
+                    />
+            </LinearLayout>
+            <Space
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="0.3"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                >
+                <EditText
+                    android:id="@+id/passwordNew2Edit"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:hint="再次输入新密码"
+                    android:background="@drawable/edit_shape"
+                    android:inputType="textPassword"
+                    />
+            </LinearLayout>
+            <Space
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="0.3"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.8"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal"
                 >
                 <Button
@@ -108,5 +146,6 @@
             android:layout_weight="2"
             android:orientation="vertical">
         </LinearLayout>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
