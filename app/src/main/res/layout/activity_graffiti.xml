@@ -16,7 +16,6 @@
             android:layout_gravity="left"
             android:id="@+id/btn_back"
             android:src="@mipmap/back"
-            android:onClick="back"
             android:background="@mipmap/skin6"
             />
         <ImageButton
@@ -25,7 +24,6 @@
             android:layout_gravity="right"
             android:src="@mipmap/yes"
             android:paddingRight="15dp"
-            android:onClick="save"
             android:id="@+id/save"
             android:background="@mipmap/skin6"
             />

@@ -21,6 +21,8 @@ import android.widget.TextView;
 
 import com.example.notes.notetaking.Adapter.MyFragmentPagerAdapter;
 import com.example.notes.notetaking.R;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechUtility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements
             initPermission();
         }
         // 将“xxxxxxx”替换成申请的 APPID（记事宝id，不能更改）
-        //SpeechUtility.createUtility(this, SpeechConstant.APPID +"=5c8a008b");
+        SpeechUtility.createUtility(this, SpeechConstant.APPID +"=5ceb9730");
     }
 
     private void bindViews() {

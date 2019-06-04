@@ -5,6 +5,7 @@ package com.example.notes.notetaking.Util;
  */
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -19,6 +20,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -46,7 +48,9 @@ public class GraffitiActivity extends AppCompatActivity implements BottomNavigat
     final String gitems[] = {"1磅", "3磅", "5磅", "7磅", "9磅", "11磅","13磅"};
     private String gtag = "1磅";
     private String PNmae;
+    private String filePath;
     private BottomNavigationView bottomNavigationView;
+    private ImageButton btnOk,btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +68,11 @@ public class GraffitiActivity extends AppCompatActivity implements BottomNavigat
     public void initview(){
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.addgraffiti_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        btnOk = (ImageButton)findViewById(R.id.save);
+        btnBack = (ImageButton)findViewById(R.id.btn_back);
+        btnOk.setOnClickListener(this);
+        btnBack.setOnClickListener(this);
+
     }
 
     @Override
@@ -104,10 +113,6 @@ public class GraffitiActivity extends AppCompatActivity implements BottomNavigat
                 break;
         }
         return true;
-    }
-    //返回上个界面
-    public void back(View view){
-          finish();
     }
     //清除界面
     public void delete() {
@@ -208,7 +213,7 @@ public class GraffitiActivity extends AppCompatActivity implements BottomNavigat
     }
 
     //将当前绘制的图形保存到文件
-    public String save(View view) {
+    public String save() {
         if (bitmap == null) {
             Toast.makeText(this, "没有图片可以保存", Toast.LENGTH_SHORT).show();
             return null;
@@ -216,7 +221,7 @@ public class GraffitiActivity extends AppCompatActivity implements BottomNavigat
         //创建一个文件对象，为了防止重名，用事件戳，命名
         PNmae = "pic" + System.currentTimeMillis() + ".jpg";
         File file = new File(getFilesDir(), PNmae);
-
+        filePath = file.getAbsolutePath();
         FileOutputStream stream = null;
         try {
             stream = new FileOutputStream(file);
@@ -265,6 +270,19 @@ public class GraffitiActivity extends AppCompatActivity implements BottomNavigat
 
     @Override
     public void onClick(View v) {
+        switch(v.getId())
+        {
+            case R.id.btn_back:
+                finish();
+                break;
+            case R.id.save:
+                save();
+                Intent mIntent=new Intent();//没有任何参数（意图），只是用来传递数据
+                mIntent.putExtra("graffiti_data_return",filePath);
+                setResult(RESULT_OK,mIntent);
+                finish();
+            break;
 
+        }
     }
 }
