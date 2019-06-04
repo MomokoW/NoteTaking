@@ -3,6 +3,7 @@ package com.example.notes.notetaking.Fragment;
 
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -10,6 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
@@ -239,9 +241,31 @@ public class Settings extends Fragment {
         String imagePath=null;
         Uri uri=data.getData();
         if(DocumentsContract.isDocumentUri(getActivity(),uri)){
+            //如果是document类型的Uri，则通过document id处理
+            String docId = DocumentsContract.getDocumentId(uri);
+            if("com.android.providers.media.documents".equals(uri.getAuthority())){
+                String id=docId.split(":")[1];
+                String selection = MediaStore.Images.Media._ID+"="+id;
 
+            }
+        }
+
+    }*/
+    //获得图片路径
+    /*
+    public String getRealPathFromUri(Context context,Uri uri){
+        int sdkVersion = Build.VERSION.SDK_INT;
+        if(sdkVersion>=19){
+            //return
         }
     }
     */
+    //API19以下
+    /*
+    public String getRealPathFromUriBelowAPI19(Context context,Uri uri){
+        return  getActivity().getDa
+    }
+    */
+
 
 }
