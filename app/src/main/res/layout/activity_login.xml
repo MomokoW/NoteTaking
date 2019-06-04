@@ -18,15 +18,14 @@
         android:layout_gravity="center">
 
         <Space
-            android:layout_height="0dp"
             android:layout_width="match_parent"
-            android:layout_weight="0.5"
-            />
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5" />
         <com.example.notes.notetaking.Util.CircleImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
-            android:src="@mipmap/login1" />
+            android:src="@mipmap/login6" />
         <Space
             android:layout_height="0dp"
             android:layout_width="match_parent"
@@ -54,21 +53,26 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5" />
+            android:layout_weight="2" />
 
 
         <EditText
+            android:id="@+id/idInput"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="11"
+            android:background="@drawable/edit_shape"
+            android:hint="请输入账号"
+           />
 
-        android:id="@+id/idInput"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:hint="请输入账号"
-            android:theme="@style/MyEditText"/>
-
-
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3" />
         <EditText
             android:id="@+id/passwordInput"
             android:layout_width="match_parent"
@@ -77,49 +81,48 @@
             android:ems="10"
             android:hint="请输入密码"
             android:inputType="textPassword"
-            android:theme="@style/MyEditText"></EditText>
+            android:background="@drawable/edit_shape"
+            android:maxLength="16">
+        </EditText>
+        <Space
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="2"
+            />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5" />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5" />
+            android:layout_weight="1" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="169dp"
-            android:layout_gravity="center"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/buttonLogin"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/btn_shape"
                 android:text="登录" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/buttonReg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:background="#00000000"
+                android:background="@drawable/btn_shape"
                 android:text="注册" />
 
         </LinearLayout>
 
 
+        <Space
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            />
     </LinearLayout>
-
 </LinearLayout>

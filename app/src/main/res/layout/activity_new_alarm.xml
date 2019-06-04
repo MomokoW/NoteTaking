@@ -7,21 +7,15 @@
     android:orientation="vertical"
     tools:context=".Activity.NewAlarmActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/alarm_toolbar"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@mipmap/skin3">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:id="@+id/btn_alarm_ok"
-            android:text="确定"
-            android:background="#00000000"
-            />
-    </android.support.v7.widget.Toolbar>
-
+        android:layout_height="50dp"
+        android:background="@null"
+        android:gravity="center"
+        android:paddingStart="15dp"
+        android:text="@string/new_alarm"
+        android:textColor="@color/select_title_text"
+        android:textSize="15sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,18 +24,8 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="15dp"
-            android:background="@null"
-            android:gravity="center_vertical"
-            android:text="@string/alarmbiaoti"
-            android:textColor="@color/current_time_text"
-            android:textSize="15sp"
-            android:layout_weight="0.1"/>
         <EditText
-            android:id="@+id/alarmbiaoti"
+            android:id="@+id/alarmbiaoti_new"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="15dp"
@@ -49,6 +33,7 @@
             android:gravity="center_vertical"
             android:textColor="@color/selected_time_text"
             android:textSize="15sp"
+            android:hint="请输入标题"
             android:layout_weight="1"/>
     </LinearLayout>>
     <TextView
@@ -61,7 +46,7 @@
         android:textSize="15sp" />
 
     <LinearLayout
-        android:id="@+id/ll_date"
+        android:id="@+id/ll_date_new"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/btn_unselect"
@@ -84,7 +69,7 @@
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/tv_new_time"
+            android:id="@+id/tv_new_time_new"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="15dp"
@@ -98,7 +83,7 @@
 
 
     <LinearLayout
-        android:id="@+id/ll_time"
+        android:id="@+id/ll_time_new"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/btn_unselect"
@@ -120,7 +105,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1" />
         <TextView
-            android:id="@+id/tv_selected_time"
+            android:id="@+id/tv_selected_time_new"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="15dp"
@@ -139,33 +124,26 @@
         android:paddingStart="15dp"
         android:textColor="@color/select_title_text"
         android:textSize="15sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:background="@color/btn_unselect"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="15dp"
-            android:background="@null"
-            android:gravity="center_vertical"
-            android:text="@string/alarmtext"
-            android:textColor="@color/current_time_text"
-            android:textSize="15sp"
-            android:layout_weight="0.1"/>
         <EditText
-            android:id="@+id/alarmtext"
+            android:id="@+id/alarmtext_new"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
+            android:layout_weight="1"
             android:background="@null"
             android:gravity="center_vertical"
+            android:hint="请输入备注"
+            android:minLines="2"
             android:textColor="@color/selected_time_text"
-            android:textSize="15sp"
-            android:layout_weight="1"/>
+            android:textSize="15sp" />
     </LinearLayout>>
     <TextView
         android:layout_width="match_parent"
@@ -185,14 +163,30 @@
             android:layout_height="match_parent"
             android:layout_width="0dp"
             android:layout_weight="0.5"/>
-
-
+        <Button
+            android:id="@+id/btn_set_new"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_shape"
+            android:text="确定"
+            />
         <Space
             android:layout_height="match_parent"
             android:layout_width="0dp"
             android:layout_weight="0.5"/>
-
-
+        <Button
+            android:id="@+id/btn_cancel_new"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:text="取消"
+            android:background="@drawable/btn_shape"
+            />
+        <Space
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"/>
     </LinearLayout>
 
 </LinearLayout>

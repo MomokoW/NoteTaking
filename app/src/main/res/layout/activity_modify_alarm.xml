@@ -7,52 +7,15 @@
     android:orientation="vertical"
     tools:context=".Activity.ModifyAlarmActivity">
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_cancel"
-            android:layout_height="wrap_content"
-            android:layout_width="10dp"
-            android:layout_weight="1"
-            android:text="取消"
-            android:background="@drawable/btn_shape"
-            />
-
-
-        <Space
-            android:layout_height="match_parent"
-            android:layout_width="0dp"
-            android:layout_weight="0.5"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:background="@null"
-            android:gravity="center"
-            android:paddingStart="15dp"
-            android:text="@string/modify_alarm"
-            android:textColor="@color/bg_black"
-            android:textSize="15sp" />
-
-        <Space
-            android:layout_height="match_parent"
-            android:layout_width="0dp"
-            android:layout_weight="0.5"/>
-
-        <Button
-            android:id="@+id/btn_set"
-            android:layout_height="wrap_content"
-            android:layout_width="10dp"
-            android:layout_weight="1"
-            android:background="#00000000"
-            android:text="确定"
-            />
-
-    </LinearLayout>
-
+        android:layout_height="50dp"
+        android:background="@null"
+        android:gravity="center"
+        android:paddingStart="15dp"
+        android:text="@string/modify_alarm"
+        android:textColor="@color/select_title_text"
+        android:textSize="15sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,8 +34,8 @@
             android:textColor="@color/current_time_text"
             android:textSize="15sp"
             android:layout_weight="0.1"/>
-        <TextView
-            android:id="@+id/alarmbiaoti"
+        <EditText
+            android:id="@+id/alarmbiaoti_modify"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="15dp"
@@ -91,7 +54,7 @@
         android:textSize="15sp" />
 
     <LinearLayout
-        android:id="@+id/ll_date"
+        android:id="@+id/ll_date_modify"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/btn_unselect"
@@ -114,7 +77,7 @@
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/tv_new_time"
+            android:id="@+id/tv_new_time_modify"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="15dp"
@@ -128,7 +91,7 @@
 
 
     <LinearLayout
-        android:id="@+id/ll_time"
+        android:id="@+id/ll_time_modify"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/btn_unselect"
@@ -150,7 +113,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1" />
         <TextView
-            android:id="@+id/tv_selected_time"
+            android:id="@+id/tv_selected_time_modify"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="15dp"
@@ -187,8 +150,8 @@
             android:textColor="@color/current_time_text"
             android:textSize="15sp"
             android:layout_weight="0.1"/>
-        <TextView
-            android:id="@+id/alarmtext"
+        <EditText
+            android:id="@+id/alarmtext_modify"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="15dp"
@@ -197,9 +160,49 @@
             android:textColor="@color/selected_time_text"
             android:textSize="15sp"
             android:layout_weight="1"/>
-    </LinearLayout><![CDATA[>
+    </LinearLayout>>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:paddingStart="15dp"
+        android:textColor="@color/select_title_text"
+        android:textSize="15sp" />
 
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <Space
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"/>
+        <Button
+            android:id="@+id/btn_set_modify"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_shape"
+            android:text="确定"
+            />
+        <Space
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"/>
+        <Button
+            android:id="@+id/btn_cancel_modify"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:text="取消"
+            android:background="@drawable/btn_shape"
+            />
+        <Space
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"/>
+    </LinearLayout>
 
-
-    ]]>
 </LinearLayout>

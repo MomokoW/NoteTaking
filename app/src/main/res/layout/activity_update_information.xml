@@ -1,215 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/skin1"
+    android:orientation="vertical"
     tools:context=".Activity.UpdateInformationActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/updateInforBtn_back"
-                android:layout_width="10dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="取消"
-                android:background="@drawable/btn_shape"
-                />
-
-            <Space
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"/>
-
-            <TextView
-                android:id="@+id/headChangeButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="0.8"
-                android:gravity="center"
-                android:textColor="@color/bg_black"
-                android:text="修改个人信息"
-                />
-
-            <Space
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"/>
-
-
-            <Button
-                android:id="@+id/updateInforBtn"
-                android:layout_width="10dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="确定"
-                android:background="#00000000"
-                />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                />
-
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/headphotoView_mine"
-                android:layout_height="80dp"
-                android:layout_width="80dp"
-                app:riv_oval="true"
-                android:src="@mipmap/qqphoto"
-                app:riv_border_color="#333333"
-                app:riv_border_width="2dp"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"/>
-
-            <Space
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                />
-        </LinearLayout>
-        <Space
-            android:layout_height="0dp"
-            android:layout_width="match_parent"
-            android:layout_weight="0.4"/>
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
             android:orientation="vertical">
-
+            <TextView
+                android:id="@+id/headChangeButton"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="修改个人信息"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 >
-                <TextView
-                    android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="昵称"
-                    />
                 <EditText
                     android:id="@+id/nameChangeEdit"
                     android:layout_height="match_parent"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:inputType="text"
+                    android:background="@drawable/edit_shape"
+                    android:hint="请输入昵称"
                     android:layout_weight="3"
-                    android:theme="@style/MyEditText"
                     />
             </LinearLayout>
+            <Space
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="0.3"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal"
                 >
-                <TextView
-                    android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="原密码"
-                    />
                 <EditText
                     android:id="@+id/passwordOldEdit"
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
+                    android:hint="请输入原密码"
                     android:inputType="textPassword"
+                    android:background="@drawable/edit_shape"
                     android:layout_weight="3"
-                    android:theme="@style/MyEditText"
                     />
             </LinearLayout>
+            <Space
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="0.3"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal"
                 >
-                <TextView
-                    android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="新密码"
-                    />
+
                 <EditText
                     android:id="@+id/passwordNew1Edit"
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="3"
+                    android:hint="请输入新密码"
+                    android:background="@drawable/edit_shape"
                     android:inputType="textPassword"
-                    android:theme="@style/MyEditText"
                     />
             </LinearLayout>
+            <Space
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="0.3"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal"
                 >
-                <TextView
-                    android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="再次输入"
-                    />
                 <EditText
                     android:id="@+id/passwordNew2Edit"
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="3"
+                    android:hint="再次输入新密码"
+                    android:background="@drawable/edit_shape"
                     android:inputType="textPassword"
-                    android:theme="@style/MyEditText"
                     />
             </LinearLayout>
             <Space
                 android:layout_height="0dp"
                 android:layout_width="match_parent"
-                android:layout_weight="0.5"/>
-
+                android:layout_weight="0.3"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.8"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal"
                 >
-                <Space
+                <Button
+                    android:id="@+id/updateInforBtn"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"/>
-
-                <Space
-                    android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"/>
+                    android:layout_weight="0.5"
+                    android:text="确定"
+                    android:background="@drawable/btn_shape"
+                    />
             </LinearLayout>
-            <Space
-                android:layout_height="0dp"
-                android:layout_width="match_parent"
-                android:layout_weight="2"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
         </LinearLayout>
     </LinearLayout>
 

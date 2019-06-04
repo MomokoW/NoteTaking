@@ -18,18 +18,17 @@ public class AlarmAdapter extends BaseAdapter {
     LinkedList<AlarmItem> alarmItems= new LinkedList<AlarmItem>();
     //AlarmAdapter的构造函数，一个context类型的参数，也就是一个activity
     //传进去的就是alarmlistactivitty
-    public AlarmAdapter(Context context)
+    public AlarmAdapter(Context context, LinkedList<AlarmItem> alarmItems)
     {
         this.mContext = context;
         mLayoutInflater = LayoutInflater.from(context);
-        for(int i = 0; i < 10; i++)
-            alarmItems.add(new AlarmItem("这是标题","2099-09-09   10:11:11",
-                "2099-09-09   10:11:11","这是内容"));
+        this.alarmItems = alarmItems;
+
     }
 
-    public void deleteAlarm(AlarmItem alarmItem)
+    public void deleteAlarm(int position)
     {
-        alarmItems.remove(alarmItem);
+        alarmItems.remove(position);
     }
 
     @Override
