@@ -18,7 +18,10 @@ public class NotesDB extends SQLiteOpenHelper {
     public static final String NOTES_ID = "notes_id";     //笔记的id，自增
     public static final String NOTES_TAG = "notes_tag";   //笔记的标签
     public static final String NOTES_TIME = "notes_time"; //笔记的创建时间
-    public static final String MEDIA_PATH = "media_path"; //笔记中图片，音频，视频的保存路径
+    public static final String NOTES_PIC = "notes_pic";   //笔记中的图片
+    public static final String NOTES_AUDIO = "notes_audio";  //笔记中的音频
+    public static final String NOTES_VIDEO = "notes_video";  //笔记中的视频
+    public static final String NOTES_GRAFIITI = "notes_graffiti";  //笔记中的涂鸦路径
     public static final String NOTES_CONTENT = "notes_content";//笔记内容
     public static final String NOTES_STATUS = "notes_status";   //笔记的状态，0未锁定，1锁定
 
@@ -39,7 +42,8 @@ public class NotesDB extends SQLiteOpenHelper {
                 " UNIQUE(" + USER_ID + "))");
         db.execSQL("CREATE TABLE " + TABLE_NOTE + "(" + NOTES_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + USER_ID + " CHAR(11) NOT NULL," + NOTES_TAG + " CHAR(10) NOT NULL," + NOTES_TIME +
-                " TEXT NOT NULL," + NOTES_CONTENT + " TEXT NOT NULL," + MEDIA_PATH + " TEXT," + NOTES_STATUS
+                " TEXT NOT NULL," + NOTES_CONTENT + " TEXT NOT NULL," +  NOTES_PIC + " TEXT," +
+                NOTES_AUDIO + " TEXT," + NOTES_VIDEO + " TEXT," + NOTES_GRAFIITI + " TEXT," + NOTES_STATUS
                 + " CHAR(2) NOT NULL," +
                 "FOREIGN KEY(" + USER_ID + ") REFERENCES " + TABLE_USER + "(" + USER_ID + ") ON DELETE CASCADE)");
 
