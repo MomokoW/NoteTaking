@@ -1,7 +1,6 @@
 package com.example.notes.notetaking.Activity;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.DialogInterface;
@@ -27,14 +26,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.notes.notetaking.Manager.NotesDB;
-import com.example.notes.notetaking.Model.MainUser;
 import com.example.notes.notetaking.R;
 import com.example.notes.notetaking.Util.DateTime;
+import com.example.notes.notetaking.Util.GraffitiActivity;
 import com.example.notes.notetaking.Util.MapUtils;
 
 import java.io.ByteArrayOutputStream;
@@ -92,12 +92,12 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        ImageButton btnSave;
         //初始化按钮及变量
         dateNow = DateTime.getTime();
         timeNow = dateNow.substring(12);
 
-        btnSave = (Button)findViewById(R.id.btn_ok);
+        btnSave = (ImageButton)super.findViewById(R.id.btn_ok);
         addTag = (Button)findViewById(R.id.tag);
         editText = (EditText)findViewById(R.id.edit_note);
         timeTv = (TextView)findViewById(R.id.showtime);
@@ -156,9 +156,18 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
             case R.id.picture:
                 choosePic();
                 break;
+            case R.id.graffiti:
+                graffiti();
+                break;
         }
         return false;
     }
+
+    private void graffiti() {
+         Intent intent = new Intent(getApplicationContext(),GraffitiActivity.class);
+        startActivity(intent);
+    }
+
 
     public void choosePic() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
