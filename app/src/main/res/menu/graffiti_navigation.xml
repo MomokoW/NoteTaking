@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/gcolor"
+        android:icon="@mipmap/gcolor"
+        android:title="@string/tab_menu_gcolor" />
+    <item
+        android:id="@+id/gfont"
+        android:icon="@mipmap/font"
+        android:title="@string/tab_menu_gfont"/>
+    <item
+        android:id="@+id/gclear"
+        android:icon="@mipmap/gclear"
+        android:title="@string/tab_menu_gclear" />
+    <item
+        android:id="@+id/gdelete"
+        android:icon="@mipmap/gdelete"
+        android:title="@string/tab_menu_gdelete" />
+
+</menu>
