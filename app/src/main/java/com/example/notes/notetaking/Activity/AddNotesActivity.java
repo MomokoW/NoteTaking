@@ -3,6 +3,7 @@ package com.example.notes.notetaking.Activity;
 import android.Manifest;
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -43,11 +44,18 @@ import com.example.notes.notetaking.Util.DateTime;
 import com.example.notes.notetaking.Util.FilePathUtils;
 import com.example.notes.notetaking.Util.GraffitiActivity;
 import com.example.notes.notetaking.Util.MapUtils;
+import com.google.gson.Gson;
+import com.iflytek.cloud.RecognizerResult;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechError;
+import com.iflytek.cloud.ui.RecognizerDialog;
+import com.iflytek.cloud.ui.RecognizerDialogListener;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class AddNotesActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -58,6 +66,9 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
     private final int TAKE_PHOTO = 1;
     private final int CROP_PHOTO = 2;
     private final int REQUST_VIDEO = 3;
+
+    //调用涂鸦界面的请求参数
+    private final int REQUEST_GRQFFITI = 4;
     private Bitmap bmp;
     private int bmpflag=0;
 
@@ -83,7 +94,7 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
     private EditText editText;
     private TextView timeTv;
     private NotesDB notesDB;
-    private ImageView ivContent,iv;
+    private ImageView ivContent,iv,ivGraffiti;
     private SQLiteDatabase dbWriter;
     private CustomVideoView video;
     private BottomNavigationView bottomNavigationView;
@@ -118,6 +129,7 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
         editText = (EditText)findViewById(R.id.edit_note);
         timeTv = (TextView)findViewById(R.id.showtime);
         ivContent = (ImageView)findViewById(R.id.imageContent1);
+        ivGraffiti = (ImageView)findViewById(R.id.imageGraffti);
         timeTv.setText(timeNow);
 
         //给按钮添加绑定事件
@@ -168,7 +180,7 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
     }
     private void graffiti() {
         Intent intent = new Intent(getApplicationContext(),GraffitiActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,REQUEST_GRQFFITI);
     }
     //得到便笺的分类
     public void setTag() {
@@ -260,6 +272,9 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
                 break;
             case R.id.graffiti:
                 graffiti();
+                break;
+            case R.id.audio:
+                initSpeech(this);
                 break;
         }
         return false;
@@ -384,8 +399,8 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
                 }
             }
         }
-        if (resultCode == RESULT_OK){
-            if (requestCode == REQUST_VIDEO){
+        if (requestCode == REQUST_VIDEO){
+           if (resultCode == RESULT_OK){
                 iv.setVisibility(View.VISIBLE);
                 video.setVisibility(View.VISIBLE);
                 Uri uri = data.getData();
@@ -393,6 +408,14 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
 //                Bitmap bitmap = getVideoBitmap(videoPath);
                 Bitmap bitmap = getVideoBitmap2(uri);
                 iv.setImageBitmap(bitmap);
+            }
+        }
+        if(requestCode == REQUEST_GRQFFITI) {
+            if(resultCode == RESULT_OK) {
+                graffiti = data.getStringExtra("graffiti_data_return");
+                Bitmap bitmap = BitmapFactory.decodeFile(graffiti);
+                ivGraffiti.setVisibility(View.VISIBLE);
+                ivGraffiti.setImageBitmap(bitmap);
             }
         }
     }//the onActivityResult() end
@@ -416,6 +439,72 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
             return null;
         }
     }
+
+    //语音识别模块
+    //语音识别当前的文字
+    /**
+     * 初始化语音识别
+     */
+    public void initSpeech(final Context context) {
+        //1.创建RecognizerDialog对象
+        RecognizerDialog mDialog = new RecognizerDialog(context, null);
+        //2.设置accent、language等参数
+        mDialog.setParameter(SpeechConstant.LANGUAGE, "zh_cn");
+        mDialog.setParameter(SpeechConstant.ACCENT, "mandarin");
+        //3.设置回调接口
+        mDialog.setListener(new RecognizerDialogListener() {
+            @Override
+            public void onResult(RecognizerResult recognizerResult, boolean isLast) {
+                if (!isLast) {
+                    //解析语音
+                    //返回的result为识别后的汉字,直接赋值到TextView上即可
+                    String result = parseVoice(recognizerResult.getResultString());
+                    content = editText.getText().toString()+" "+result;
+                    editText.setText(content);
+                }
+            }
+            @Override
+            public void onError(SpeechError speechError) {
+            }
+        });
+        //4.显示dialog，接收语音输入
+        mDialog.show();
+    }
+    public void startRecod(final Context context)
+    {
+
+    }
+
+    /**
+     * 解析语音json
+     */
+    public String parseVoice(String resultString) {
+        Gson gson = new Gson();
+        Voice voiceBean = gson.fromJson(resultString, Voice.class);
+
+        StringBuffer sb = new StringBuffer();
+        ArrayList<Voice.WSBean> ws = voiceBean.ws;
+        for (Voice.WSBean wsBean : ws) {
+            String word = wsBean.cw.get(0).w;
+            sb.append(word);
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 语音对象封装
+     */
+    public class Voice {
+        public ArrayList<WSBean> ws;
+        public class WSBean {
+            public ArrayList<CWBean> cw;
+        }
+        public class CWBean {
+            public String w;
+        }
+    }
+
+
     //添加便笺到程序中
     private void addNotes() {
         ContentValues cv = new ContentValues();
