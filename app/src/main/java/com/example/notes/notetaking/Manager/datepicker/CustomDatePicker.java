@@ -42,8 +42,6 @@ public class CustomDatePicker implements View.OnClickListener, PickerView.OnSele
             mDayUnits = new ArrayList<>(),
             mHourUnits = new ArrayList<>(),
             mMinuteUnits = new ArrayList<>();
-
-    //数值处理类
     private DecimalFormat mDecimalFormat = new DecimalFormat("00");
 
     private boolean mCanShowPreciseTime;
