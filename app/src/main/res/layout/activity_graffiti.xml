@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/note_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@mipmap/skin3">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:id="@+id/btn_back"
+            android:src="@mipmap/back"
+            android:onClick="back"
+            android:background="@mipmap/skin6"
+            />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:src="@mipmap/yes"
+            android:paddingRight="15dp"
+            android:onClick="save"
+            android:id="@+id/save"
+            android:background="@mipmap/skin6"
+            />
+    </android.support.v7.widget.Toolbar>
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        />
+    <android.support.design.widget.BottomNavigationView
+        app:labelVisibilityMode="labeled"
+        android:id="@+id/addgraffiti_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        app:itemIconTint="@drawable/bottom_navigation_selector"
+        app:itemTextColor="@drawable/bottom_navigation_selector"
+        android:background="@mipmap/skin3"
+        app:menu="@menu/graffiti_navigation" />
+
+</LinearLayout>

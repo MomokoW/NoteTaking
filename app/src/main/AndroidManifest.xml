@@ -19,6 +19,7 @@
         <activity android:name=".Activity.MainActivity">
 
         </activity>
+        <activity android:name=".Util.GraffitiActivity"/>
         <activity android:name=".Activity.NewAlarmActivity" />
         <activity android:name=".Activity.AddNotesActivity" />
         <activity android:name=".Activity.LoginActivity" >
