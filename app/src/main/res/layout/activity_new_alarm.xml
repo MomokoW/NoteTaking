@@ -71,6 +71,7 @@
             android:layout_height="match_parent"
             android:layout_marginEnd="15dp"
             android:background="@drawable/edit_shape"
+            android:theme="@style/MyEditText"
             android:gravity="center_vertical"
             android:textColor="@color/black"
             android:textSize="15sp"
@@ -183,6 +184,7 @@
             android:gravity="center_vertical"
             android:hint="请输入备注"
             android:minLines="2"
+            android:theme="@style/MyEditText"
             android:textColor="@color/black"
             android:textSize="15sp" />
     </LinearLayout>>

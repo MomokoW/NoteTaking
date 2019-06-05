@@ -80,6 +80,7 @@
             android:gravity="center_vertical"
             android:textColor="@color/black"
             android:textSize="15sp"
+            android:theme="@style/MyEditText"
             android:layout_weight="1"/>
     </LinearLayout>>
     <TextView
@@ -196,6 +197,7 @@
             android:gravity="center_vertical"
             android:textColor="@color/black"
             android:textSize="15sp"
+            android:theme="@style/MyEditText"
             android:layout_weight="1"/>
     </LinearLayout>>
     <TextView

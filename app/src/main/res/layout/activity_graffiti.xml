@@ -10,7 +10,7 @@
         android:id="@+id/note_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@mipmap/skin3">
+        android:background="@mipmap/head_skin">
 
         <ImageButton
             android:id="@+id/btn_back"
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:background="@mipmap/skin6"
+            android:background="@null"
             android:paddingRight="15dp"
             android:src="@mipmap/yes" />
     </android.support.v7.widget.Toolbar>
@@ -52,8 +52,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        app:itemIconTint="@drawable/bottom_navigation_selector"
-        app:itemTextColor="@drawable/bottom_navigation_selector"
+        app:itemIconTint="@color/orange"
+        app:itemTextColor="@color/yellow"
         android:background="@mipmap/bottom_skin"
         app:menu="@menu/graffiti_navigation" />
 

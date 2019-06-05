@@ -29,14 +29,15 @@
         <!--搜索框-->
         <EditText
             android:id="@+id/edit_search"
-            android:layout_width="wrap_content"
-            android:layout_height="41dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:background="@null"
             android:drawableLeft="@drawable/search"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
             android:hint="请输入关键词查询！"
             android:imeOptions="actionSearch"
+            android:theme="@style/MyEditText"
             android:singleLine="true" />
 
         <ListView
@@ -44,6 +45,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:divider="@null"
+            android:dividerHeight="10dp"
             android:paddingLeft="15dp">
         </ListView>
     </LinearLayout>

@@ -29,7 +29,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="20dp"
-            android:src="@mipmap/qqphoto"
+            android:src="@mipmap/appicon2"
             app:riv_border_color="#333333"
             app:riv_border_width="2dp"
             app:riv_oval="true" />
