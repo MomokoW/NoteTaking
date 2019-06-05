@@ -115,8 +115,10 @@ public class AlarmsList extends Fragment implements View.OnClickListener{
                                         +" where user_id='"+MainUser.user.getId()+"' and fut_time = '"
                                         +alarmitem.xiangyingshijian+"';";
                                 deleteData(dbReader,sql);
-                                alarmAdapter.deleteAlarm(position);
-                                alarmAdapter.notifyDataSetChanged();
+                                alarmItems.remove(alarmitem);
+                                AlarmAdapter adapter = new AlarmAdapter(getContext(),alarmItems);
+                                lv.setAdapter(adapter);
+
                             }
                         }).create();
                 alert.show();
