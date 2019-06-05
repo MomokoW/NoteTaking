@@ -23,6 +23,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -74,6 +75,7 @@ public class CheckNoteActivity extends AppCompatActivity implements BottomNaviga
     private String picPath = "";
     private String audioPath = "";
     private String videoPath = "";
+    private String videoPast = "";
     private String graffiti = "";
     private int id;
 
@@ -173,7 +175,7 @@ public class CheckNoteActivity extends AppCompatActivity implements BottomNaviga
         tag = intent.getStringExtra(NotesDB.NOTES_TAG);
         timePast = intent.getStringExtra(NotesDB.NOTES_TIME).substring(12);
         picPath = intent.getStringExtra(NotesDB.NOTES_PIC);
-        videoPath = intent.getStringExtra(NotesDB.NOTES_VIDEO);
+        videoPast = intent.getStringExtra(NotesDB.NOTES_VIDEO);
         graffiti = intent.getStringExtra(NotesDB.NOTES_GRAFIITI);
 
         //设置界面上控件的图片
@@ -189,10 +191,11 @@ public class CheckNoteActivity extends AppCompatActivity implements BottomNaviga
         }
 
 //        //设置界面上控件的视频图片等显示
-//        if(!videoPath.equals("")) {
+//        if(!videoPast.equals("")) {
+//
 //            iv.setVisibility(View.VISIBLE);
 //            video.setVisibility(View.VISIBLE);
-//            File outputImage = new File(videoPath);
+//            File outputImage = new File(videoPast);
 //            Uri videoUri = null;
 //            if (Build.VERSION.SDK_INT >= 24) {
 //                //兼容android7.0 使用共享文件的形式
@@ -461,6 +464,7 @@ public class CheckNoteActivity extends AppCompatActivity implements BottomNaviga
                 iv.setVisibility(View.VISIBLE);
                 video.setVisibility(View.VISIBLE);
                 Uri uri = data.getData();
+                videoPath = FilePathUtils.getRealPathFromUri(this,uri);
                 video.setVideoURI(uri);
 //                Bitmap bitmap = getVideoBitmap(videoPath);
                 Bitmap bitmap = getVideoBitmap2(uri);

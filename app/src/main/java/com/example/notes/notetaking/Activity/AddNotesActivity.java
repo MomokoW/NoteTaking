@@ -404,6 +404,8 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
                 iv.setVisibility(View.VISIBLE);
                 video.setVisibility(View.VISIBLE);
                 Uri uri = data.getData();
+                videoPath = FilePathUtils.getRealPathFromUri(this,uri);
+                Log.e("videoPath",videoPath);
                 video.setVideoURI(uri);
 //                Bitmap bitmap = getVideoBitmap(videoPath);
                 Bitmap bitmap = getVideoBitmap2(uri);
