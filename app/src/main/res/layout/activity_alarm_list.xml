@@ -30,6 +30,8 @@
             android:id="@+id/alarmlist"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:divider="@null"
+            android:dividerHeight="5dp"
             android:layout_weight="1"
             android:paddingLeft="15dp" />
     </LinearLayout>
