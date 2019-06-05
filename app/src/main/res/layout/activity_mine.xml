@@ -103,11 +103,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical">
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            />
+
         <Button
             android:id="@+id/logoutButton_mine"
             android:layout_width="match_parent"
@@ -128,6 +124,12 @@
             android:layout_weight="1"
             android:text="注销帐号"
             android:background="@drawable/btn_shape"
+            />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
             />
     </LinearLayout>
 </LinearLayout>

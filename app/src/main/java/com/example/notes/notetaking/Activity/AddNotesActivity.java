@@ -143,6 +143,7 @@ public class AddNotesActivity extends AppCompatActivity implements BottomNavigat
         //初始化底部导航栏
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.addnotes_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        //bottomNavigationView.setItemIconTintList(null);  //icon使用原色
 
         //播放视频控件
         MediaController controller = new MediaController(this);

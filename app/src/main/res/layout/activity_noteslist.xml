@@ -23,7 +23,7 @@
         <EditText
             android:id="@+id/edit_search"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="41dp"
             android:background="@null"
             android:drawableLeft="@drawable/search"
             android:drawablePadding="10dp"
@@ -45,7 +45,7 @@
         android:id="@+id/addNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
+        android:layout_gravity="end|center_vertical"
         android:layout_margin="16dp"
         android:src="@mipmap/icon_add"
         app:backgroundTint="@color/clearorange"

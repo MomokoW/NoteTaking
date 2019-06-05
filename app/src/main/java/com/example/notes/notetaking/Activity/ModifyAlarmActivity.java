@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +27,7 @@ import java.util.LinkedList;
 public class ModifyAlarmActivity extends AppCompatActivity implements View.OnClickListener{
     TextView newtimeTextView,actiontimeTextView;
     EditText biaotiTextView, textTextView;
-    Button btn_set,btn_cancel;
+    ImageButton btn_set,btn_cancel;
     private CustomDatePicker mTimerPicker;
     NotesDB alarmsDB;//数据库辅助对象
     private SQLiteDatabase dbWriter;//数据库对象

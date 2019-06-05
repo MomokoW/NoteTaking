@@ -20,7 +20,7 @@
             android:layout_gravity="start|center_vertical"
             android:id="@+id/btn_cancel_new"
             android:src="@mipmap/back_icon"
-            android:background="#null"
+            android:background="@null"
             />
         <Space
             android:layout_width="0dp"

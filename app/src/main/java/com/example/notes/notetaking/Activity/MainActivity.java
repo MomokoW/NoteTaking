@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setItemIconTintList(null);  //icon使用原色
         vpager = (ViewPager) findViewById(R.id.vpager);
         vpager.setAdapter(mAdapter);
         vpager.setCurrentItem(0);

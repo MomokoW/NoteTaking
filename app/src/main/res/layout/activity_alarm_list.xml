@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,31 +10,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@mipmap/head_skin">
+        android:background="@mipmap/head_skin"
+        android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/gra_list_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center_vertical"
-            android:id="@+id/gra_list_back"
-            android:src="@mipmap/back_icon"
             android:background="#00000000"
-            />
+            android:src="@mipmap/back_icon" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="闹钟列表"
             android:gravity="center"
-            />
+            android:text="闹钟列表" />
 
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="518dp"
         android:layout_gravity="bottom"
         android:orientation="vertical">
 
@@ -51,11 +49,11 @@
         android:id="@+id/addalarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
+        android:layout_gravity="end|center_vertical"
         android:layout_margin="16dp"
         android:src="@mipmap/icon_add"
         app:backgroundTint="@color/clearorange"
         app:rippleColor="@color/LightSkyBlue"
         app:pressedTranslationZ="10dp"/>
 
-</LinearLayout>
+</FrameLayout>

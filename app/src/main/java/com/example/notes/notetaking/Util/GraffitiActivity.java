@@ -68,6 +68,7 @@ public class GraffitiActivity extends AppCompatActivity implements BottomNavigat
     public void initview(){
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.addgraffiti_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        //bottomNavigationView.setItemIconTintList(null);  //icon使用原色
         btnOk = (ImageButton)findViewById(R.id.save);
         btnBack = (ImageButton)findViewById(R.id.btn_back);
         btnOk.setOnClickListener(this);

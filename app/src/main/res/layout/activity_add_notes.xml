@@ -56,7 +56,7 @@
     <EditText
         android:id="@+id/edit_note"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@id/addnotes_layout"
         android:layout_alignParentStart="true"
         android:layout_weight="1"
@@ -110,18 +110,18 @@
 
     <android.support.design.widget.BottomNavigationView
 
-        app:labelVisibilityMode="labeled"
         android:id="@+id/addnotes_navigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        app:itemIconTint="@drawable/bottom_navigation_selector"
-        app:itemTextColor="@drawable/bottom_navigation_selector"
         android:background="@mipmap/bottom_skin"
-        app:menu="@menu/editnotes_navigation"
+        app:itemIconSize="30dp"
+        app:itemIconTint="@color/orange"
+        app:itemTextColor="@color/yellow"
+        app:labelVisibilityMode="labeled"
 
 
-        />
+        app:menu="@menu/editnotes_navigation" />
 
 </RelativeLayout>

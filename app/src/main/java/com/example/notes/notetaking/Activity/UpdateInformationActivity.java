@@ -32,6 +32,7 @@ public class UpdateInformationActivity extends AppCompatActivity {
         //headChangeBtn = (Button) findViewById(R.id.headChangeButton);
 
         nameChange = (EditText)findViewById(R.id.nameChangeEdit);
+        nameChange.setHint(MainUser.user.getName());
         passwordOld = (EditText)findViewById(R.id.passwordOldEdit);
         passwordChange1 = findViewById(R.id.passwordNew1Edit);
         passwordChange2 = (EditText)findViewById(R.id.passwordNew2Edit);

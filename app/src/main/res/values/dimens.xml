@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="icon_navigation">70dp</dimen>
     <dimen name="picker_view_height">160dp</dimen>
     <dimen name="date_unit_text_size">18sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="androids_api27_config_minScalingSpan">27mm</dimen>
+
+    <!--底部导航栏图标与文字间距 值越小间距越大-->
+    <dimen name="fixed_height_bottom_padding" tools:override="true">50dp</dimen>
+
+    <!--图标高度-->
+    <dimen name="design_bottom_navigation_height" tools:override="true">60dp</dimen>
+
+    <!--文字大小-->
+    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">14dp</dimen>
+    <dimen name="design_bottom_navigation_text_size" tools:override="true">14dp</dimen>
+
+    <dimen name="design_bottom_navigation_margin" tools:override="true">4dp</dimen>
 </resources>

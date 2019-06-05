@@ -54,21 +54,20 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="225dp"
+        android:background="@mipmap/bg_skin2"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingBottom="20dp"
-        android:paddingEnd="20dp"
         android:paddingStart="20dp"
         android:paddingTop="15dp"
-        android:background="#00000000">
+        android:paddingEnd="20dp"
+        android:paddingBottom="20dp">
 
         <com.example.notes.notetaking.Manager.datepicker.PickerView
             android:id="@+id/dpv_year"
             android:layout_width="0dp"
             android:layout_height="@dimen/picker_view_height"
-            android:layout_weight="3"
-            />
+            android:layout_weight="3" />
 
         <TextView
             android:layout_width="0dp"
