@@ -5,36 +5,39 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/note_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@mipmap/skin3">
+
         <ImageButton
+            android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:id="@+id/btn_back"
-            android:src="@mipmap/back_icon"
-
             android:background="@null"
-            />
+
+            android:src="@mipmap/back_icon" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="涂鸦"
+            android:layout_gravity="center"
             android:gravity="center"
-            android:layout_gravity="center"/>
+            android:text="涂鸦"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
 
         <ImageButton
+            android:id="@+id/save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:src="@mipmap/yes"
-            android:paddingRight="15dp"
-            android:id="@+id/save"
             android:background="@mipmap/skin6"
-            />
+            android:paddingRight="15dp"
+            android:src="@mipmap/yes" />
     </android.support.v7.widget.Toolbar>
     <ImageView
         android:id="@+id/iv"

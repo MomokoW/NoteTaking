@@ -11,6 +11,8 @@
         android:id="@+id/note_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@mipmap/back_icon"
+        android:navigationIcon="@mipmap/back_icon"
         android:background="@mipmap/head_skin">
 
         <ImageButton

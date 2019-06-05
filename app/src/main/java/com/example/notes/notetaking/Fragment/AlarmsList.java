@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +58,11 @@ public class AlarmsList extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
        View view = LayoutInflater.from(getActivity()).inflate(R.layout.activity_alarm_list,null);
         lv = (ListView)view.findViewById(R.id.alarmlist);
+
+        //获取兼容低版本的ActionBar
+        Toolbar toolbar = (Toolbar)view.findViewById(R.id.alarm_toolbar);
+        toolbar.setTitle("闹钟");
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
         //创建数据库
         dbReader = getDataBase();
