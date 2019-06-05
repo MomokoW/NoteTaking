@@ -67,7 +67,7 @@ public class NotesList extends Fragment implements View.OnClickListener, Adapter
     {
         //获取兼容低版本的ActionBar
         Toolbar toolbar = (Toolbar)view.findViewById(R.id.notelist_toolbar);
-        toolbar.setTitle("  随手记");
+        toolbar.setTitle("");
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         btnAdd =(FloatingActionButton)view.findViewById(R.id.addNotes);
         lv = (ListView) view.findViewById(R.id.notes_list);

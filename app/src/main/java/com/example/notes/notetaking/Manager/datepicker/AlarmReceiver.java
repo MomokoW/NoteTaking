@@ -10,6 +10,9 @@ import android.widget.Toast;
 import com.example.notes.notetaking.Activity.AlarmAlertActivity;
 import com.example.notes.notetaking.R;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class AlarmReceiver extends BroadcastReceiver {
     MediaPlayer mp;
@@ -22,6 +25,15 @@ public class AlarmReceiver extends BroadcastReceiver {
         //i.putExtras(bundle);
         //context.startActivity(i);
         Play(context);
+        //给闹钟设置了一个定时器
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                mp.stop();
+            }
+        },10000);
+
 
     }
     public void Play(Context context)

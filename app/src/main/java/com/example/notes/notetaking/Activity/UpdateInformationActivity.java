@@ -2,9 +2,12 @@ package com.example.notes.notetaking.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.notes.notetaking.Manager.NotesDB;
@@ -16,7 +19,7 @@ import com.example.notes.notetaking.R;
 public class UpdateInformationActivity extends AppCompatActivity {
 
     //private Button headChangeBtn;
-    private Button inforChangeBtn;
+    private ImageButton inforChangeBtn;
     private Button inforChangeBtn_back;
     private EditText nameChange;
     private  EditText passwordOld;
@@ -37,6 +40,12 @@ public class UpdateInformationActivity extends AppCompatActivity {
         passwordChange1 = findViewById(R.id.passwordNew1Edit);
         passwordChange2 = (EditText)findViewById(R.id.passwordNew2Edit);
 
+        //初始化导航栏Toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.modifyme_toolbar);
+        toolbar.setTitle("修改个人信息");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         /*
         MainUser.user.setHeadPhoto(" ");
         MainUser.user.setId("11111111111");
@@ -59,7 +68,7 @@ public class UpdateInformationActivity extends AppCompatActivity {
         */
 
         //确定修改个人信息
-        inforChangeBtn = (Button)findViewById(R.id.updateInforBtn);
+        inforChangeBtn = (ImageButton)findViewById(R.id.updateInforBtn);
         inforChangeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,4 +113,14 @@ public class UpdateInformationActivity extends AppCompatActivity {
 //        });
 
     }
+
+    //设置Toolbar上面的返回按钮
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

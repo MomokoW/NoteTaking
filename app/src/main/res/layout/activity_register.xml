@@ -24,7 +24,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
-            android:src="@mipmap/login1" />
+            android:src="@mipmap/appicon2" />
         <Space
             android:layout_height="0dp"
             android:layout_width="match_parent"
@@ -39,7 +39,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@mipmap/name"/>
+            android:src="@mipmap/appname2"/>
 
     </LinearLayout>
 
@@ -63,6 +63,7 @@
             android:background="@drawable/edit_shape"
             android:inputType="text"
             android:theme="@style/MyEditText" />
+
 
         <EditText
             android:id="@+id/passwordInput1_register"
@@ -95,7 +96,7 @@
             android:background="@drawable/edit_shape"
             android:hint="请输入昵称"
             android:inputType="text"
-            android:textColor="@color/orange"
+            android:textColor="@color/black"
             android:theme="@style/MyEditText" />
         <Space
             android:layout_height="0dp"

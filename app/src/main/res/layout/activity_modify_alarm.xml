@@ -33,7 +33,7 @@
             android:layout_gravity="center"
             android:paddingStart="15dp"
             android:text="@string/modify_alarm"
-            android:textColor="@color/select_title_text"
+            android:textColor="@color/black"
             android:textSize="15sp" />
 
         <Space
@@ -78,7 +78,7 @@
             android:layout_marginEnd="15dp"
             android:background="@drawable/edit_shape"
             android:gravity="center_vertical"
-            android:textColor="@color/selected_time_text"
+            android:textColor="@color/black"
             android:textSize="15sp"
             android:layout_weight="1"/>
     </LinearLayout>>
@@ -120,7 +120,7 @@
             android:layout_marginEnd="15dp"
             android:background="@null"
             android:gravity="center_vertical"
-            android:textColor="@color/selected_time_text"
+            android:textColor="@color/black"
             android:textSize="15sp" />
 
     </LinearLayout>
@@ -156,7 +156,7 @@
             android:layout_marginEnd="15dp"
             android:background="@null"
             android:gravity="center_vertical"
-            android:textColor="@color/selected_time_text"
+            android:textColor="@color/black"
             android:textSize="15sp" />
 
     </LinearLayout>
@@ -194,7 +194,7 @@
             android:layout_marginEnd="15dp"
             android:background="@drawable/edit_shape"
             android:gravity="center_vertical"
-            android:textColor="@color/selected_time_text"
+            android:textColor="@color/black"
             android:textSize="15sp"
             android:layout_weight="1"/>
     </LinearLayout>>

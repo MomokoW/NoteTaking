@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">NoteTaking</string>
+    <string name="app_name">随手记</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="tab_menu_notes">笔记</string>
-    <string name="tab_menu_alarm">闹钟</string>
+    <string name="tab_menu_alarm">待办</string>
     <string name="tab_menu_mine">我的</string>
     <string name="tab_menu_setting">设置</string>
 
@@ -26,8 +26,8 @@
     <string name="day">日</string>
     <string name="hour">时</string>
     <string name="minute">分</string>
-    <string name="new_alarm">新建闹钟</string>
-    <string name="modify_alarm">修改闹钟</string>
+    <string name="new_alarm">新建待办事项</string>
+    <string name="modify_alarm">修改待办事项</string>
     <string name="select_time">响应时间</string>
     <string name="current_time">创建时间</string>
     <string name="alarmbiaoti">标题</string>

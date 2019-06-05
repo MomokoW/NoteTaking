@@ -61,7 +61,7 @@ public class AlarmsList extends Fragment implements View.OnClickListener{
 
         //获取兼容低版本的ActionBar
         Toolbar toolbar = (Toolbar)view.findViewById(R.id.alarm_toolbar);
-        toolbar.setTitle("闹钟");
+        toolbar.setTitle("");
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
         //创建数据库

@@ -25,7 +25,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
-            android:src="@mipmap/login6" />
+            android:src="@mipmap/appicon2" />
         <Space
             android:layout_height="0dp"
             android:layout_width="match_parent"
@@ -40,7 +40,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@mipmap/name"/>
+            android:src="@mipmap/appname2"/>
 
     </LinearLayout>
 
@@ -53,7 +53,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2" />
+            android:layout_weight="1" />
 
 
         <EditText
@@ -66,7 +66,8 @@
             android:ems="10"
             android:hint="请输入账号"
             android:inputType="number"
-            android:maxLength="11" />
+            android:maxLength="11"
+            android:theme="@style/MyEditText"/>
 
         <Space
             android:layout_width="match_parent"
@@ -83,44 +84,53 @@
             android:hint="请输入密码"
             android:inputType="textPassword"
             android:maxLength="16"
+            android:theme="@style/MyEditText"
             ></EditText>
+        <Space
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            />
+
+        <LinearLayout
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <Space
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"/>
+            <Button
+                android:id="@+id/buttonLogin"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/btn_shape"
+                android:text="登陆"
+                />
+            <Space
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"/>
+            <Button
+                android:id="@+id/buttonReg"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="注册"
+                android:background="@drawable/btn_shape"
+                />
+            <Space
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"/>
+        </LinearLayout>
         <Space
             android:layout_height="0dp"
             android:layout_width="match_parent"
             android:layout_weight="2"
             />
-
-        <Button
-            android:id="@+id/buttonLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="15dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@drawable/btn_shape"
-            android:text="登录" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-
-
-            <Button
-                android:id="@+id/buttonReg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/white"
-                android:background="#00000000"
-                android:text="注册" />
-
-        </LinearLayout>
 
 
     </LinearLayout>

@@ -149,9 +149,10 @@ public class Settings extends Fragment {
             @Override
             public void onClick(View v) {
                 //AppManager.getAppManager.AppExit(this);
-                AppManager.finishAllActivity();
+                //AppManager.finishAllActivity();
                 Intent intent = new Intent(getActivity(),LoginActivity.class);
                 startActivity(intent);
+                getActivity().finish();
 
             }
         });

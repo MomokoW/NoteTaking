@@ -1,135 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bg_skin1"
     android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/alarm_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@mipmap/head_skin">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:text="个人信息"/>
+    </android.support.v7.widget.Toolbar>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-                <com.makeramen.roundedimageview.RoundedImageView
-                    android:id="@+id/headphotoView_mine"
-                    android:layout_height="80dp"
-                    android:layout_width="80dp"
-                    app:riv_oval="true"
-                    android:src="@mipmap/qqphoto"
-                    app:riv_border_color="#333333"
-                    app:riv_border_width="2dp"
-                    android:layout_centerInParent="true"/>
-                <RelativeLayout
-                    android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    >
-                    <TextView
-                        android:id="@+id/usernameText_mine"
-                        android:layout_height="50dp"
-                        android:layout_width="120dp"
-                        android:text="昵称"
-                        android:textSize="25dp"
-                        android:gravity="center"
-                        android:layout_centerInParent="true"/>
-                </RelativeLayout>
-                <Space
-                    android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                android:orientation="vertical"
-                >
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="3"
-                    android:orientation="vertical"
-                    >
-                    <Button
-                        android:id="@+id/changeBtn"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="修改个人资料"
-                        android:background="@drawable/btn_shape"
-                        />
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="0.5"
-                        />
-                    <Button
-                        android:id="@+id/newsynBtn"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="网络同步"
-                        android:background="@drawable/btn_shape"
-                        />
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="2"
-                        />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/headphotoView_mine"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="20dp"
+            android:src="@mipmap/qqphoto"
+            app:riv_border_color="#333333"
+            app:riv_border_width="2dp"
+            app:riv_oval="true" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/usernameText_mine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:textColor="@color/brown"
+                android:text="昵称"
+                android:textSize="20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="简介:这个人很懒。。。"
+                android:layout_below="@id/usernameText_mine"
+                android:textColor="@color/brown"
+                android:textSize="20dp" />
+        </RelativeLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <Button
+            android:id="@+id/changeBtn"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/clearorange"
+            android:drawableLeft="@mipmap/ic_geren"
+            android:drawableRight="@mipmap/force_icon"
+            android:drawablePadding="10dp"
+            android:text="修改个人资料"
+            android:textSize="20dp"
+            android:textColor="@color/brown"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+             />
+
+        <Button
+            android:id="@+id/newsynBtn"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/clearorange"
+            android:drawableLeft="@mipmap/ic_lvyou"
+            android:drawableRight="@mipmap/force_icon"
+            android:drawablePadding="10dp"
+            android:text="网络同步"
+            android:textSize="20dp"
+            android:textColor="@color/brown"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            />
 
         <Button
             android:id="@+id/logoutButton_mine"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_shape"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/clearorange"
+            android:drawableLeft="@mipmap/ic_shenghuo"
+            android:drawableRight="@mipmap/force_icon"
+            android:drawablePadding="10dp"
             android:text="退出"
-            />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            />
-        <Button
-            android:id="@+id/cancalButton_mine"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="注销帐号"
-            android:background="@drawable/btn_shape"
-            />
+            android:textSize="20dp"
+            android:textColor="@color/brown"/>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
+            android:layout_height="20dp"
             />
+
+        <Button
+            android:id="@+id/cancalButton_mine"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/clearorange"
+            android:drawableLeft="@mipmap/ic_none"
+            android:drawableRight="@mipmap/force_icon"
+            android:drawablePadding="10dp"
+            android:text="注销"
+            android:textSize="20dp"
+            android:textColor="@color/brown"/>
+
     </LinearLayout>
 </LinearLayout>
