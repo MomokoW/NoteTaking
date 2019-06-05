@@ -11,6 +11,8 @@
         android:id="@+id/note_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@mipmap/back_icon"
+        android:navigationIcon="@mipmap/back_icon"
         android:background="@mipmap/head_skin">
 
         <ImageButton
@@ -100,7 +102,7 @@
                     android:visibility="gone" />
 
                 <ImageView
-                    android:id="@+id/iv"
+                    android:id="@+id/iv_video"
                     android:layout_width="500dp"
                     android:layout_height="300dp"
                     android:visibility="gone" />

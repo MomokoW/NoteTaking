@@ -4,37 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg_skin2"
-    android:orientation="vertical">
+    android:background="@mipmap/bg_skin2">
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/head_skin"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/gra_list_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left|center_vertical"
-            android:background="#00000000"
-            android:src="@mipmap/back_icon" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="闹钟列表" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="518dp"
-        android:layout_gravity="bottom"
+        android:layout_height="match_parent"
         android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/alarm_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@mipmap/head_skin"/>
 
         <ListView
             android:id="@+id/alarmlist"
@@ -44,12 +26,11 @@
             android:paddingLeft="15dp" />
     </LinearLayout>
 
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addalarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|center_vertical"
+        android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
         android:src="@mipmap/icon_add"
         app:backgroundTint="@color/clearorange"

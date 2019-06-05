@@ -1,6 +1,7 @@
 package com.example.notes.notetaking.Util;
 
 public class NoteItem {
+
     private String content;    //笔记内容
     private String time;       //笔记创建时间
     private int imageId;       //左侧标签图片

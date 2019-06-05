@@ -1,6 +1,7 @@
 package com.example.notes.notetaking.Fragment;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -19,12 +21,15 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.notes.notetaking.Activity.AddNotesActivity;
 import com.example.notes.notetaking.Activity.CheckNoteActivity;
 import com.example.notes.notetaking.Adapter.NoteAdapter;
 import com.example.notes.notetaking.Manager.NotesDB;
+import com.example.notes.notetaking.Model.MainUser;
 import com.example.notes.notetaking.R;
+import com.example.notes.notetaking.Util.AlarmItem;
 import com.example.notes.notetaking.Util.MapUtils;
 import com.example.notes.notetaking.Util.NoteItem;
 
@@ -33,7 +38,7 @@ import java.util.LinkedList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NotesList extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener, TextWatcher {
+public class NotesList extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener, TextWatcher, AdapterView.OnItemLongClickListener {
 
     private FloatingActionButton btnAdd;
     private ListView lv;
@@ -62,7 +67,7 @@ public class NotesList extends Fragment implements View.OnClickListener, Adapter
     {
         //获取兼容低版本的ActionBar
         Toolbar toolbar = (Toolbar)view.findViewById(R.id.notelist_toolbar);
-        toolbar.setTitle("随手记");
+        toolbar.setTitle("  随手记");
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         btnAdd =(FloatingActionButton)view.findViewById(R.id.addNotes);
         lv = (ListView) view.findViewById(R.id.notes_list);
@@ -82,19 +87,24 @@ public class NotesList extends Fragment implements View.OnClickListener, Adapter
     {
         btnAdd.setOnClickListener(this);
         lv.setOnItemClickListener(this);
+        lv.setOnItemLongClickListener(this);
         etSearch.addTextChangedListener(this);
     }
     //查询表中的所有信息
-    public void queryNotesAll() {
-        cursor = dbReader.query(NotesDB.TABLE_NOTE, null, null,
-                null, null, null, null);
+    private void queryNotesAll() {
+        cursor = dbReader.rawQuery("select * from notes where user_id='"+MainUser.user.getId()+"'",null);
     }
     //查询表中的部分信息
     private void queryData(String searchData)
     {
         cursor = dbReader.rawQuery("select * from notes where notes_content like '%" + searchData + "%' or notes_tag like '%" + searchData + "%'", null);
     }
-
+    //删除列表项
+    private void deleteData(int id)
+    {
+        String ID = String.valueOf(id);
+        dbReader.execSQL("delete from notes where notes_id=?",new String[]{ID});
+    }
     @Override
     public void onResume() {
         super.onResume();
@@ -175,5 +185,36 @@ public class NotesList extends Fragment implements View.OnClickListener, Adapter
         }
         adapter = new NoteAdapter(getContext(),noteLists);
         lv.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onItemLongClick(final AdapterView<?> parent, View view,final int position, long id) {
+        AlertDialog alert = null;
+        AlertDialog.Builder builder  = new AlertDialog.Builder(getContext());
+        alert = builder.setTitle("温馨提示：")
+                .setMessage("确定删除吗？")
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getContext(), "你点击了取消按钮~", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        /*
+                         *
+                         */
+                        cursor.moveToPosition(position);    //获取到数据库中当前一行
+                        int id = cursor.getInt(cursor.getColumnIndex(NotesDB.NOTES_ID));
+                        deleteData(id);
+                        noteLists.remove(position);
+                        adapter.notifyDataSetChanged();
+                    }
+                }).create();
+        alert.show();
+        return true;
+
+
     }
 }

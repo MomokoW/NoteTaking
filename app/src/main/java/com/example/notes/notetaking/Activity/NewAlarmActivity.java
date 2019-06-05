@@ -54,7 +54,7 @@ public class NewAlarmActivity extends AppCompatActivity implements View.OnClickL
 
         //初始化按钮
         btn_save = (ImageButton)findViewById(R.id.btn_set_new);
-        btn_back = (ImageButton) findViewById(R.id.btn_cancel_new);
+        btn_back = (ImageButton)findViewById(R.id.btn_cancel_new);
         text_title = (EditText)findViewById(R.id.alarmbiaoti_new);
         text_remark = (EditText) findViewById(R.id.alarmtext_new);
 
